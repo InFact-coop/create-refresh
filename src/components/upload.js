@@ -18,11 +18,16 @@ const FileInput = styled.input.attrs({
 
 const Clickable = styled.div.attrs({
   className:
-    "pointer white bg-blue db w-90 flex tc flex-column align-center justify-center b--dashed b--white bw1",
-})``
+    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
+})`
+  width: 90vw;
+  height: 60vh;
+  max-width: 483px;
+  max-height: 370px;
+`
 
 const Label = styled.label.attrs({
-  className: "w-90 h7",
+  className: "apercu",
 })``
 
 class Upload extends Component {
