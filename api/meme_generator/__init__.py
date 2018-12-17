@@ -8,6 +8,8 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
+        UPLOAD_FOLDER='/uploads',
+        ALLOWED_EXTENSIONS=set(['png', 'jpg', 'jpeg'])
     )
 
     if test_config is None:
@@ -22,6 +24,10 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    # register our api blueprint
+    from . import api
+    app.register_blueprint(api.bp)
 
     # a simple page that says hello
     @app.route('/hello')
