@@ -1,13 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+import header from "../assets/images/header.svg"
 
-const AppHead = styled.h1.attrs({
-  className: "font-1 apercu",
+const AppHead = styled.img.attrs({
+  className: "center",
+  src: header,
 })``
 
 const Header = () => (
   <div>
-    <AppHead>Header</AppHead>
+    <AppHead />
   </div>
 )
 
