@@ -24,7 +24,13 @@ def upload():
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file', filename=filename))
+            path = os.path.join(
+                app.instance_path, app.config['UPLOAD_FOLDER'], filename)
+            print(path)
+            print("Going to upload the file now!")
+
+            file.save(path)
+            file.close()
+            return "Uploaded!"
 
     return "TODO: upload files!"
