@@ -8,7 +8,7 @@ class Upload extends Component {
   state = {
     file: null,
   }
-  onImageSelect = () => {
+  onImageSelect = event => {
     this.setState({
       file: event.target.files[0],
     })
