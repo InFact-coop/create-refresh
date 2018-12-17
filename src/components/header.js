@@ -1,8 +1,13 @@
-import React from 'react'
+import React from "react"
+import styled from "styled-components"
+
+const AppHead = styled.h1.attrs({
+  className: "font-1 apercu",
+})``
 
 const Header = () => (
   <div>
-    <h1>Header</h1>
+    <AppHead>Header</AppHead>
   </div>
 )
 
