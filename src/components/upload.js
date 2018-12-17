@@ -20,14 +20,14 @@ const Clickable = styled.div.attrs({
   className:
     "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
 })`
-  width: 90vw;
+  width: 85vw;
   height: 60vh;
   max-width: 483px;
   max-height: 370px;
 `
 
 const Label = styled.label.attrs({
-  className: "apercu",
+  className: "apercu h-100 w-100 flex items-center justify-center",
 })``
 
 class Upload extends Component {
@@ -40,6 +40,7 @@ class Upload extends Component {
       file: event.target.files[0],
       fileName: fileNameFormatter(event.target.files[0].name),
     })
+    // this.sendImage()
   }
   sendImage = () => {
     const data = new FormData()
@@ -47,6 +48,10 @@ class Upload extends Component {
     data.set("file", file, fileName)
     axios.post(endpoint, data).then(res => {
       console.log(res.statusText)
+      this.setState({
+        file: null,
+        fileName: null,
+      })
     })
   }
   render() {
@@ -54,7 +59,10 @@ class Upload extends Component {
     return (
       <form>
         <Clickable>
-          <Label htmlFor="image">Click to upload:</Label>
+          <Label htmlFor="image">
+            <p>Click to upload</p>
+            {fileName && <p>:{fileName}</p>}
+          </Label>
           <FileInput
             type="file"
             id="image"
@@ -64,7 +72,6 @@ class Upload extends Component {
             files={file}
             onChange={this.onImageSelect}
           />
-          {fileName && <h2>File uploaded: {fileName}</h2>}
         </Clickable>
         <button onClick={this.sendImage}>Send</button>
       </form>
