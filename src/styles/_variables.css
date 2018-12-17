@@ -17,23 +17,25 @@
   --font-size-lilheadline: 100px;
   --font-size-subheadline: 58px;
   --font-size-1: 54px;
-  --font-size-2: 36px;
-  --font-size-3: 28px;
-  --font-size-4: 18px;
-  --font-size-5: 16px;
-  --font-size-6: 14px;
+  --font-size-2: 48px;
+  --font-size-3: 36px;
+  --font-size-4: 28px;
+  --font-size-5: 18px;
+  --font-size-6: 16px;
   --font-size-7: 12px;
+  --font-size-footer: 8px;
 
   --line-height-headline: 130px;
   --line-height-lilheadline: 100px;
   --line-height-subheadline: 62px;
-  --line-height-1: 52px;
-  --line-height-2: 36px;
-  --line-height-3: 32px;
+  --line-height-1: 65px;
+  --line-height-2: 48px;
+  --line-height-3: 40px;
   --line-height-4: 24px;
-  --line-height-5: 20px;
+  --line-height-5: 27px;
   --line-height-6: 18px;
-  --line-height-7: 16px;
+  --line-height-7: 18px;
+  --line-height-footer: 14px;
 
   --letter-spacing-tight: -0.05em;
   --letter-spacing-1: 0.1em;
