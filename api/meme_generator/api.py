@@ -1,5 +1,7 @@
-from flask import (current_app, Blueprint, request, url_for, redirect)
+from flask import (current_app, Blueprint, request,
+                   url_for, redirect, send_from_directory)
 import os
+from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 
 # import application context and declare new blueprint
@@ -11,6 +13,22 @@ bp = Blueprint('api', __name__)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+
+
+@bp.route("/test")
+def test():
+    """Testing :) """
+    path = os.path.join(
+        app.instance_path, app.config['UPLOAD_FOLDER'], "corbyn.jpg")
+    image = cartoonify(path)
+    print(image)
+    return "Test complete"
 
 
 @bp.route("/upload", methods=('GET', 'POST'))
@@ -31,6 +49,9 @@ def upload():
 
             file.save(path)
             file.close()
-            return "Uploaded!"
+            cartoon_path = cartoonify(path)
+
+            return redirect(url_for('uploaded_file',
+                                    filename=cartoon_path))
 
     return "TODO: upload files!"

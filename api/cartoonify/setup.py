@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import find_packages, setup
 
 setup(
     # Application name:
@@ -11,7 +11,7 @@ setup(
     author="Dan Macnish",
 
     # Packages
-    packages=["app"],
+    packages=find_packages(),
 
     # todo fill out manifest.in
     # Include additional files into the package

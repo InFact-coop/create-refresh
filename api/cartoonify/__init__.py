@@ -35,19 +35,19 @@ logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG,
                     filename=str(Path(__file__).parent / 'logs' / logging_filename))
 
 
-def run():
+def cartoonify(path):
     app = Workflow(dataset, imageprocessor)
     app.setup()
-    while True:
-        path = Path(input("enter the filepath of the image to process:"))
-        if str(path) != '.' or 'exit':
-            app.process(str(path), top_x=3)
-            app.save_results()
-        else:
-            app.close()
-            sys.exit()
+    path = Path(path)
+    if str(path) != '.' or 'exit':
+        app.process(str(path), top_x=3)
+        return app.save_results()
+    else:
+        app.close()
+        return "Error"
 
 
 if __name__ == '__main__':
-    run()
+    path = Path(input("enter the filepath of the image to process:"))
+    cartoonify(path)
     sys.exit()
