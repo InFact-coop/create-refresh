@@ -77,7 +77,7 @@ class Upload extends Component {
           file,
           fileName: fileNameFormatter(file.name),
         },
-        this.sendImage()
+        this.sendImage
       )
     }
   }
