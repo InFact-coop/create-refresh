@@ -1,9 +1,8 @@
-import React from 'react'
-import Header from './header'
+import React from "react"
+import "../styles/index.css"
 
 const Layout = ({ children }) => (
   <div>
-    <Header />
     <div>{children}</div>
   </div>
 )
