@@ -3,6 +3,15 @@ import axios from "axios"
 import fileNameFormatter from "../utils/fileNameFormat"
 import styled from "styled-components"
 import isValidFileType from "../utils/isValidFileType"
+import example from "../assets/images/example.png"
+import {
+  Background,
+  LinkToForm,
+  DesktopNav,
+  MobileNav,
+  UploadButtons,
+  ShareButtons,
+} from "./uploadComponents"
 
 const endpoint = "http://localhost:5000/upload"
 
@@ -28,10 +37,11 @@ const Clickable = styled.div.attrs({
 `
 
 const ImagesSidebyside = styled.div.attrs({
-  className: "flex flex-column-ns flex-row bg-light-pink",
+  className:
+    "flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
 })``
 
-const Image = styled.img.attrs({ className: "w-40-ns w-90" })`
+const Image = styled.img.attrs({ className: "w-50-ns w-90 ma2" })`
   max-width: 483px;
   max-height: 370px;
 `
@@ -48,8 +58,9 @@ class Upload extends Component {
   state = {
     file: null,
     fileName: null,
+    fileURL: example,
     error: "",
-    cartoon: null,
+    cartoon: example,
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
@@ -102,34 +113,46 @@ class Upload extends Component {
   }
   render() {
     const { file, fileURL, error, cartoon } = this.state
-    return cartoon ? (
-      <ImagesSidebyside>
-        <Image src={fileURL} alt="original image" />
-        <Image src={cartoon} alt="cartoonified image" />
-      </ImagesSidebyside>
-    ) : (
-      <form>
-        <Clickable>
-          <Label htmlFor="image">
-            {error ? (
-              <p>{error}</p>
-            ) : file ? (
-              <p>Loading...</p>
-            ) : (
-              <p>Click to upload</p>
-            )}
-          </Label>
-          <FileInput
-            type="file"
-            id="image"
-            name="image"
-            accept="image/png, image/jpeg"
-            multiple={false}
-            files={file}
-            onChange={this.onImageSelect}
-          />
-        </Clickable>
-      </form>
+    return (
+      <Background>
+        <MobileNav className="flex dn-ns" />
+        <DesktopNav className="dn flex-ns" />
+
+        {cartoon ? (
+          <ImagesSidebyside>
+            <Image src={fileURL} alt="original image" />
+            <Image src={cartoon} alt="cartoonified image" />
+          </ImagesSidebyside>
+        ) : (
+          <form>
+            <Clickable>
+              <Label htmlFor="image">
+                {error ? (
+                  <p>{error}</p>
+                ) : file ? (
+                  <p>Loading...</p>
+                ) : (
+                  <p>Click to upload</p>
+                )}
+              </Label>
+              <FileInput
+                type="file"
+                id="image"
+                name="image"
+                accept="image/png, image/jpeg"
+                multiple={false}
+                files={file}
+                onChange={this.onImageSelect}
+              />
+            </Clickable>
+          </form>
+        )}
+        <LinkToForm>
+          Want to be part of the network to stop Article 13?{" "}
+          <a className="underline">Join now and save your memes!</a>
+        </LinkToForm>
+        {cartoon ? <ShareButtons /> : <UploadButtons />}
+      </Background>
     )
   }
 }

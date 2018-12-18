@@ -1,7 +1,6 @@
 import React from "react"
 import RedButton from "./shared/redButton"
 import styled from "styled-components"
-import Upload from "./upload"
 
 import facebook from "../assets/images/fb_outline.svg"
 import twitter from "../assets/images/twitter_outline.svg"
@@ -11,18 +10,18 @@ import menuLines from "../assets/images/menu-lines.svg"
 
 const Background = styled.div.attrs({
   className:
-    "blue bg-blue ba b--light-blue bw4 vh-100 flex justify-between items-center flex-column",
+    "blue bg-blue ba b--light-blue bw4 vh-100-ns flex justify-between items-center flex-column",
 })``
 
 const ButtonHolder = styled.div.attrs({
-  className: "flex justify-between pb3",
+  className: "flex justify-between pb3 ph3 ph0-ns pt2",
 })`
   width: 90vw;
   max-width: 483px;
 `
 
 const LinkToForm = styled.p.attrs({
-  className: "white i font-7 pv2",
+  className: "white i font-7 pv2 tc mh4",
 })``
 
 const NavContainer = styled.div.attrs({
@@ -59,21 +58,27 @@ const MobileNav = ({ className }) => (
   </NavContainer>
 )
 
-const Landing = () => (
-  <Background>
-    <MobileNav className="flex dn-ns" />
-    <DesktopNav className="dn flex-ns" />
-    <Upload />
-    <LinkToForm>
-      Want to be part of the network to stop Article 13?{" "}
-      <a className="underline">Join now and save your memes!</a>
-    </LinkToForm>
-    <ButtonHolder>
-      <RedButton>Upload</RedButton>
-      <RedButton className="dn db-ns">Paste URL</RedButton>
-      <RedButton>Suprise me</RedButton>
-    </ButtonHolder>
-  </Background>
+const UploadButtons = () => (
+  <ButtonHolder>
+    <RedButton>Upload</RedButton>
+    <RedButton className="dn db-ns">Paste URL</RedButton>
+    <RedButton>Suprise me</RedButton>
+  </ButtonHolder>
 )
 
-export default Landing
+const ShareButtons = () => (
+  <ButtonHolder>
+    <RedButton>Share</RedButton>
+    <RedButton>Start Over</RedButton>
+    <RedButton className="dn db-ns">Save</RedButton>
+  </ButtonHolder>
+)
+
+export {
+  Background,
+  LinkToForm,
+  DesktopNav,
+  MobileNav,
+  UploadButtons,
+  ShareButtons,
+}
