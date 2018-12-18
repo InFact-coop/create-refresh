@@ -8,7 +8,7 @@ const testjpgfile = {
   type: "image/jpeg",
 }
 const invalidfile = {
-  name: "doc/xlsx",
+  type: "doc/xlsx",
 }
 
 describe("fileNameFormatter", () => {

@@ -27,6 +27,15 @@ const Clickable = styled.div.attrs({
   max-height: 370px;
 `
 
+const ImagesSidebyside = styled.div.attrs({
+  className: "flex flex-column-ns flex-row bg-light-pink",
+})``
+
+const Image = styled.div.attrs({ className: "w-40-ns w-90" })`
+  max-width: 483px;
+  max-height: 370px;
+`
+
 const Label = styled.label.attrs({
   className: "apercu h-100 w-100 flex items-center justify-center",
 })`
@@ -40,6 +49,7 @@ class Upload extends Component {
     file: null,
     fileName: null,
     error: "",
+    cartoon: null,
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
@@ -52,7 +62,7 @@ class Upload extends Component {
     if (file.size > 1048576) {
       this.setState({
         error:
-          "Oops, it looks like your file is to big! Try uploading a smaller image.",
+          "Oops, it looks like your file is too big! Try uploading a smaller image.",
       })
       return false
     }
@@ -61,7 +71,7 @@ class Upload extends Component {
   }
   onImageSelect = event => {
     const file = event.target.files[0]
-    if (this.validateImage(file)) {
+    if (file && this.validateImage(file)) {
       this.setState({
         file,
         fileName: fileNameFormatter(file.name),
@@ -77,8 +87,7 @@ class Upload extends Component {
       .then(res => {
         console.log(res.statusText)
         this.setState({
-          file: null,
-          fileName: null,
+          cartoon: res.body,
         })
       })
       .catch(err => {
@@ -86,8 +95,13 @@ class Upload extends Component {
       })
   }
   render() {
-    const { file, error } = this.state
-    return (
+    const { file, error, cartoon } = this.state
+    return cartoon ? (
+      <ImagesSidebyside>
+        <Image src={file} alt="original image" />
+        <Image src={cartoon} alt="cartoonified image" />
+      </ImagesSidebyside>
+    ) : (
       <form>
         <Clickable>
           <Label htmlFor="image">
