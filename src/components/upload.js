@@ -58,8 +58,7 @@ class Upload extends Component {
           "Oops, it looks like your file is the wrong type! Try uploading a jpg or png.",
       })
       return false
-    }
-    if (file.size > 1048576) {
+    } else if (file.size > 1048576) {
       this.setState({
         error:
           "Oops, it looks like your file is too big! Try uploading a smaller image.",
@@ -70,12 +69,16 @@ class Upload extends Component {
     return true
   }
   onImageSelect = event => {
+    event.preventDefault()
     const file = event.target.files[0]
     if (file && this.validateImage(file)) {
-      this.setState({
-        file,
-        fileName: fileNameFormatter(file.name),
-      })
+      this.setState(
+        {
+          file,
+          fileName: fileNameFormatter(file.name),
+        },
+        this.sendImage()
+      )
     }
   }
   sendImage = () => {
@@ -85,7 +88,8 @@ class Upload extends Component {
     axios
       .post(endpoint, data)
       .then(res => {
-        console.log(res.statusText)
+        console.log("Status: ", res.statusText)
+        console.log("Body: ", res.body)
         this.setState({
           cartoon: res.body,
         })
@@ -123,7 +127,6 @@ class Upload extends Component {
             onChange={this.onImageSelect}
           />
         </Clickable>
-        <button onClick={this.sendImage}>Send</button>
       </form>
     )
   }
