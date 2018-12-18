@@ -4,6 +4,8 @@ import os
 from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 
+from .image_convert import convert_to_base64
+
 # import application context and declare new blueprint
 app = current_app
 bp = Blueprint('api', __name__)
@@ -52,6 +54,6 @@ def upload():
             cartoon_path = cartoonify(path)
             print(cartoon_path)
             print("Going to send a response now!")
-            return jsonify(status=200, url=str(cartoon_path))
+            return jsonify(status=200, base64=convert_to_base64(str(cartoon_path)))
 
     return "TODO: upload files!"
