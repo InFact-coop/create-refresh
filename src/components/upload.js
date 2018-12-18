@@ -41,9 +41,12 @@ const ImagesSidebyside = styled.div.attrs({
     "flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
 })``
 
-const Image = styled.img.attrs({ className: "w-50-ns w-90 ma2" })`
+const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
   max-width: 483px;
   max-height: 370px;
+  background-image: ${({ src }) => `url(${src})`};
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 
 const Label = styled.label.attrs({
