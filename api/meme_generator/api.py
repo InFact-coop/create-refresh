@@ -1,5 +1,5 @@
 from flask import (current_app, Blueprint, request,
-                   url_for, redirect, send_from_directory)
+                   url_for, redirect, send_from_directory, jsonify)
 import os
 from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
@@ -15,7 +15,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
-@app.route('/uploads/<filename>')
+@bp.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
@@ -50,8 +50,8 @@ def upload():
             file.save(path)
             file.close()
             cartoon_path = cartoonify(path)
-
-            return redirect(url_for('uploaded_file',
-                                    filename=cartoon_path))
+            print(cartoon_path)
+            print("Going to send a response now!")
+            return jsonify(status=200, url=str(cartoon_path))
 
     return "TODO: upload files!"
