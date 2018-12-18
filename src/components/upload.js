@@ -31,7 +31,7 @@ const ImagesSidebyside = styled.div.attrs({
   className: "flex flex-column-ns flex-row bg-light-pink",
 })``
 
-const Image = styled.div.attrs({ className: "w-40-ns w-90" })`
+const Image = styled.img.attrs({ className: "w-40-ns w-90" })`
   max-width: 483px;
   max-height: 370px;
 `
@@ -76,22 +76,24 @@ class Upload extends Component {
         {
           file,
           fileName: fileNameFormatter(file.name),
+          fileURL: URL.createObjectURL(file),
         },
-        this.sendImage()
+        this.sendImage
       )
     }
   }
   sendImage = () => {
     const data = new FormData()
     const { file, fileName } = this.state
+    console.log(file, fileName)
     data.set("file", file, fileName)
     axios
       .post(endpoint, data)
       .then(res => {
         console.log("Status: ", res.statusText)
-        console.log("Body: ", res.body)
+        console.log("Body: ", res.data.base64)
         this.setState({
-          cartoon: res.body,
+          cartoon: `data:image/png;base64,${res.data.base64}`,
         })
       })
       .catch(err => {
@@ -99,10 +101,10 @@ class Upload extends Component {
       })
   }
   render() {
-    const { file, error, cartoon } = this.state
+    const { file, fileURL, error, cartoon } = this.state
     return cartoon ? (
       <ImagesSidebyside>
-        <Image src={file} alt="original image" />
+        <Image src={fileURL} alt="original image" />
         <Image src={cartoon} alt="cartoonified image" />
       </ImagesSidebyside>
     ) : (
