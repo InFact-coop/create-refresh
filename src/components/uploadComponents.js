@@ -25,7 +25,7 @@ const LinkToForm = styled.p.attrs({
 })``
 
 const NavContainer = styled.div.attrs({
-  className: "justify-between w-100",
+  className: "flex justify-between w-100",
 })``
 
 const Link = styled.a.attrs({
@@ -40,22 +40,26 @@ const Icon = styled.img.attrs({
   className: "pa2",
 })``
 
-const DesktopNav = ({ className }) => (
-  <NavContainer className={className}>
-    <Link href="">More info</Link>
-    <img src={logo} alt="main logo" />
-    <Socials>
-      <Icon src={facebook} alt="facebook" />
-      <Icon src={twitter} alt="twitter" />
-    </Socials>
-  </NavContainer>
+const DesktopNav = () => (
+  <div className="db-ns dn w-100">
+    <NavContainer>
+      <Link href="http://createrefresh.eu">More info</Link>
+      <img src={logo} alt="main logo" />
+      <Socials>
+        <Icon src={facebook} alt="facebook" />
+        <Icon src={twitter} alt="twitter" />
+      </Socials>
+    </NavContainer>
+  </div>
 )
 
-const MobileNav = ({ className }) => (
-  <NavContainer className={className}>
-    <Icon src={menuLines} alt="menu" />
-    <img src={logoMobile} alt="main logo" />
-  </NavContainer>
+const MobileNav = () => (
+  <div className="dn-ns db w-100">
+    <NavContainer>
+      <Icon src={menuLines} alt="menu" />
+      <img src={logoMobile} alt="main logo" />
+    </NavContainer>
+  </div>
 )
 
 const UploadButtons = () => (

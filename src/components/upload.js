@@ -118,8 +118,8 @@ class Upload extends Component {
     const { file, fileURL, error, cartoon } = this.state
     return (
       <Background>
-        <MobileNav className="flex dn-ns" />
-        <DesktopNav className="dn flex-ns" />
+        <MobileNav />
+        <DesktopNav />
 
         {cartoon ? (
           <ImagesSidebyside>
