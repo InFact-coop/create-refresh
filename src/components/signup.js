@@ -3,8 +3,10 @@ import styled from "styled-components"
 import bitSteps from "../assets/images/8bit.svg"
 
 const Section = styled.section.attrs({
-  className: "flex justify-center pv4 w-100",
-})``
+  className: "flex justify-center pv4-ns w-100",
+})`
+  background-color: #f9f9f9;
+`
 
 const Container = styled.div.attrs({
   className:
@@ -42,7 +44,7 @@ const FormButton = styled.button.attrs({
 
 const InfoText = styled.div.attrs({
   className:
-    "w-30-ns w-100 pa0-ns pv3 tr-ns tl dark-pink font-5-ns mobile-body",
+    "w-30-ns w-100 pa0-ns pv3 tr-ns tl dark-pink font-5-ns mobile-body self-end",
 })``
 
 const Signup = () => (
