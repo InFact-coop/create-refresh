@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import bitSteps from "../assets/images/8bit.svg"
+import CountrySelect from "./countrySelect"
 
 const Section = styled.section.attrs({
   className: "flex justify-center pv4-ns w-100",
@@ -47,6 +48,12 @@ const InfoText = styled.div.attrs({
     "w-30-ns w-100 pa0-ns pv3 tr-ns tl dark-pink font-5-ns mobile-body self-end",
 })``
 
+const TinyLink = styled.a.attrs({
+  className: "db font-7 light-pink underline i",
+})`
+  font-size: 8px;
+`
+
 const Signup = () => (
   <Section>
     <Container>
@@ -54,7 +61,7 @@ const Signup = () => (
         <Input name="firstname" placeholder="First Name" type="text" required />
         <Input name="lastname" placeholder="Last Name" type="text" required />
         <Input name="email" placeholder="Email" type="email" required />
-        <Input name="country" placeholder="Country" type="text" required />
+        <CountrySelect />
         <Input
           name="socialmedia"
           placeholder="@SocialMediaHandle"
@@ -68,6 +75,9 @@ const Signup = () => (
           </p>
         </div>
         <FormButton type="button">Sign Up</FormButton>
+        <TinyLink href="https://createrefresh.eu/privacy/">
+          Learn more about how we use, store, and handle your information here.
+        </TinyLink>
       </form>
       <InfoText>
         We’re building a network of people dedicated to fixing copyright,

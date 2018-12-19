@@ -99,13 +99,10 @@ class Upload extends Component {
   sendImage = () => {
     const data = new FormData()
     const { file, fileName } = this.state
-    console.log(file, fileName)
     data.set("file", file, fileName)
     axios
       .post(endpoint, data)
       .then(res => {
-        console.log("Status: ", res.statusText)
-        console.log("Body: ", res.data.base64)
         this.setState({
           cartoon: `data:image/png;base64,${res.data.base64}`,
         })
