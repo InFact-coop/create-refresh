@@ -15,11 +15,12 @@ def add_watermark(input_path, watermark_path, output_path):
         watermark_width, watermark_height = watermark_image.size
         watermark_resized = watermark_image.resize(
             (115, 115))
-        _w_width, w_height = watermark_resized.size
+        _resized_width, resized_height = watermark_resized.size
 
-        original_image.paste(watermark_resized, (8, original_height - w_height - 8),
+        original_image.thumbnail((483, 370))
+        _w, h = original_image.size
+        original_image.paste(watermark_resized, (8, h - resized_height - 8),
                              mask=watermark_resized)
-
         original_image.save(output_path)
         return "Success!"
     except IOError:
