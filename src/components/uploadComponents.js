@@ -70,10 +70,10 @@ const UploadButtons = () => (
   </ButtonHolder>
 )
 
-const ShareButtons = () => (
+const ShareButtons = props => (
   <ButtonHolder>
     <RedButton>Share</RedButton>
-    <RedButton>Start Over</RedButton>
+    <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <RedButton className="dn db-ns">Save</RedButton>
   </ButtonHolder>
 )

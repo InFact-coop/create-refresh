@@ -111,6 +111,15 @@ class Upload extends Component {
         console.log(err)
       })
   }
+  handleStartOver = () => {
+    this.setState({
+      file: null,
+      fileName: null,
+      fileURL: null,
+      error: "",
+      cartoon: null,
+    })
+  }
   render() {
     const { file, fileURL, error, cartoon } = this.state
     return (
@@ -151,7 +160,11 @@ class Upload extends Component {
           Want to be part of the network to stop Article 13?{" "}
           <a className="underline">Join now and save your memes!</a>
         </LinkToForm>
-        {cartoon ? <ShareButtons /> : <UploadButtons />}
+        {cartoon ? (
+          <ShareButtons handleStartOver={this.handleStartOver} />
+        ) : (
+          <UploadButtons />
+        )}
       </Background>
     )
   }
