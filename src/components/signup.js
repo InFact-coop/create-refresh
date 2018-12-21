@@ -70,7 +70,7 @@ const ConsentText = styled.p.attrs({
     `${theme === "light" ? "dark-pink" : "light-pink"} font-7`,
 })``
 
-const Signup = ({ theme, view }) => (
+const Signup = ({ theme, view, submitForm }) => (
   <Section view={view}>
     <Container theme={theme}>
       <form>
@@ -109,7 +109,7 @@ const Signup = ({ theme, view }) => (
             email updates about campaign activities.*
           </ConsentText>
         </div>
-        <FormButton type="button" theme={theme}>
+        <FormButton type="button" theme={theme} onClick={submitForm}>
           Sign Up
         </FormButton>
         <TinyLink href="https://createrefresh.eu/privacy/" theme={theme}>
