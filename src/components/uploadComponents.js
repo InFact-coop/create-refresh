@@ -9,8 +9,12 @@ import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
 
 const Background = styled.div.attrs({
-  className:
-    "blue bg-blue ba b--light-blue bw4 vh-100-ns flex justify-between items-center flex-column",
+  className: ({ view }) =>
+    `${
+      view === "form"
+        ? "bg-near-white dark-pink"
+        : "ba blue bg-blue b--light-blue bw4"
+    } vh-100-ns flex justify-between items-center flex-column`,
 })``
 
 const ButtonHolder = styled.div.attrs({
@@ -18,6 +22,35 @@ const ButtonHolder = styled.div.attrs({
 })`
   width: 90vw;
   max-width: 483px;
+`
+
+const FileInput = styled.input.attrs({
+  className: "",
+})`
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+`
+
+const Clickable = styled.div.attrs({
+  className:
+    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
+})`
+  width: 85vw;
+  height: 60vh;
+  max-width: 483px;
+  max-height: 370px;
+`
+
+const Label = styled.label.attrs({
+  className: "apercu h-100 w-100 flex items-center justify-center",
+})`
+  p {
+    width: 50%;
+  }
 `
 
 const LinkToForm = styled.p.attrs({
@@ -29,7 +62,10 @@ const NavContainer = styled.div.attrs({
 })``
 
 const Link = styled.a.attrs({
-  className: "ttu underline white apercu mono pl4 pt3",
+  className: ({ view }) =>
+    `${
+      view === "form" ? "dark-pink" : "white"
+    } ttu underline apercu mono pl4 pt3`,
 })``
 
 const Socials = styled.div.attrs({
@@ -38,16 +74,20 @@ const Socials = styled.div.attrs({
 
 const Icon = styled.img.attrs({
   className: "pa2",
-})``
+})`
+  fill: ${({ view }) => (view === "form" ? "dark-pink" : "white")};
+`
 
-const DesktopNav = () => (
+const DesktopNav = ({ view }) => (
   <div className="db-ns dn w-100">
     <NavContainer>
-      <Link href="http://createrefresh.eu">More info</Link>
+      <Link href="http://createrefresh.eu" view={view}>
+        More info
+      </Link>
       <img src={logo} alt="main logo" />
       <Socials>
-        <Icon src={facebook} alt="facebook" />
-        <Icon src={twitter} alt="twitter" />
+        <Icon src={facebook} alt="facebook" view={view}/>
+        <Icon src={twitter} alt="twitter"  view={view}/>
       </Socials>
     </NavContainer>
   </div>
@@ -85,4 +125,7 @@ export {
   MobileNav,
   UploadButtons,
   ShareButtons,
+  FileInput,
+  Clickable,
+  Label,
 }
