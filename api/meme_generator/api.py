@@ -5,6 +5,7 @@ from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 
 from .image_convert import convert_to_base64
+from .image_watermark import add_watermark
 
 # import application context and declare new blueprint
 app = current_app
@@ -52,8 +53,11 @@ def upload():
             file.save(path)
             file.close()
             cartoon_path = cartoonify(path)
-            print(cartoon_path)
+            watermark_path = os.path.join(str(cartoon_path) + "_watermark.png")
+            add_watermark(str(cartoon_path), os.path.join(
+                app.root_path, "eu-compliant-watermark.png"), watermark_path)
+
             print("Going to send a response now!")
-            return jsonify(status=200, base64=convert_to_base64(str(cartoon_path)))
+            return jsonify(status=200, base64=convert_to_base64(str(watermark_path)))
 
     return "TODO: upload files!"
