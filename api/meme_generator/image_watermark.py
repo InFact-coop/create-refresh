@@ -4,9 +4,6 @@ from pathlib import Path
 
 def add_watermark(input_path, watermark_path, output_path):
     """Add EU-compliant meme watermark to a supplied image"""
-    print(input_path)
-    print(watermark_path)
-    print(output_path)
     try:
         original_image = Image.open(input_path)
         _original_width, original_height = original_image.size

@@ -11,53 +11,33 @@ from .image_watermark import add_watermark
 app = current_app
 bp = Blueprint('api', __name__)
 
-# create allowed_file helper function - will only upload allowed extensions for app
-
 
 def allowed_file(filename):
+    """Check file extension being uploaded is allowed within the application factory setup"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
-@bp.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
-
-
-@bp.route("/test")
-def test():
-    """Testing :) """
-    path = os.path.join(
-        app.instance_path, app.config['UPLOAD_FOLDER'], "corbyn.jpg")
-    image = cartoonify(path)
-    print(image)
-    return "Test complete"
-
-
-@bp.route("/upload", methods=('GET', 'POST'))
+@bp.route("/upload", methods=['POST'])
 def upload():
-    """Validate and upload a file uploaded to the server"""
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            return "No file!"
+    """Validate and upload a file uploaded to the server via POST"""
 
-        file = request.files['file']
+    if 'file' not in request.files:
+        return "No file!"
 
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            path = os.path.join(
-                app.instance_path, app.config['UPLOAD_FOLDER'], filename)
-            print(path)
-            print("Going to upload the file now!")
+    file = request.files['file']
 
-            file.save(path)
-            file.close()
-            cartoon_path = cartoonify(path)
-            watermark_path = os.path.join(str(cartoon_path) + "_watermark.png")
-            add_watermark(str(cartoon_path), os.path.join(
-                app.root_path, "eu-compliant-watermark.png"), watermark_path)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        path = os.path.join(
+            app.instance_path, app.config['UPLOAD_FOLDER'], filename)
+        print("Going to upload the file now!")
 
-            print("Going to send a response now!")
-            return jsonify(status=200, base64=convert_to_base64(str(watermark_path)))
+        file.save(path)
+        file.close()
+        cartoon_path = cartoonify(path)
+        watermark_path = os.path.join(str(cartoon_path) + "_watermark.png")
+        add_watermark(str(cartoon_path), os.path.join(
+            app.root_path, "eu-compliant-watermark.png"), watermark_path)
 
-    return "TODO: upload files!"
+        print("Going to send a response now!")
+        return jsonify(status=200, base64=convert_to_base64(str(watermark_path)))
