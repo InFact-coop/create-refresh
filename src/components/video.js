@@ -7,7 +7,9 @@ const Background = styled.div.attrs({
 
 const VideoContainer = styled.div.attrs({
   className: "flex justify-center bg-black align-center",
-})``
+})`
+  max-width: 100vw;
+`
 
 const LetterBox = styled.div.attrs({
   className: "w4-ns",

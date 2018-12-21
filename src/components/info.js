@@ -7,25 +7,22 @@ const Container = styled.div.attrs({
 })``
 
 const Column = styled.div.attrs({
-  className:
-    "ma3-ns pa1 pa4-ns lh-copy h5 flex w-30-ns items-center justify-center",
+  className: "pa2 pa3-ns lh-copy ",
 })`
   max-width: 400px;
 `
 
-const Strap = styled(Column).attrs({ className: "ttu f4 f3-ns separat tc" })``
-
-const Description = styled(Column).attrs({ className: "apercu font-5" })``
-
 const Info = () => (
   <Container>
-    <Strap>The EU compliant meme generator is here to save your memes</Strap>
-    <Description>
+    <Column className="ttu f4 f3-ns separat tc">
+      The EU compliant meme generator is here to save your memes
+    </Column>
+    <Column className="apercu font-5 tl-ns tc mb3 mb0-ns">
       Article 13 is putting your memes at risk. But the EU Compliant Meme
       Generator is here to save them from the purge. Simply upload your meme (or
       picture of your cat—both are acceptable) and watch as your picture becomes
       Certified EU Compliant™. Try for yourself!
-    </Description>
+    </Column>
   </Container>
 )
 
