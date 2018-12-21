@@ -31,6 +31,14 @@ const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
   background-repeat: no-repeat;
 `
 
+const ShowMeMeme = styled.a.attrs({
+  className: "apercu dark-pink font-5 pt2 pb3",
+})`
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 class Upload extends Component {
   state = {
     file: null,
@@ -103,18 +111,24 @@ class Upload extends Component {
       fileURL: null,
       error: "",
       cartoon: null,
-      view: "",
+      view: "form",
     })
   }
   render() {
     const { file, fileURL, error, cartoon, view } = this.state
+    const { submitForm } = this.props
     return (
       <Background view={view}>
         <MobileNav />
         <DesktopNav view={view} />
 
         {view === "form" ? (
-          <SignUp theme="dark" view={view} />
+          <SignUp
+            theme="dark"
+            view={view}
+            submitForm={submitForm}
+            seeMeme={this.seeMeme}
+          />
         ) : cartoon ? (
           <ImagesSidebyside>
             <Image src={fileURL} alt="original image" />
@@ -146,9 +160,9 @@ class Upload extends Component {
         )}
 
         {view === "form" ? (
-          <p className="apercu dark-pink font-5" onClick={this.seeMeme}>
+          <ShowMeMeme onClick={this.seeMeme}>
             No thanks, just give me my meme!
-          </p>
+          </ShowMeMeme>
         ) : (
           <div>
             <LinkToForm>

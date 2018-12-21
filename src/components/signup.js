@@ -36,11 +36,21 @@ const Input = styled.input.attrs({
   }
 `
 
+const getBoxColor = (value, theme) => {
+  if (value) {
+    if (theme === "light") {
+      return "var(--dark-pink)"
+    }
+    return "var(--light-pink)"
+  }
+  return ""
+}
+
 const Checkbox = styled.div.attrs({
   className: ({ theme }) =>
     `${theme === "light" ? "b--dark-pink pink" : "b--light-pink"} bw1 ba mr2`,
 })`
-  background-color: ${({ value }) => value && "var(--dark-pink)"};
+  background-color: ${({ value, theme }) => getBoxColor(value, theme)};
   border-width: 3px;
   min-width: 16px;
   min-height: 16px;
@@ -100,7 +110,7 @@ class Signup extends Component {
       socialmedia,
       checked,
     } = this.state
-    const { theme, view, submitForm } = this.props
+    const { theme, view, submitForm, seeMeme } = this.props
     return (
       <Section view={view}>
         <Container theme={theme}>
@@ -156,7 +166,14 @@ class Signup extends Component {
                 email updates about campaign activities.*
               </ConsentText>
             </div>
-            <FormButton type="button" theme={theme} onClick={() => submitForm(this.state)}>
+            <FormButton
+              type="button"
+              theme={theme}
+              onClick={() => {
+                submitForm(this.state)
+                if (seeMeme) seeMeme()
+              }}
+            >
               Sign Up
             </FormButton>
             <TinyLink href="https://createrefresh.eu/privacy/" theme={theme}>

@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import facebook from "../assets/images/fb_outline.svg"
 import twitter from "../assets/images/twitter_outline.svg"
+import facebookPink from "../assets/images/fb-outline-pink.svg"
+import twitterPink from "../assets/images/twitter-outline-pink.svg"
 import logo from "../assets/images/logo-desktop.svg"
 import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
@@ -14,7 +16,7 @@ const Background = styled.div.attrs({
       view === "form"
         ? "bg-near-white dark-pink"
         : "ba blue bg-blue b--light-blue bw4"
-    } vh-100-ns flex justify-between items-center flex-column`,
+    } flex items-center flex-column`,
 })``
 
 const ButtonHolder = styled.div.attrs({
@@ -63,9 +65,7 @@ const NavContainer = styled.div.attrs({
 
 const Link = styled.a.attrs({
   className: ({ view }) =>
-    `${
-      view === "form" ? "dark-pink" : "white"
-    } ttu underline apercu mono pl4 pt3`,
+    `${view === "form" ? "dark-pink" : "white"} ttu underline mono pl4 pt3`,
 })``
 
 const Socials = styled.div.attrs({
@@ -74,27 +74,33 @@ const Socials = styled.div.attrs({
 
 const Icon = styled.img.attrs({
   className: "pa2",
-})`
-  fill: ${({ view }) => (view === "form" ? "dark-pink" : "white")};
-`
+})``
 
 const DesktopNav = ({ view }) => (
-  <div className="db-ns dn w-100">
+  <div className="db-ns dn w-100 mb1">
     <NavContainer>
       <Link href="http://createrefresh.eu" view={view}>
         More info
       </Link>
       <img src={logo} alt="main logo" />
       <Socials>
-        <Icon src={facebook} alt="facebook" view={view}/>
-        <Icon src={twitter} alt="twitter"  view={view}/>
+        <Icon
+          src={view === "form" ? facebookPink : facebook}
+          alt="facebook"
+          view={view}
+        />
+        <Icon
+          src={view === "form" ? twitterPink : twitter}
+          alt="twitter"
+          view={view}
+        />
       </Socials>
     </NavContainer>
   </div>
 )
 
 const MobileNav = () => (
-  <div className="dn-ns db w-100">
+  <div className="dn-ns db w-100 mb1">
     <NavContainer>
       <Icon src={menuLines} alt="menu" />
       <img src={logoMobile} alt="main logo" />
