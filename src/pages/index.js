@@ -9,9 +9,34 @@ import Signup from "../components/signup"
 import Faq from "../components/faq"
 import Footer from "../components/footer"
 
+import socialImage from "../assets/images/meta_social_thumbnail.png"
+
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={["gatsby", "application", "react"]} />
+    <SEO
+      socialImage={socialImage}
+      title="Home"
+      url="https://createrefresh.eu/"
+      description="EU Compliant Meme Generator"
+      keywords={[
+        "memes",
+        "meme generator",
+        "copyright",
+        "parody",
+        "EU",
+        "save our internet",
+        "article 13",
+        "censorship",
+        "distracted boyfriend",
+        "doge",
+        "wonka",
+        "drake",
+        "science",
+        "campaign",
+        "create refresh",
+      ]}
+      lang="en"
+    />
     <Upload />
     <Info />
     <Video />

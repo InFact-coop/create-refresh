@@ -1,25 +1,37 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ socialImage, url, description, lang, keywords, title }) {
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title="EU Compliant meme generator"
+      title={description - title}
       meta={[
         {
           name: "description",
-          content: "EU Compliant meme generator",
+          content: description,
+        },
+        {
+          name: "keywords",
+          content: keywords.join(", "),
         },
         {
           property: "og:title",
-          content: "title",
+          content: `${description} - ${title}`,
         },
         {
           property: "og:description",
-          content: "EU Compliant meme generator",
+          content: description,
+        },
+        {
+          property: "og:image",
+          content: socialImage,
+        },
+        {
+          property: "og:url",
+          content: url,
         },
         {
           property: "og:type",
@@ -27,19 +39,15 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: "twitter:card",
-          content: "summary",
+          content: "summary-large-image",
         },
         {
           name: "twitter:creator",
           content: "create-refresh",
         },
         {
-          name: "twitter:title",
-          content: title,
-        },
-        {
           name: "twitter:description",
-          content: "EU Compliant meme generator",
+          content: description,
         },
       ]}
     />
