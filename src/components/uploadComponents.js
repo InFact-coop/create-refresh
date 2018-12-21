@@ -20,6 +20,35 @@ const ButtonHolder = styled.div.attrs({
   max-width: 483px;
 `
 
+const FileInput = styled.input.attrs({
+  className: "",
+})`
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+`
+
+const Clickable = styled.div.attrs({
+  className:
+    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
+})`
+  width: 85vw;
+  height: 60vh;
+  max-width: 483px;
+  max-height: 370px;
+`
+
+const Label = styled.label.attrs({
+  className: "apercu h-100 w-100 flex items-center justify-center",
+})`
+  p {
+    width: 50%;
+  }
+`
+
 const LinkToForm = styled.p.attrs({
   className: "white i font-7 pv2 tc mh4",
 })``
@@ -85,4 +114,7 @@ export {
   MobileNav,
   UploadButtons,
   ShareButtons,
+  FileInput,
+  Clickable,
+  Label,
 }

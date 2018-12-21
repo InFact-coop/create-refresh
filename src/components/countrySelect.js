@@ -2,20 +2,23 @@ import styled from "styled-components"
 import React from "react"
 
 const Select = styled.select.attrs({
-  className:
-    "b--dark-pink ba dark-pink bg-pink mv1 db w5-ns w-100 apercu font-5 br0 relative",
+  className: ({ theme }) =>
+    `${
+      theme === "light"
+        ? "b--dark-pink dark-pink bg-pink"
+        : "b--light-pink light-pink bg-dark-pink"
+    } ba mv1 db w5-ns w-100 apercu font-5 br0 relative`,
 })`
   padding-left: 12px;
   border-width: 3px;
   height: 34px;
-  &::after {
-  }
+  border-radius: 0px;
 `
 
 const Option = styled.option.attrs({})``
 
-const CountrySelect = () => (
-  <Select name="country">
+const CountrySelect = ({ theme }) => (
+  <Select name="country" theme={theme}>
     <Option value="" disabled selected>
       Country
     </Option>

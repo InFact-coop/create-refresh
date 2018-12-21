@@ -15,7 +15,7 @@ const IndexPage = () => (
     <Upload />
     <Info />
     <Video />
-    <Signup />
+    <Signup theme="light" />
     <Faq />
     <Footer />
   </Layout>

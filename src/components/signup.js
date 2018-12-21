@@ -13,31 +13,41 @@ const Container = styled.div.attrs({
   className:
     "flex pa4-ns pa3 justify-between flex-column flex-row-ns flex-column-reverse ",
 })`
-  background: url(${bitSteps}), var(--pink);
+  background: ${({ theme }) =>
+    `url(${bitSteps}), var(--${theme === "light" ? `pink` : `dark-pink`})`};
   background-position: bottom right;
   background-repeat: no-repeat;
   max-width: 797px;
 `
 
 const Input = styled.input.attrs({
-  className:
-    "b--dark-pink ba dark-pink bg-pink mv1 db pl2 w5-ns w-100 apercu font-5",
+  className: ({ theme }) =>
+    `${
+      theme === "light"
+        ? "b--dark-pink dark-pink bg-pink"
+        : "b--light-pink light-pink bg-dark-pink"
+    } ba mv1 db pl2 w5-ns w-100 apercu font-5`,
 })`
   border-width: 3px;
   &::placeholder {
-    color: var(--dark-pink);
+    color: ${({ theme }) =>
+      theme === "light" ? "var(--dark-pink)" : "var(--light-pink)"};
   }
 `
 
 const Checkbox = styled.div.attrs({
-  className: "b--dark-pink bw1 ba pink mr2",
+  className: ({ theme }) =>
+    `${theme === "light" ? "b--dark-pink pink" : "b--light-pink"} bw1 ba mr2`,
 })`
   border-width: 3px;
   min-width: 16px;
   min-height: 16px;
 `
 const FormButton = styled.button.attrs({
-  className: "bg-dark-pink light-pink bn ph2 tc apercu font-5 ma0-ns mv3",
+  className: ({ theme }) =>
+    `${
+      theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
+    } bn ph2 tc apercu font-5 ma0-ns mv3`,
 })`
   width: 184px;
   height: 40px;
@@ -54,28 +64,54 @@ const TinyLink = styled.a.attrs({
   font-size: 8px;
 `
 
-const Signup = () => (
+const ConsentText = styled.p.attrs({
+  className: ({ theme }) =>
+    `${theme === "light" ? "dark-pink" : "light-pink"} font-7`,
+})``
+
+const Signup = ({ theme }) => (
   <Section>
-    <Container>
+    <Container theme={theme}>
       <form>
-        <Input name="firstname" placeholder="First Name" type="text" required />
-        <Input name="lastname" placeholder="Last Name" type="text" required />
-        <Input name="email" placeholder="Email" type="email" required />
-        <CountrySelect />
+        <Input
+          name="firstname"
+          placeholder="First Name"
+          type="text"
+          required
+          theme={theme}
+        />
+        <Input
+          name="lastname"
+          placeholder="Last Name"
+          type="text"
+          required
+          theme={theme}
+        />
+        <Input
+          name="email"
+          placeholder="Email"
+          type="email"
+          required
+          theme={theme}
+        />
+        <CountrySelect theme={theme} />
         <Input
           name="socialmedia"
           placeholder="@SocialMediaHandle"
           type="text"
+          theme={theme}
         />
         <div className="flex items-center w5-ns w-100 mv2">
-          <Checkbox checked={false} />
-          <p className="font-7 dark-pink">
+          <Checkbox checked={false} theme={theme} />
+          <ConsentText theme={theme}>
             I allow Create.Refresh to use my contact information to send me
             email updates about campaign activities.*
-          </p>
+          </ConsentText>
         </div>
-        <FormButton type="button">Sign Up</FormButton>
-        <TinyLink href="https://createrefresh.eu/privacy/">
+        <FormButton type="button" theme={theme}>
+          Sign Up
+        </FormButton>
+        <TinyLink href="https://createrefresh.eu/privacy/" theme={theme}>
           Learn more about how we use, store, and handle your information here.
         </TinyLink>
       </form>
