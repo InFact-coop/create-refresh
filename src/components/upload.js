@@ -103,12 +103,12 @@ class Upload extends Component {
   render() {
     const { file, fileURL, error, cartoon, view } = this.state
     return (
-      <Background>
+      <Background view={view}>
         <MobileNav />
-        <DesktopNav />
+        <DesktopNav view={view} />
 
         {view === "form" ? (
-          <SignUp theme="dark" />
+          <SignUp theme="dark" view={view} />
         ) : cartoon ? (
           <ImagesSidebyside>
             <Image src={fileURL} alt="original image" />
@@ -138,14 +138,23 @@ class Upload extends Component {
             </Clickable>
           </form>
         )}
-        <LinkToForm>
-          Want to be part of the network to stop Article 13?{" "}
-          <a className="underline">Join now and save your memes!</a>
-        </LinkToForm>
-        {cartoon ? (
-          <ShareButtons handleStartOver={this.handleStartOver} />
+
+        {view === "form" ? (
+          <p className="apercu dark-pink font-5">
+            No thanks, just give me my meme!
+          </p>
         ) : (
-          <UploadButtons />
+          <div>
+            <LinkToForm>
+              Want to be part of the network to stop Article 13?{" "}
+              <a className="underline">Join now and save your memes!</a>
+            </LinkToForm>
+            {cartoon ? (
+              <ShareButtons handleStartOver={this.handleStartOver} />
+            ) : (
+              <UploadButtons />
+            )}
+          </div>
         )}
       </Background>
     )

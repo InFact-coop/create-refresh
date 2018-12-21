@@ -4,10 +4,11 @@ import bitSteps from "../assets/images/8bit.svg"
 import CountrySelect from "./countrySelect"
 
 const Section = styled.section.attrs({
-  className: "flex justify-center pv4-ns w-100",
-})`
-  background-color: #f9f9f9;
-`
+  className: ({ view }) =>
+    `${
+      view === "form" ? "pa0" : "pv4-ns"
+    } flex justify-center w-100 bg-near-white`,
+})``
 
 const Container = styled.div.attrs({
   className:
@@ -69,8 +70,8 @@ const ConsentText = styled.p.attrs({
     `${theme === "light" ? "dark-pink" : "light-pink"} font-7`,
 })``
 
-const Signup = ({ theme }) => (
-  <Section>
+const Signup = ({ theme, view }) => (
+  <Section view={view}>
     <Container theme={theme}>
       <form>
         <Input
