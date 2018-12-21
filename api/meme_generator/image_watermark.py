@@ -11,10 +11,10 @@ def add_watermark(input_path, watermark_path, output_path):
         watermark_image = Image.open(watermark_path)
         watermark_width, watermark_height = watermark_image.size
         watermark_resized = watermark_image.resize(
-            (115, 115))
+            (230, 230))
         _resized_width, resized_height = watermark_resized.size
 
-        original_image.thumbnail((483, 370))
+        original_image.thumbnail((1080, 1080))
         _w, h = original_image.size
         original_image.paste(watermark_resized, (8, h - resized_height - 8),
                              mask=watermark_resized)
