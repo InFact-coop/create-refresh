@@ -99,13 +99,10 @@ class Upload extends Component {
   sendImage = () => {
     const data = new FormData()
     const { file, fileName } = this.state
-    console.log(file, fileName)
     data.set("file", file, fileName)
     axios
       .post(endpoint, data)
       .then(res => {
-        console.log("Status: ", res.statusText)
-        console.log("Body: ", res.data.base64)
         this.setState({
           cartoon: `data:image/png;base64,${res.data.base64}`,
         })
@@ -114,12 +111,21 @@ class Upload extends Component {
         console.log(err)
       })
   }
+  handleStartOver = () => {
+    this.setState({
+      file: null,
+      fileName: null,
+      fileURL: null,
+      error: "",
+      cartoon: null,
+    })
+  }
   render() {
     const { file, fileURL, error, cartoon } = this.state
     return (
       <Background>
-        <MobileNav className="flex dn-ns" />
-        <DesktopNav className="dn flex-ns" />
+        <MobileNav />
+        <DesktopNav />
 
         {cartoon ? (
           <ImagesSidebyside>
@@ -154,7 +160,11 @@ class Upload extends Component {
           Want to be part of the network to stop Article 13?{" "}
           <a className="underline">Join now and save your memes!</a>
         </LinkToForm>
-        {cartoon ? <ShareButtons /> : <UploadButtons />}
+        {cartoon ? (
+          <ShareButtons handleStartOver={this.handleStartOver} />
+        ) : (
+          <UploadButtons />
+        )}
       </Background>
     )
   }

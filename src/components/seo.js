@@ -42,12 +42,7 @@ function SEO({ description, lang, meta, keywords, title }) {
           content: "EU Compliant meme generator",
         },
       ]}
-    >
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/tachyons/css/tachyons.min.css"
-      />
-    </Helmet>
+    />
   )
 }
 
