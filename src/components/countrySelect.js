@@ -17,8 +17,8 @@ const Select = styled.select.attrs({
 
 const Option = styled.option.attrs({})``
 
-const CountrySelect = ({ theme }) => (
-  <Select name="country" theme={theme}>
+const CountrySelect = ({ theme, updateOnChange }) => (
+  <Select name="country" theme={theme} onChange={updateOnChange}>
     <Option value="" disabled selected>
       Country
     </Option>

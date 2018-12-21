@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import bitSteps from "../assets/images/8bit.svg"
 import CountrySelect from "./countrySelect"
@@ -40,6 +40,7 @@ const Checkbox = styled.div.attrs({
   className: ({ theme }) =>
     `${theme === "light" ? "b--dark-pink pink" : "b--light-pink"} bw1 ba mr2`,
 })`
+  background-color: ${({ value }) => value && "var(--dark-pink)"};
   border-width: 3px;
   min-width: 16px;
   min-height: 16px;
@@ -70,59 +71,108 @@ const ConsentText = styled.p.attrs({
     `${theme === "light" ? "dark-pink" : "light-pink"} font-7`,
 })``
 
-const Signup = ({ theme, view, submitForm }) => (
-  <Section view={view}>
-    <Container theme={theme}>
-      <form>
-        <Input
-          name="firstname"
-          placeholder="First Name"
-          type="text"
-          required
-          theme={theme}
-        />
-        <Input
-          name="lastname"
-          placeholder="Last Name"
-          type="text"
-          required
-          theme={theme}
-        />
-        <Input
-          name="email"
-          placeholder="Email"
-          type="email"
-          required
-          theme={theme}
-        />
-        <CountrySelect theme={theme} />
-        <Input
-          name="socialmedia"
-          placeholder="@SocialMediaHandle"
-          type="text"
-          theme={theme}
-        />
-        <div className="flex items-center w5-ns w-100 mv2">
-          <Checkbox checked={false} theme={theme} />
-          <ConsentText theme={theme}>
-            I allow Create.Refresh to use my contact information to send me
-            email updates about campaign activities.*
-          </ConsentText>
-        </div>
-        <FormButton type="button" theme={theme} onClick={submitForm}>
-          Sign Up
-        </FormButton>
-        <TinyLink href="https://createrefresh.eu/privacy/" theme={theme}>
-          Learn more about how we use, store, and handle your information here.
-        </TinyLink>
-      </form>
-      <InfoText>
-        We’re building a network of people dedicated to fixing copyright,
-        protecting memes, and saving our Internet forever. Will you join our
-        network and help stop Article 13?
-      </InfoText>
-    </Container>
-  </Section>
-)
+class Signup extends Component {
+  state = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    country: "",
+    socialmedia: "",
+    checked: false,
+  }
+  updateForm = event => {
+    const name = event.target.name
+    const value = event.target.value
+    this.setState({
+      [name]: value,
+    })
+  }
+  clickCheckBox = () => {
+    this.setState(prevState => ({ checked: !prevState.checked }))
+  }
+
+  render() {
+    const {
+      firstname,
+      lastname,
+      email,
+      country,
+      socialmedia,
+      checked,
+    } = this.state
+    const { theme, view, submitForm } = this.props
+    return (
+      <Section view={view}>
+        <Container theme={theme}>
+          <form>
+            <Input
+              name="firstname"
+              placeholder="First Name"
+              type="text"
+              required
+              theme={theme}
+              value={firstname}
+              onChange={this.updateForm}
+            />
+            <Input
+              name="lastname"
+              placeholder="Last Name"
+              type="text"
+              required
+              theme={theme}
+              value={lastname}
+              onChange={this.updateForm}
+            />
+            <Input
+              name="email"
+              placeholder="Email"
+              type="email"
+              required
+              theme={theme}
+              value={email}
+              onChange={this.updateForm}
+            />
+            <CountrySelect
+              theme={theme}
+              value={country}
+              updateOnChange={this.updateForm}
+            />
+            <Input
+              name="socialmedia"
+              placeholder="@SocialMediaHandle"
+              type="text"
+              theme={theme}
+              value={socialmedia}
+              onChange={this.updateForm}
+            />
+            <div className="flex items-center w5-ns w-100 mv2">
+              <Checkbox
+                value={checked}
+                theme={theme}
+                onClick={this.clickCheckBox}
+              />
+              <ConsentText theme={theme}>
+                I allow Create.Refresh to use my contact information to send me
+                email updates about campaign activities.*
+              </ConsentText>
+            </div>
+            <FormButton type="button" theme={theme} onClick={() => submitForm(this.state)}>
+              Sign Up
+            </FormButton>
+            <TinyLink href="https://createrefresh.eu/privacy/" theme={theme}>
+              Learn more about how we use, store, and handle your information
+              here.
+            </TinyLink>
+          </form>
+          <InfoText>
+            We’re building a network of people dedicated to fixing copyright,
+            protecting memes, and saving our Internet forever. Will you join our
+            network and help stop Article 13?
+          </InfoText>
+        </Container>
+      </Section>
+    )
+  }
+}
 
 export default Signup

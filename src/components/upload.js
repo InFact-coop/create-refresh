@@ -38,7 +38,7 @@ class Upload extends Component {
     fileURL: null,
     error: "",
     cartoon: null,
-    view: "form",
+    view: "",
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
@@ -146,7 +146,7 @@ class Upload extends Component {
         )}
 
         {view === "form" ? (
-          <p className="apercu dark-pink font-5">
+          <p className="apercu dark-pink font-5" onClick={this.seeMeme}>
             No thanks, just give me my meme!
           </p>
         ) : (
