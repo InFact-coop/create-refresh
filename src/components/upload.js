@@ -78,10 +78,16 @@ class Upload extends Component {
     axios
       .post(endpoint, data)
       .then(res => {
-        this.setState({
-          view: "form",
-          cartoon: `data:image/png;base64,${res.data.base64}`,
-        })
+        if (this.props.formCompleted) {
+          this.setState({
+            cartoon: `data:image/png;base64,${res.data.base64}`,
+          })
+        } else {
+          this.setState({
+            view: "form",
+            cartoon: `data:image/png;base64,${res.data.base64}`,
+          })
+        }
       })
       .catch(err => {
         console.log(err)
