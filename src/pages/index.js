@@ -34,7 +34,7 @@ class IndexPage extends Component {
     return (
       <Layout>
         <SEO title="Home" keywords={["gatsby", "application", "react"]} />
-        <Upload formCompleted={formCompleted} />
+        <Upload formCompleted={formCompleted} submitForm={this.submitForm} />
         <Info />
         <Video />
         <Signup theme="light" submitForm={this.submitForm} />
