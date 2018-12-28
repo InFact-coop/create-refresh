@@ -27,9 +27,8 @@ const Input = styled.input.attrs({
       theme === "light"
         ? "b--dark-pink dark-pink bg-pink"
         : "b--light-pink light-pink bg-dark-pink"
-    } ba mv1 db pl2 w5-ns w-100 apercu font-5`,
+    } ba mv1 pt1 pt0-ns db pl2 bw1 w5-ns w-100 calibre apercu-ns font-5`,
 })`
-  border-width: 3px;
   &::placeholder {
     color: ${({ theme }) =>
       theme === "light" ? "var(--dark-pink)" : "var(--light-pink)"};
@@ -67,8 +66,12 @@ const FormButton = styled.button.attrs({
 
 const InfoText = styled.div.attrs({
   className:
-    "w-30-ns w-100 pa0-ns pv3 tr-ns tl dark-pink font-5-ns mobile-body self-end",
-})``
+    "w-30-ns w-100 pa0-ns pv3 tr-ns tl dark-pink f6 font-5-ns self-end",
+})`
+  @media (max-width: 40em) {
+    line-height: 29px;
+  }
+`
 
 const TinyLink = styled.a.attrs({
   className: "db font-7 light-pink underline i",
