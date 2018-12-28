@@ -30,8 +30,8 @@ const Paragraph = styled.p.attrs({
   }
 `
 
-const Link = styled.p.attrs({
-  className: "underline di",
+const Link = styled.a.attrs({
+  className: "underline di mid-gray",
   target: "_blank",
   rel: "noopener noreferrer",
 })``
