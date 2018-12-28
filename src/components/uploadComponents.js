@@ -39,7 +39,7 @@ const FileInput = styled.input.attrs({
 
 const Clickable = styled.div.attrs({
   className:
-    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
+    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu-ns",
 })`
   width: 85vw;
   height: 60vh;
@@ -48,7 +48,7 @@ const Clickable = styled.div.attrs({
 `
 
 const Label = styled.label.attrs({
-  className: "apercu h-100 w-100 flex items-center justify-center",
+  className: "apercu-ns h-100 w-100 flex items-center justify-center",
 })`
   p {
     width: 50%;
@@ -65,7 +65,7 @@ const NavContainer = styled.div.attrs({
 
 const Link = styled.a.attrs({
   className: ({ view }) =>
-    `${view === "form" ? "dark-pink" : "white"} ttu underline mono pl4 pt3`,
+    `${view === "form" ? "dark-pink" : "white"} ttu underline mono-ns pl4 pt3`,
 })``
 
 const Socials = styled.div.attrs({

@@ -4,12 +4,18 @@ body {
 
 .image-comparison {
   height: 16rem;
-  width: 16rem; 
+  width: 16rem;
 }
 
 @media (min-width: 40em) {
   .image-comparison {
     height: 24rem;
     width: 24rem;
+  }
+}
+
+@media (max-width: 40em) {
+  body {
+    font-family: "Calibre";
   }
 }

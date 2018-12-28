@@ -59,7 +59,7 @@ const FormButton = styled.button.attrs({
   className: ({ theme }) =>
     `${
       theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
-    } bn ph2 tc apercu font-5 ma0-ns mv3`,
+    } bn ph2 tc apercu-ns font-5 ma0-ns mv3`,
 })`
   width: 184px;
   height: 40px;

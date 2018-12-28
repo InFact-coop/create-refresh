@@ -32,7 +32,7 @@ const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
 `
 
 const ShowMeMeme = styled.a.attrs({
-  className: "apercu dark-pink font-5 pt2 pb3",
+  className: "apercu-ns dark-pink font-5 pt2 pb3",
 })`
   &:hover {
     text-decoration: underline;
