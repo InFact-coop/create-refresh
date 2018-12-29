@@ -101,9 +101,9 @@ const DesktopNav = ({ view }) => (
 
 const MobileNav = () => (
   <div className="dn-ns db w-100 mb1">
-    <NavContainer>
+    <NavContainer className="pr2">
       <Icon src={menuLines} alt="menu" />
-      <img src={logoMobile} alt="main logo" />
+      <img className="w-75" src={logoMobile} alt="main logo" />
     </NavContainer>
   </div>
 )
