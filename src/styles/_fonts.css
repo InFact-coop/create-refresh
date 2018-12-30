@@ -52,6 +52,18 @@
 
 @font-face {
   font-family: "Calibre";
+  src: url("../assets/fonts/calibre-medium-webfont.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../assets/fonts/Calibre-Semibold.otf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Calibre";
   src: url("../assets/fonts/Calibre-Bold.otf") format("truetype"); /* Safari, Android, iOS */
   font-weight: bold;
 }
@@ -85,13 +97,6 @@
   line-height: var(--line-height-subheadline);
   font-size: var(--font-size-subheadline);
 }
-
-.mobile-body {
-  font-family: "Apercu";
-  font-weight: normal;
-  font-size: 14px;
-  line-height: var(--line-height-5)
-} 
 
 .font-1 {
   line-height: var(--line-height-1);
@@ -134,6 +139,26 @@
 }
 
 @media (--breakpoint-not-small) {
+  .apercu-ns {
+    font-family: "Apercu";
+  }
+
+  .separat-ns {
+    font-family: "Separat";
+  }
+
+  .calibre-ns {
+    font-family: "Calibre";
+  }
+
+  .mono-ns {
+    font-family: "Apercu Mono";
+  }
+
+  .franklin-ns {
+    font-family: "ITC Franklin Gothic";
+  }
+
   .headline-ns {
     line-height: var(--line-height-headline);
     font-size: var(--font-size-headline);

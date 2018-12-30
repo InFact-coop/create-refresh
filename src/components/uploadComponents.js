@@ -20,10 +20,13 @@ const Background = styled.div.attrs({
 })``
 
 const ButtonHolder = styled.div.attrs({
-  className: "flex justify-between pb3 ph3 ph0-ns pt2",
+  className: ({ display }) => `flex ${display} pb3 ph3 ph0-ns pt2`,
 })`
+  ${({ display }) =>
+    display === "justify-between" &&
+    `
   width: 90vw;
-  max-width: 483px;
+  max-width: 483px;`};
 `
 
 const FileInput = styled.input.attrs({
@@ -39,7 +42,7 @@ const FileInput = styled.input.attrs({
 
 const Clickable = styled.div.attrs({
   className:
-    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
+    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu-ns",
 })`
   width: 85vw;
   height: 60vh;
@@ -48,7 +51,7 @@ const Clickable = styled.div.attrs({
 `
 
 const Label = styled.label.attrs({
-  className: "apercu h-100 w-100 flex items-center justify-center",
+  className: "apercu-ns h-100 w-100 flex items-center justify-center",
 })`
   p {
     width: 50%;
@@ -65,7 +68,7 @@ const NavContainer = styled.div.attrs({
 
 const Link = styled.a.attrs({
   className: ({ view }) =>
-    `${view === "form" ? "dark-pink" : "white"} ttu underline mono pl4 pt3`,
+    `${view === "form" ? "dark-pink" : "white"} ttu underline mono-ns pl4 pt3`,
 })``
 
 const Socials = styled.div.attrs({
@@ -82,7 +85,7 @@ const DesktopNav = ({ view }) => (
       <Link href="http://createrefresh.eu" view={view}>
         More info
       </Link>
-      <img src={logo} alt="main logo" />
+      <img className="w-75" src={logo} alt="main logo" />
       <Socials>
         <Icon
           src={view === "form" ? facebookPink : facebook}
@@ -101,23 +104,23 @@ const DesktopNav = ({ view }) => (
 
 const MobileNav = () => (
   <div className="dn-ns db w-100 mb1">
-    <NavContainer>
+    <NavContainer className="pr2">
       <Icon src={menuLines} alt="menu" />
-      <img src={logoMobile} alt="main logo" />
+      <img className="w-75 mv1" src={logoMobile} alt="main logo" />
     </NavContainer>
   </div>
 )
 
 const UploadButtons = () => (
-  <ButtonHolder>
+  <ButtonHolder display="justify-center">
     <RedButton>Upload</RedButton>
-    <RedButton className="dn db-ns">Paste URL</RedButton>
-    <RedButton>Suprise me</RedButton>
+    {/* <RedButton className="dn db-ns">Paste URL</RedButton>
+    <RedButton>Suprise me</RedButton> */}
   </ButtonHolder>
 )
 
 const ShareButtons = props => (
-  <ButtonHolder>
+  <ButtonHolder display="justify-between">
     <RedButton>Share</RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <RedButton className="dn db-ns">Save</RedButton>
