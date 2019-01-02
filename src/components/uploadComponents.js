@@ -22,11 +22,8 @@ const Background = styled.div.attrs({
 const ButtonHolder = styled.div.attrs({
   className: ({ display }) => `flex ${display} pb3 ph3 ph0-ns pt2`,
 })`
-  ${({ display }) =>
-    display === "justify-between" &&
-    `
   width: 90vw;
-  max-width: 483px;`};
+  max-width: 483px;
 `
 
 const FileInput = styled.input.attrs({

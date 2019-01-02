@@ -164,7 +164,7 @@ class Upload extends Component {
             No thanks, just give me my meme!
           </ShowMeMeme>
         ) : (
-          <div>
+          <div className="flex flex-column justify-center items-center">
             <LinkToForm>
               Want to be part of the network to stop Article 13?{" "}
               <a className="underline">Join now and save your memes!</a>
