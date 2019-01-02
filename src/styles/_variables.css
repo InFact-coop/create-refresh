@@ -85,7 +85,7 @@
   --border-radius-pill: 9999px;
 
   --border-width-none: 0;
-  --border-width-1: 0.125rem;
+  --border-width-1: 0.1875rem;
   --border-width-2: 0.25rem;
   --border-width-3: 0.5rem;
   --border-width-4: 1rem;
@@ -112,7 +112,7 @@
   --dark-gray: #333;
   --gray: #878787;
   --light-gray: #efefef;
-  --near-white: #fcfff7;
+  --near-white: #f9f9f9;
   --near-black: #111;
   --silver: #999;
   --light-silver: #aaa;

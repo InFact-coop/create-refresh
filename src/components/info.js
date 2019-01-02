@@ -3,32 +3,40 @@ import styled from "styled-components"
 
 const Container = styled.div.attrs({
   className:
-    "mid-gray flex flex-column flex-row-ns items-center justify-center mt2 mt4-ns mb4-ns",
+    "mid-gray flex flex-column bg-light-pink flex-row-ns items-center justify-center justify-between-ns ph7-ns pt2 pt4-ns pb4-ns",
 })``
 
-const Column = ({ className, children }) => (
-  <div
-    className={className.concat(
-      " ma3-ns pa1 pa4-ns lh-copy h5 flex w-30-ns items-center justify-center tc"
-    )}
-  >
-    {children}
-  </div>
-)
+const Paragraph = styled.div.attrs({
+  className: "pa3 apercu-ns font-5-ns f5 tl-ns tc mb3 mb0-ns",
+})`
+  max-width: 500px;
 
-const Strap = styled(Column).attrs({ className: "ttu f4 f3-ns" })``
+  @media (max-width: 40em) {
+    line-height: 29px;
+  }
+`
 
-const Description = styled(Column).attrs({ className: "" })``
+const Heading = styled.div.attrs({
+  className: "pa3 ttu f4 f3-ns separat-ns tc",
+})`
+  max-width: 400px;
+
+  @media (max-width: 40em) {
+    line-height: 42px;
+  }
+`
 
 const Info = () => (
   <Container>
-    <Strap>The EU compliant meme generator is here to save your memes</Strap>
-    <Description>
+    <Heading>
+      The EU compliant meme generator is here to save your memes
+    </Heading>
+    <Paragraph>
       Article 13 is putting your memes at risk. But the EU Compliant Meme
       Generator is here to save them from the purge. Simply upload your meme (or
       picture of your cat—both are acceptable) and watch as your picture becomes
       Certified EU Compliant™. Try for yourself!
-    </Description>
+    </Paragraph>
   </Container>
 )
 

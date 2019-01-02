@@ -3,7 +3,6 @@ import axios from "axios"
 import fileNameFormatter from "../utils/fileNameFormat"
 import styled from "styled-components"
 import isValidFileType from "../utils/isValidFileType"
-import example from "../assets/images/example.png"
 import {
   Background,
   LinkToForm,
@@ -11,30 +10,13 @@ import {
   MobileNav,
   UploadButtons,
   ShareButtons,
+  FileInput,
+  Clickable,
+  Label,
 } from "./uploadComponents"
+import SignUp from "./signup"
 
 const endpoint = "http://localhost:5000/upload"
-
-const FileInput = styled.input.attrs({
-  className: "",
-})`
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-`
-
-const Clickable = styled.div.attrs({
-  className:
-    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
-})`
-  width: 85vw;
-  height: 60vh;
-  max-width: 483px;
-  max-height: 370px;
-`
 
 const ImagesSidebyside = styled.div.attrs({
   className:
@@ -49,11 +31,11 @@ const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
   background-repeat: no-repeat;
 `
 
-const Label = styled.label.attrs({
-  className: "apercu h-100 w-100 flex items-center justify-center",
+const ShowMeMeme = styled.a.attrs({
+  className: "apercu-ns dark-pink font-5 pt2 pb3",
 })`
-  p {
-    width: 50%;
+  &:hover {
+    text-decoration: underline;
   }
 `
 
@@ -61,9 +43,10 @@ class Upload extends Component {
   state = {
     file: null,
     fileName: null,
-    fileURL: example,
+    fileURL: null,
     error: "",
-    cartoon: example,
+    cartoon: null,
+    view: "",
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
@@ -103,13 +86,23 @@ class Upload extends Component {
     axios
       .post(endpoint, data)
       .then(res => {
-        this.setState({
-          cartoon: `data:image/png;base64,${res.data.base64}`,
-        })
+        if (this.props.formCompleted) {
+          this.setState({
+            cartoon: `data:image/png;base64,${res.data.base64}`,
+          })
+        } else {
+          this.setState({
+            view: "form",
+            cartoon: `data:image/png;base64,${res.data.base64}`,
+          })
+        }
       })
       .catch(err => {
         console.log(err)
       })
+  }
+  seeMeme = () => {
+    this.setState({ view: "" })
   }
   handleStartOver = () => {
     this.setState({
@@ -118,16 +111,25 @@ class Upload extends Component {
       fileURL: null,
       error: "",
       cartoon: null,
+      view: "form",
     })
   }
   render() {
-    const { file, fileURL, error, cartoon } = this.state
+    const { file, fileURL, error, cartoon, view } = this.state
+    const { submitForm } = this.props
     return (
-      <Background>
+      <Background view={view}>
         <MobileNav />
-        <DesktopNav />
+        <DesktopNav view={view} />
 
-        {cartoon ? (
+        {view === "form" ? (
+          <SignUp
+            theme="dark"
+            view={view}
+            submitForm={submitForm}
+            seeMeme={this.seeMeme}
+          />
+        ) : cartoon ? (
           <ImagesSidebyside>
             <Image src={fileURL} alt="original image" />
             <Image src={cartoon} alt="cartoonified image" />
@@ -156,14 +158,23 @@ class Upload extends Component {
             </Clickable>
           </form>
         )}
-        <LinkToForm>
-          Want to be part of the network to stop Article 13?{" "}
-          <a className="underline">Join now and save your memes!</a>
-        </LinkToForm>
-        {cartoon ? (
-          <ShareButtons handleStartOver={this.handleStartOver} />
+
+        {view === "form" ? (
+          <ShowMeMeme onClick={this.seeMeme}>
+            No thanks, just give me my meme!
+          </ShowMeMeme>
         ) : (
-          <UploadButtons />
+          <div>
+            <LinkToForm>
+              Want to be part of the network to stop Article 13?{" "}
+              <a className="underline">Join now and save your memes!</a>
+            </LinkToForm>
+            {cartoon ? (
+              <ShareButtons handleStartOver={this.handleStartOver} />
+            ) : (
+              <UploadButtons />
+            )}
+          </div>
         )}
       </Background>
     )
