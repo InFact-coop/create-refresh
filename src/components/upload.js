@@ -17,7 +17,7 @@ import {
 } from "./uploadComponents"
 import SignUp from "./signup"
 
-const endpoint = "http://test1234-dev.eu-west-1.elasticbeanstalk.com/upload"
+const endpoint = "http://localhost:5000/upload"
 
 const ImagesSidebyside = styled.div.attrs({
   className:
