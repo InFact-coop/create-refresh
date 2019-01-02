@@ -8,7 +8,7 @@ import {
   LinkToForm,
   DesktopNav,
   MobileNav,
-  UploadButtons,
+  UploadButton,
   ShareButtons,
   FileInput,
   Clickable,
@@ -67,6 +67,7 @@ class Upload extends Component {
   }
   onImageSelect = event => {
     event.preventDefault()
+    console.log("got an image")
     const file = event.target.files[0]
     if (file && this.validateImage(file)) {
       this.setState(
@@ -111,7 +112,7 @@ class Upload extends Component {
       fileURL: null,
       error: "",
       cartoon: null,
-      view: "form",
+      view: "",
     })
   }
   render() {
@@ -172,7 +173,7 @@ class Upload extends Component {
             {cartoon ? (
               <ShareButtons handleStartOver={this.handleStartOver} />
             ) : (
-              <UploadButtons />
+              <UploadButton file={file} onImageSelect={this.onImageSelect} />
             )}
           </div>
         )}
