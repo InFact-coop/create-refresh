@@ -51,9 +51,9 @@
 }
 
 @font-face {
-  font-family: "Calibre";
+  font-family: "Calibre-Medium";
   src: url("../assets/fonts/calibre-medium-webfont.ttf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: 500;
+  font-weight: normal;
 }
 
 @font-face {
@@ -78,6 +78,10 @@
 
 .calibre {
   font-family: "Calibre";
+}
+
+.calibreMedium {
+  font-family: "Calibre-Medium";
 }
 
 .mono {
