@@ -41,11 +41,11 @@ const ShowMeMeme = styled.a.attrs({
 
 class Upload extends Component {
   state = {
-    file: null,
+    file: "something",
     fileName: null,
     fileURL: null,
     error: "",
-    cartoon: null,
+    cartoon: "something",
     view: "",
   }
   validateImage = file => {
@@ -112,7 +112,7 @@ class Upload extends Component {
       fileURL: null,
       error: "",
       cartoon: null,
-      view: "form",
+      view: "",
     })
   }
   render() {
