@@ -47,6 +47,7 @@ class Upload extends Component {
     error: "",
     cartoon: null,
     view: "",
+    showMenu: true,
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
@@ -105,6 +106,9 @@ class Upload extends Component {
   seeMeme = () => {
     this.setState({ view: "" })
   }
+  toggleMenu = () => {
+    this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
+  }
   handleStartOver = () => {
     this.setState({
       file: null,
@@ -116,11 +120,11 @@ class Upload extends Component {
     })
   }
   render() {
-    const { file, fileURL, error, cartoon, view } = this.state
+    const { file, fileURL, error, cartoon, view, showMenu } = this.state
     const { submitForm } = this.props
     return (
       <Background view={view}>
-        <MobileNav />
+        <MobileNav toggleMenu={this.toggleMenu} showMenu={showMenu} />
         <DesktopNav view={view} />
 
         {view === "form" ? (
