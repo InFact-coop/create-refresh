@@ -12,7 +12,7 @@ const Heading = styled.h1.attrs({
 })``
 
 const SubHeading = styled.h2.attrs({
-  className: "font-3-ns f4 apercu i-ns dark-pink mb3",
+  className: "font-3-ns f4 apercu i dark-pink mb3",
 })`
   padding-top: 33px;
   @media (max-width: 40em) {

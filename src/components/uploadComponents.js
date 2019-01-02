@@ -10,18 +10,17 @@ import logo from "../assets/images/logo-desktop.svg"
 import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
 
-const Background = styled.div.attrs({
-  className: ({ view }) =>
-    `${
-      view === "form"
-        ? "bg-near-white dark-pink"
-        : "ba blue bg-blue b--light-blue bw4"
-    } flex items-center flex-column pv2-ns pv0`,
-})``
+const Background = styled.div.attrs(({ view }) => ({
+  className: `${
+    view === "form"
+      ? "bg-near-white dark-pink"
+      : "ba blue bg-blue b--light-blue bw4"
+  } flex items-center flex-column pv2-ns pv0`,
+}))``
 
-const ButtonHolder = styled.div.attrs({
-  className: ({ display }) => `flex ${display} pb3 ph3 ph0-ns pt2`,
-})`
+const ButtonHolder = styled.div.attrs(({ display }) => ({
+  className: `flex ${display} pb3 ph3 ph0-ns pt2`,
+}))`
   width: 90vw;
   max-width: 483px;
 `
@@ -63,10 +62,11 @@ const NavContainer = styled.div.attrs({
   className: "flex justify-between w-100",
 })``
 
-const Link = styled.a.attrs({
-  className: ({ view }) =>
-    `${view === "form" ? "dark-pink" : "white"} ttu underline mono pl4 pt3`,
-})``
+const Link = styled.a.attrs(({ view }) => ({
+  className: `${
+    view === "form" ? "dark-pink" : "white"
+  } ttu underline mono pl4 pt3`,
+}))``
 
 const Socials = styled.div.attrs({
   className: "pt2 pr3",
