@@ -67,7 +67,6 @@ class Upload extends Component {
   }
   onImageSelect = event => {
     event.preventDefault()
-    console.log("got an image")
     const file = event.target.files[0]
     if (file && this.validateImage(file)) {
       this.setState(

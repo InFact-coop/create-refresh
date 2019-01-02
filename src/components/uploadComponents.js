@@ -39,7 +39,7 @@ const FileInput = styled.input.attrs({
 
 const Clickable = styled.div.attrs({
   className:
-    "pointer white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
+    "white bg-blue db flex tc flex-column items-center justify-center b--dashed b--white bw1 apercu",
 })`
   width: 85vw;
   height: 60vh;
@@ -48,7 +48,7 @@ const Clickable = styled.div.attrs({
 `
 
 const Label = styled.label.attrs({
-  className: "apercu h-100 w-100 flex items-center justify-center",
+  className: "apercu pointer h-100 w-100 flex items-center justify-center",
 })`
   p {
     width: 50%;
