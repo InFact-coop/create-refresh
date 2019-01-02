@@ -41,3 +41,9 @@ def upload():
 
         print("Going to send a response now!")
         return jsonify(status=200, base64=convert_to_base64(str(watermark_path)))
+
+
+@bp.route("/signup", methods=['POST'])
+def signup():
+    print("here is the data: ")
+    print(request)

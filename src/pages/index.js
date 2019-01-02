@@ -8,7 +8,7 @@ import Video from "../components/video"
 import Signup from "../components/signup"
 import Faq from "../components/faq"
 import Footer from "../components/footer"
-// import axios from "axios"
+import axios from "axios"
 
 class IndexPage extends Component {
   state = {
@@ -23,11 +23,11 @@ class IndexPage extends Component {
     )
   }
   postData = data => {
-    // Mailchimp connection to go here
-    console.log(data)
-    // axios.post("/", data)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+    // Post data to backend then python app posts to mailchimp
+    axios
+      .post("/signup", data)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
   render() {
     const { formCompleted } = this.state
