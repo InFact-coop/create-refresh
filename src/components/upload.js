@@ -32,7 +32,7 @@ const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
 `
 
 const ShowMeMeme = styled.a.attrs({
-  className: "apercu-ns dark-pink font-5 pt2 pb3",
+  className: "apercu dark-pink font-5 pt2 pb3",
 })`
   &:hover {
     text-decoration: underline;
@@ -68,7 +68,6 @@ class Upload extends Component {
   }
   onImageSelect = event => {
     event.preventDefault()
-    console.log("got an image")
     const file = event.target.files[0]
     if (file && this.validateImage(file)) {
       this.setState(
@@ -169,7 +168,7 @@ class Upload extends Component {
             No thanks, just give me my meme!
           </ShowMeMeme>
         ) : (
-          <div>
+          <div className="flex flex-column justify-center items-center">
             <LinkToForm>
               Want to be part of the network to stop Article 13?{" "}
               <a className="underline">Join now and save your memes!</a>

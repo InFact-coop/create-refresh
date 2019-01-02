@@ -3,12 +3,11 @@ import styled from "styled-components"
 import bitSteps from "../assets/images/8bit.svg"
 import CountrySelect from "./countrySelect"
 
-const Section = styled.section.attrs({
-  className: ({ view }) =>
-    `${
-      view === "form" ? "pa0" : "pv4-ns"
-    } flex justify-center w-100 bg-near-white`,
-})``
+const Section = styled.section.attrs(({ view }) => ({
+  className: `${
+    view === "form" ? "pa0" : "pv4-ns"
+  } flex justify-center w-100 bg-near-white`,
+}))``
 
 const Container = styled.div.attrs({
   className:
@@ -21,14 +20,13 @@ const Container = styled.div.attrs({
   max-width: 797px;
 `
 
-const Input = styled.input.attrs({
-  className: ({ theme }) =>
-    `${
-      theme === "light"
-        ? "b--dark-pink dark-pink bg-pink"
-        : "b--light-pink light-pink bg-dark-pink"
-    } ba mv1 pt1 pt0-ns db pl2 bw1 w5-ns w-100 calibre apercu-ns font-5`,
-})`
+const Input = styled.input.attrs(({ theme }) => ({
+  className: `${
+    theme === "light"
+      ? "b--dark-pink dark-pink bg-pink"
+      : "b--light-pink light-pink bg-dark-pink"
+  } ba mv1 pt0-ns db pl2 bw1 w5-ns w-100 calibreMedium apercu-ns font-5`,
+}))`
   &::placeholder {
     color: ${({ theme }) =>
       theme === "light" ? "var(--dark-pink)" : "var(--light-pink)"};
@@ -45,21 +43,21 @@ const getBoxColor = (value, theme) => {
   return ""
 }
 
-const Checkbox = styled.div.attrs({
-  className: ({ theme }) =>
-    `${theme === "light" ? "b--dark-pink pink" : "b--light-pink"} bw1 ba mr2`,
-})`
+const Checkbox = styled.div.attrs(({ theme }) => ({
+  className: `${
+    theme === "light" ? "b--dark-pink pink" : "b--light-pink"
+  } bw1 ba mr2`,
+}))`
   background-color: ${({ value, theme }) => getBoxColor(value, theme)};
   border-width: 3px;
   min-width: 16px;
   min-height: 16px;
 `
-const FormButton = styled.button.attrs({
-  className: ({ theme }) =>
-    `${
-      theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
-    } bn ph2 tc apercu-ns font-5 ma0-ns mv3`,
-})`
+const FormButton = styled.button.attrs(({ theme }) => ({
+  className: `${
+    theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
+  } bn ph2 tc calibreMedium apercu-ns font-5 ma0-ns mv3`,
+}))`
   width: 184px;
   height: 40px;
 `
@@ -79,10 +77,9 @@ const TinyLink = styled.a.attrs({
   font-size: 8px;
 `
 
-const ConsentText = styled.p.attrs({
-  className: ({ theme }) =>
-    `${theme === "light" ? "dark-pink" : "light-pink"} font-7`,
-})``
+const ConsentText = styled.p.attrs(({ theme }) => ({
+  className: `${theme === "light" ? "dark-pink" : "light-pink"} font-7`,
+}))``
 
 class Signup extends Component {
   state = {

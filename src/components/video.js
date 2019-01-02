@@ -29,8 +29,7 @@ const Video = () => (
         }}
         scrolling="no"
         frameBorder="0"
-        allowTransparency="true"
-        allowFullScreen="true"
+        allowFullScreen={true}
       />
       <LetterBox />
     </VideoContainer>
