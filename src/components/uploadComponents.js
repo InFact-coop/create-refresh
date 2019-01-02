@@ -16,7 +16,7 @@ const Background = styled.div.attrs({
       view === "form"
         ? "bg-near-white dark-pink"
         : "ba blue bg-blue b--light-blue bw4"
-    } flex items-center flex-column`,
+    } flex items-center flex-column pv2-ns pv0`,
 })``
 
 const ButtonHolder = styled.div.attrs({
