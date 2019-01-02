@@ -111,11 +111,22 @@ const MobileNav = () => (
   </div>
 )
 
-const UploadButtons = () => (
+const UploadButton = ({ file, onImageSelect }) => (
   <ButtonHolder display="justify-center">
-    <RedButton>Upload</RedButton>
-    {/* <RedButton className="dn db-ns">Paste URL</RedButton>
-    <RedButton>Suprise me</RedButton> */}
+    <form>
+      <RedButton type="button">
+        <label htmlFor="buttonUpload">Upload</label>
+      </RedButton>
+      <FileInput
+        type="file"
+        id="buttonUpload"
+        name="buttonUpload"
+        accept="image/png, image/jpeg"
+        multiple={false}
+        files={file}
+        onChange={onImageSelect}
+      />
+    </form>
   </ButtonHolder>
 )
 
@@ -132,7 +143,7 @@ export {
   LinkToForm,
   DesktopNav,
   MobileNav,
-  UploadButtons,
+  UploadButton,
   ShareButtons,
   FileInput,
   Clickable,
