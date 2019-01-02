@@ -7,7 +7,7 @@ const Container = styled.div.attrs({
 })``
 
 const Paragraph = styled.div.attrs({
-  className: "pa3 apercu-ns font-5-ns f5 tl-ns tc mb3 mb0-ns",
+  className: "pa3 apercu font-5-ns f5 tl-ns tc mb3 mb0-ns",
 })`
   max-width: 500px;
 
@@ -17,7 +17,7 @@ const Paragraph = styled.div.attrs({
 `
 
 const Heading = styled.div.attrs({
-  className: "pa3 ttu f4 f3-ns separat-ns tc",
+  className: "pa3 ttu f4 f3-ns separat tc",
 })`
   max-width: 400px;
 

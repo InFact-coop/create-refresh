@@ -8,11 +8,11 @@ const Container = styled.div.attrs({
 `
 
 const Heading = styled.h1.attrs({
-  className: "separat-ns fw5 font-1-ns font-3 dark-pink ma0",
+  className: "separat fw5 font-1-ns font-3 dark-pink ma0",
 })``
 
 const SubHeading = styled.h2.attrs({
-  className: "font-3-ns f4 apercu-ns i-ns dark-pink mb3",
+  className: "font-3-ns f4 apercu i-ns dark-pink mb3",
 })`
   padding-top: 33px;
   @media (max-width: 40em) {

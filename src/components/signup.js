@@ -27,7 +27,7 @@ const Input = styled.input.attrs({
       theme === "light"
         ? "b--dark-pink dark-pink bg-pink"
         : "b--light-pink light-pink bg-dark-pink"
-    } ba mv1 pt1 pt0-ns db pl2 bw1 w5-ns w-100 calibre apercu-ns font-5`,
+    } ba mv1 pt1 pt0-ns db pl2 bw1 w5-ns w-100 apercu font-5`,
 })`
   &::placeholder {
     color: ${({ theme }) =>
@@ -58,7 +58,7 @@ const FormButton = styled.button.attrs({
   className: ({ theme }) =>
     `${
       theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
-    } bn ph2 tc apercu-ns font-5 ma0-ns mv3`,
+    } bn ph2 tc apercu font-5 ma0-ns mv3`,
 })`
   width: 184px;
   height: 40px;
