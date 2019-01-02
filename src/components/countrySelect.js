@@ -8,7 +8,7 @@ const Select = styled.select.attrs({
       theme === "light"
         ? "b--dark-pink dark-pink bg-pink"
         : "b--light-pink light-pink bg-dark-pink"
-    } ba mt1 pt1 pt0-ns db w5-ns w-100 bw1 calibre apercu-ns pl2 font-5 br0 relative`,
+    } ba mt1 pt0-ns db w5-ns w-100 bw1 apercu pl2 font-5 br0 relative`,
 })`
   -webkit-appearance: none;
   background-image: url(${downselect});

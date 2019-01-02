@@ -27,7 +27,7 @@ const Input = styled.input.attrs({
       theme === "light"
         ? "b--dark-pink dark-pink bg-pink"
         : "b--light-pink light-pink bg-dark-pink"
-    } ba mv1 pt1 pt0-ns db pl2 bw1 w5-ns w-100 apercu font-5`,
+    } ba mv1 pt0-ns db pl2 bw1 w5-ns w-100 apercu font-5`,
 })`
   &::placeholder {
     color: ${({ theme }) =>
