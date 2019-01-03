@@ -170,7 +170,10 @@ class Upload extends Component {
               <a className="underline">Join now and save your memes!</a>
             </LinkToForm>
             {cartoon ? (
-              <ShareButtons handleStartOver={this.handleStartOver} />
+              <ShareButtons
+                cartoon={cartoon}
+                handleStartOver={this.handleStartOver}
+              />
             ) : (
               <UploadButton file={file} onImageSelect={this.onImageSelect} />
             )}
