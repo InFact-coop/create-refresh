@@ -14,14 +14,23 @@ const BackgroundDiv = styled.div.attrs(({ showMenu }) => ({
   background-position: top left;
 `
 const Close = styled.img.attrs({
-  className: "pv4 ph3",
-})``
-const NavLinks = styled.div.attrs({
-  className: "flex flex-column apercu font-3 pt4 justify-left items-left",
-})``
-const Link = styled.a.attrs({
-  className: "white underline apercu bg-dark-pink",
+  className: "pv3 pr1 mt2 w2 h2",
 })`
+  padding-left: 30px;
+`
+
+const NavLinks = styled.div.attrs({
+  className: "pl2 flex flex-column f3 pt3 mt2 justify-left items-left",
+})`
+  line-height: 31px;
+`
+const Link = styled.a.attrs({
+  className: "white underline bg-dark-pink",
+})`
+  padding-bottom: 5px;
+  padding-left: 1px;
+  padding-right: 3px;
+  width: fit-content;
   font-size: 32px;
   margin-top: 4px;
 `
@@ -29,25 +38,32 @@ const BoxContainer = styled.div.attrs({
   className: "flex flex-column white items-center justify-center mb2",
 })``
 
-const ShareBox = ({ icon, to }) => (
-  <BoxContainer>
-    <p className="apercu font-5 fw0">Share to</p>
+const ShareText = styled.p.attrs({
+  className: "mb1",
+})`
+  font-size: 24px;
+  line-height: 23px;
+`
+
+const ShareBox = ({ icon, to, margin }) => (
+  <BoxContainer className={margin}>
+    <ShareText>Share to</ShareText>
     <img src={icon} alt={to} />
   </BoxContainer>
 )
 
 const Hamburger = ({ showMenu, toggleMenu }) => (
   <BackgroundDiv showMenu={showMenu}>
-    <div className="flex items-top">
+    <div className="flex items-top mb2">
       <Close src={close} alt="close menu" onClick={toggleMenu} />
       <NavLinks>
-        <Link>Home</Link>
-        <Link>Privacy</Link>
-        <Link>FAQ</Link>
+        <Link href="https://createrefresh.eu">Home</Link>
+        <Link href="https://createrefresh.eu/privacy/">Privacy</Link>
+        <Link href="https://createrefresh.eu/faq/">FAQ</Link>
       </NavLinks>
     </div>
-    <ShareBox to="facebook" icon={facebook} href="" />
-    <ShareBox to="twitter" icon={twitter} href="" />
+    <ShareBox margin="ml6" to="facebook" icon={facebook} href="" />
+    <ShareBox margin="mr4" to="twitter" icon={twitter} href="" />
   </BackgroundDiv>
 )
 

@@ -47,7 +47,7 @@ class Upload extends Component {
     error: "",
     cartoon: null,
     view: "",
-    showMenu: true,
+    showMenu: false,
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
