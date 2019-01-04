@@ -9,6 +9,7 @@ import twitterPink from "../assets/images/twitter-outline-pink.svg"
 import logo from "../assets/images/logo-desktop.svg"
 import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
+import Hamburger from "./hamburger"
 import loading from "../assets/images/loading.svg"
 
 const rotate = keyframes`
@@ -110,10 +111,11 @@ const DesktopNav = ({ view }) => (
   </div>
 )
 
-const MobileNav = () => (
+const MobileNav = ({ showMenu, toggleMenu }) => (
   <div className="dn-ns db w-100 mb1">
+    <Hamburger showMenu={showMenu} toggleMenu={toggleMenu} />
     <NavContainer className="pr2">
-      <Icon src={menuLines} alt="menu" />
+      <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
       <img className="w-75 mv1" src={logoMobile} alt="main logo" />
     </NavContainer>
   </div>
