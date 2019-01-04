@@ -6,4 +6,12 @@ const insertTwitter = () => {
   document.head.appendChild(twitterScript)
 }
 
-export { insertTwitter }
+const insertFacebook = () => {
+  const facebookScript = document.createElement("script")
+  facebookScript.type = "text/javascript"
+  facebookScript.innerHTML =
+    "(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=166966600694538&autoLogAppEvents=1';fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));"
+  document.head.appendChild(facebookScript)
+}
+
+export { insertTwitter, insertFacebook }

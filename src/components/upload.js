@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import fileNameFormatter from "../utils/fileNameFormat"
-import { insertTwitter } from "../utils/socialScripts"
+import { insertTwitter, insertFacebook } from "../utils/socialScripts"
 import styled from "styled-components"
 import isValidFileType from "../utils/isValidFileType"
 import {
@@ -65,6 +65,7 @@ class Upload extends Component {
   //eslint-disable-next-line
   componentDidMount() {
     insertTwitter()
+    insertFacebook()
   }
 
   validateImage = file => {

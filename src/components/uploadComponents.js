@@ -97,12 +97,20 @@ const DesktopNav = ({ view }) => (
       </Link>
       <img className="w-75" src={logo} alt="main logo" />
       <Socials>
-        <Icon
-          src={view === "form" ? facebookPink : facebook}
-          alt="facebook"
-          view={view}
-        />
-        <a href="https://twitter.com/intent/tweet?text=EU%20Compliant%20Meme%20Generator">
+        <div data-href="https://compliantmemegenerator.eu">
+          <a
+            target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcompliantmemegenerator.eu%2F&amp;src=sdkpreparse"
+            className="fb-xfbml-parse-ignore"
+          >
+            <Icon
+              src={view === "form" ? facebookPink : facebook}
+              alt="facebook"
+              view={view}
+            />
+          </a>
+        </div>
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/">
           <Icon
             src={view === "form" ? twitterPink : twitter}
             alt="twitter"
