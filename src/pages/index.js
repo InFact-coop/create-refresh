@@ -8,7 +8,7 @@ import Video from "../components/video"
 import Signup from "../components/signup"
 import Faq from "../components/faq"
 import Footer from "../components/footer"
-// import axios from "axios"
+import axios from "axios"
 
 import encode from "../utils/encode"
 
