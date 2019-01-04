@@ -6,7 +6,7 @@ const Container = styled.div.attrs({
 })``
 
 const Heading = styled.h1.attrs({
-  className: "separat fw5 font-1-ns font-3 dark-pink ma0",
+  className: "separat fw5 font-1-ns font-3 dark-pink ma0-ns mt4 mb0",
 })``
 
 const SubHeading = styled.h2.attrs({
