@@ -14,3 +14,7 @@ body {
     width: 24rem;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

@@ -116,7 +116,7 @@ class Signup extends Component {
     const { theme, view, submitForm, seeMeme, display } = this.props
     return (
       <div className={display}>
-        <Section view={view}>
+        <Section view={view} id="form-section">
           <Container theme={theme}>
             <form>
               <Input
