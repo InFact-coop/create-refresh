@@ -11,7 +11,8 @@ load_dotenv(dotenv_path)
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    """Create and configure the Flask application factory"""
+
     app = Flask(__name__, instance_relative_config=True)
     CORS(app)
     app.config.from_mapping(
@@ -37,7 +38,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # register our api blueprint
+    # register our api blueprints
     from . import api, mailchimp
     app.register_blueprint(api.bp)
     app.register_blueprint(mailchimp.bp)

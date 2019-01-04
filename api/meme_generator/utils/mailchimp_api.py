@@ -11,6 +11,7 @@ class Mailchimp(object):
         self.list_id = list_id
 
     def __get_datacenter(self, api_key):
+        """Determine which datacenter a Mailchimp account is running on"""
         return api_key.split("-")[1]
 
     def __get_time(self):
@@ -19,6 +20,7 @@ class Mailchimp(object):
         return datetime.utcnow().strftime("%Y-%m-%d %X")
 
     def subscribe_list_member(self, user):
+        """Add a new subscriber to the self.list_id mailing list and return response as JSON"""
         payload = {
             "email_address": user["email"],
             "status": "subscribed",
