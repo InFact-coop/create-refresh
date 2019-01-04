@@ -1,6 +1,6 @@
 import React from "react"
 import RedButton from "./shared/redButton"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 import facebook from "../assets/images/fb_outline.svg"
 import twitter from "../assets/images/twitter_outline.svg"
@@ -9,6 +9,17 @@ import twitterPink from "../assets/images/twitter-outline-pink.svg"
 import logo from "../assets/images/logo-desktop.svg"
 import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
+import loading from "../assets/images/loading.svg"
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
 
 const Background = styled.div.attrs(({ view }) => ({
   className: `${
@@ -135,6 +146,17 @@ const ShareButtons = props => (
   </ButtonHolder>
 )
 
+const LoadingSpinner = styled.div.attrs({
+  className:
+    "dib w-50 h-50 flex justify-center items-center black ttu separat font-5",
+})`
+  background-image: url(${loading});
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: ${rotate} 2s linear infinite;
+`
+
 export {
   Background,
   LinkToForm,
@@ -145,4 +167,5 @@ export {
   FileInput,
   Clickable,
   Label,
+  LoadingSpinner,
 }

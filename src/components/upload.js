@@ -13,6 +13,7 @@ import {
   FileInput,
   Clickable,
   Label,
+  LoadingSpinner,
 } from "./uploadComponents"
 import SignUp from "./signup"
 
@@ -38,6 +39,15 @@ const ShowMeMeme = styled.a.attrs({
     text-decoration: underline;
   }
 `
+const Loading = () => (
+  <form>
+    <Clickable>
+      <Label htmlFor="image">
+        <LoadingSpinner>Loading...</LoadingSpinner>
+      </Label>
+    </Clickable>
+  </form>
+)
 
 class Upload extends Component {
   state = {
@@ -80,24 +90,35 @@ class Upload extends Component {
     }
   }
   sendImage = () => {
+    this.setState({
+      view: "loading",
+    })
+
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
     axios
       .post(endpoint, data)
       .then(res => {
-        if (this.props.formCompleted) {
-          this.setState({
-            cartoon: `data:image/png;base64,${res.data.base64}`,
-          })
-        } else {
-          this.setState({
-            view: "form",
-            cartoon: `data:image/png;base64,${res.data.base64}`,
-          })
-        }
+        setTimeout(
+          () =>
+            this.setState({
+              view: this.props.formCompleted ? "" : "form",
+              cartoon: `data:image/png;base64,${res.data.base64}`,
+            }),
+          3000
+        )
       })
       .catch(err => {
+        setTimeout(
+          () =>
+            this.setState({
+              view: "",
+              error:
+                "Oops, something went wrong creating your meme. Please try again!",
+            }),
+          2000
+        )
         console.log(err)
       })
   }
@@ -117,47 +138,72 @@ class Upload extends Component {
   render() {
     const { file, fileURL, error, cartoon, view } = this.state
     const { submitForm } = this.props
+
+    const UploadView = () => {
+      switch (view) {
+        case "form":
+          return (
+            <div>
+              <SignUp
+                display="dn db-ns"
+                theme="dark"
+                view={view}
+                submitForm={submitForm}
+                seeMeme={this.seeMeme}
+              />
+              <SignUp
+                display="db dn-ns"
+                theme="light"
+                view={view}
+                submitForm={submitForm}
+                seeMeme={this.seeMeme}
+              />
+            </div>
+          )
+        case "loading":
+          return <Loading />
+        default:
+          if (cartoon) {
+            return (
+              <ImagesSidebyside>
+                <Image src={fileURL} alt="original image" />
+                <Image src={cartoon} alt="cartoonified image" />
+              </ImagesSidebyside>
+            )
+          }
+
+          return (
+            <form>
+              <Clickable>
+                <Label htmlFor="image">
+                  {error ? (
+                    <p>{error}</p>
+                  ) : file ? (
+                    <p>Loading...</p>
+                  ) : (
+                    <p>Click to upload</p>
+                  )}
+                </Label>
+                <FileInput
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/png, image/jpeg"
+                  multiple={false}
+                  files={file}
+                  onChange={this.onImageSelect}
+                />
+              </Clickable>
+            </form>
+          )
+      }
+    }
     return (
       <Background view={view}>
         <MobileNav />
         <DesktopNav view={view} />
 
-        {view === "form" ? (
-          <SignUp
-            theme="dark"
-            view={view}
-            submitForm={submitForm}
-            seeMeme={this.seeMeme}
-          />
-        ) : cartoon ? (
-          <ImagesSidebyside>
-            <Image src={fileURL} alt="original image" />
-            <Image src={cartoon} alt="cartoonified image" />
-          </ImagesSidebyside>
-        ) : (
-          <form>
-            <Clickable>
-              <Label htmlFor="image">
-                {error ? (
-                  <p>{error}</p>
-                ) : file ? (
-                  <p>Loading...</p>
-                ) : (
-                  <p>Click to upload</p>
-                )}
-              </Label>
-              <FileInput
-                type="file"
-                id="image"
-                name="image"
-                accept="image/png, image/jpeg"
-                multiple={false}
-                files={file}
-                onChange={this.onImageSelect}
-              />
-            </Clickable>
-          </form>
-        )}
+        <UploadView />
 
         {view === "form" ? (
           <ShowMeMeme onClick={this.seeMeme}>
