@@ -134,6 +134,12 @@ class Upload extends Component {
 
     this.updateMetaImage()
   }
+  autoScrollToForm = () => {
+    const formTop = document
+      .querySelector("#form-section")
+      .getBoundingClientRect().top
+    window.scrollTo(0, formTop)
+  }
   seeMeme = () => {
     this.setState({ view: "" })
   }
@@ -269,7 +275,7 @@ class Upload extends Component {
           <div className="flex flex-column justify-center items-center">
             <LinkToForm>
               Want to be part of the network to stop Article 13?{" "}
-              <a className="underline">Join now and save your memes!</a>
+              <a className="underline white" onClick={this.autoScrollToForm}>Join now and save your memes!</a>
             </LinkToForm>
             {cartoon ? (
               <ShareButtons
