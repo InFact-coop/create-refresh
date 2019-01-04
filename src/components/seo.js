@@ -42,7 +42,7 @@ function SEO({ description, lang, meta, keywords, title }) {
           content: "EU Compliant meme generator",
         },
         {
-          name: "twitter:image",
+          name: "twitter:image:src",
           content: "https://i.imgflip.com/2ilji1.jpg",
         },
       ]}
