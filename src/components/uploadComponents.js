@@ -6,12 +6,12 @@ import facebook from "../assets/images/fb_outline.svg"
 import twitter from "../assets/images/twitter_outline.svg"
 import facebookPink from "../assets/images/fb-outline-pink.svg"
 import twitterPink from "../assets/images/twitter-outline-pink.svg"
-import logo from "../assets/images/logo-desktop.svg"
 import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
 import Hamburger from "./hamburger"
 import loading from "../assets/images/loading.svg"
 import ShareModal from "./shareImage"
+import gifLogo from "../assets/images/headerGif.gif"
 
 const rotate = keyframes`
   from {
@@ -77,8 +77,11 @@ const LinkToForm = styled.p.attrs({
 })``
 
 const NavContainer = styled.div.attrs({
-  className: "flex justify-between w-100",
-})``
+  className: "flex justify-between w-100 relative",
+})`
+  height: calc(60vw / 5.4195);
+  max-height: calc(700px / 5.4195);
+`
 
 const Link = styled.a.attrs(({ view }) => ({
   className: `${
@@ -87,12 +90,28 @@ const Link = styled.a.attrs(({ view }) => ({
 }))``
 
 const Socials = styled.div.attrs({
-  className: "pt2 pr3",
+  className: "pt2 pr3 no-wrap",
 })``
 
 const Icon = styled.img.attrs({
   className: "pa2",
 })``
+
+const SocialIcon = styled.img.attrs({
+  className: "ph2",
+})``
+
+const GifLogo = styled.img.attrs({
+  className: "absolute",
+})`
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: calc(60vw / 4.4195);
+  max-width: 700px;
+  max-height: calc(700px / 4.4195);
+`
 
 const DesktopNav = ({ view }) => (
   <div className="db-ns dn w-100 mb1">
@@ -100,14 +119,14 @@ const DesktopNav = ({ view }) => (
       <Link href="http://createrefresh.eu" view={view}>
         More info
       </Link>
-      <img className="w-75" src={logo} alt="main logo" />
+      <GifLogo src={gifLogo} alt="main logo" />
       <Socials>
-        <Icon
+        <SocialIcon
           src={view === "form" ? facebookPink : facebook}
           alt="facebook"
           view={view}
         />
-        <Icon
+        <SocialIcon
           src={view === "form" ? twitterPink : twitter}
           alt="twitter"
           view={view}
