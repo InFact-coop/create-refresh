@@ -96,6 +96,8 @@ class Upload extends Component {
       view: "loading",
     })
 
+    const isMobile = window.innerWidth < 500
+
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
@@ -105,7 +107,7 @@ class Upload extends Component {
         setTimeout(
           () =>
             this.setState({
-              view: this.props.formCompleted ? "" : "form",
+              view: this.props.formCompleted ? "" : isMobile ? "" : "form",
               cartoon: `data:image/png;base64,${res.data.base64}`,
             }),
           3000
