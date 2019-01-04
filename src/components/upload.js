@@ -163,12 +163,11 @@ class Upload extends Component {
       "twitter:image"
     ].content = this.state.cartoon
 
-    document.getElementsByTagName("meta")["twitter:card"].content =
-      "summary_large_image"
-
-    window.open(
+   const link = document.createElement("a")
+    link.href =
       "https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/"
-    )
+    document.body.appendChild(link)
+    link.click()
   }
 
   render() {
