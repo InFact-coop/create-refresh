@@ -27,9 +27,14 @@ const Background = styled.div.attrs(({ view }) => ({
   className: `${
     view === "form"
       ? "bg-near-white dark-pink"
-      : "ba blue bg-blue b--light-blue bw4"
+      : "blue bg-blue b--solid b--light-blue"
   } flex items-center flex-column pv2-ns pv0`,
-}))``
+}))`
+  border-width: 30px;
+  @media (max-width: 40rem) {
+    border-width: 18px;
+  }
+`
 
 const ButtonHolder = styled.div.attrs(({ display }) => ({
   className: `flex ${display} pb3 ph2 ph0-ns pt2`,

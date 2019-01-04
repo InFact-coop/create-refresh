@@ -3,8 +3,12 @@ import styled from "styled-components"
 
 const Container = styled.div.attrs({
   className:
-    "mid-gray flex flex-column bg-light-pink flex-row-ns items-center justify-center justify-between-ns ph7-ns pt2 pt4-ns pb4-ns",
-})``
+    "mid-gray flex flex-column flex-row-ns items-center justify-center justify-between-ns ph7-ns pt2 pt4-ns pb4-ns",
+})`
+  @media (max-width: 40em) {
+    background-color: var(--light-pink);
+  }
+`
 
 const Paragraph = styled.div.attrs({
   className: "pa3 apercu font-5-ns f5 tl-ns tc mb3 mb0-ns",
