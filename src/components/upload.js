@@ -107,34 +107,32 @@ class Upload extends Component {
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
-    // axios
-    //   .post(endpoint, data)
-    //   .then(res => {
-    //     setTimeout(
-    //       () =>
-    //         this.setState({
-    //           view: this.props.formCompleted ? "" : "form",
-    //           cartoon: `data:image/png;base64,${res.data.base64}`,
-    //         }),
-    //       3000
-    //     )
-    //   })
-    //   .catch(err => {
-    //     setTimeout(
-    //       () =>
-    //         this.setState({
-    //           view: "",
-    //           error:
-    //             "Oops, something went wrong creating your meme. Please try again!",
-    //         }),
-    //       2000
-    //     )
-    //     console.log(err)
-    //   })
-    this.setState({
-      view: "",
-      cartoon: this.state.fileURL,
-    })
+    axios
+      .post(endpoint, data)
+      .then(res => {
+        setTimeout(
+          () =>
+            this.setState({
+              view: this.props.formCompleted ? "" : "form",
+              cartoon: `data:image/png;base64,${res.data.base64}`,
+            }),
+          3000
+        )
+      })
+      .catch(err => {
+        setTimeout(
+          () =>
+            this.setState({
+              view: "",
+              error:
+                "Oops, something went wrong creating your meme. Please try again!",
+            }),
+          2000
+        )
+        console.log(err)
+      })
+
+    this.updateMetaImage()
   }
   seeMeme = () => {
     this.setState({ view: "" })
@@ -158,14 +156,29 @@ class Upload extends Component {
     })
   }
 
-  shareImageOnTwitter = () => {
-    document.getElementsByTagName("meta")[
-      "og:image"
-    ].content = this.state.cartoon
+  updateMetaImage = () => {
+    document.getElementsByTagName("meta")["image"].content = this.state.cartoon
+  }
 
+  shareImageOnTwitter = () => {
     const link = document.createElement("a")
     link.class = "twitter-share-button"
     link.href = "https://twitter.com/intent/tweet"
+    link.style.display = "none"
+    document.body.appendChild(link)
+    link.click()
+  }
+
+  shareImageOnFacebook = () => {
+    console.log("here")
+    const link = document.createElement("a")
+    link.target = "_blank"
+    link.class = "fb-xfbml-parse-ignore"
+    link.style.display = "none"
+    const imgUrl =
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tree_in_field_during_extreme_cold_with_frozen_fog.png/239px-Tree_in_field_during_extreme_cold_with_frozen_fog.png"
+    link.href = `https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcompliantmemegenerator.eu&picture=${imgUrl}%2F&amp;src=sdkpreparse`
+
     document.body.appendChild(link)
     link.click()
   }
@@ -265,6 +278,7 @@ class Upload extends Component {
                 showShareModal={showShareModal}
                 toggleShare={this.toggleShareModal}
                 shareImageOnTwitter={this.shareImageOnTwitter}
+                shareImageOnFacebook={this.shareImageOnFacebook}
               />
             ) : (
               <UploadButton file={file} onImageSelect={this.onImageSelect} />

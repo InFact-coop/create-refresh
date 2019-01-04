@@ -97,20 +97,18 @@ const DesktopNav = ({ view }) => (
       </Link>
       <img className="w-75" src={logo} alt="main logo" />
       <Socials>
-        <div data-href="https://compliantmemegenerator.eu">
-          <a
-            target="_blank"
-            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcompliantmemegenerator.eu%2F&amp;src=sdkpreparse"
-            className="fb-xfbml-parse-ignore"
-          >
-            <Icon
-              src={view === "form" ? facebookPink : facebook}
-              alt="facebook"
-              view={view}
-            />
-          </a>
-        </div>
-        <a className="twitter-share-button" href="https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/">
+        <a
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcompliantmemegenerator.eu%2F&amp;src=sdkpreparse"
+          className="fb-xfbml-parse-ignore"
+        >
+          <Icon
+            src={view === "form" ? facebookPink : facebook}
+            alt="facebook"
+            view={view}
+          />
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/">
           <Icon
             src={view === "form" ? twitterPink : twitter}
             alt="twitter"
@@ -155,7 +153,12 @@ const ShareButtons = props => (
   <ButtonHolder display="justify-between">
     <RedButton className="relative" onClick={props.toggleShare}>
       Share
-      {props.showShareModal && <ShareModal shareImageOnTwitter={props.shareImageOnTwitter} />}
+      {props.showShareModal && (
+        <ShareModal
+          shareImageOnTwitter={props.shareImageOnTwitter}
+          shareImageOnFacebook={props.shareImageOnFacebook}
+        />
+      )}
     </RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <a href={props.cartoon} download="eu-compliant-meme" className="dn db-ns">

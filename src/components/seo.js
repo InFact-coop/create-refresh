@@ -34,6 +34,7 @@ function SEO({ description, lang, title }) {
           content: "create-refresh",
         },
         {
+          name: "image",
           property: "og:image",
           content: "https://i.imgflip.com/2ilji1.jpg",
         },
