@@ -1,22 +1,30 @@
 import styled from "styled-components"
 import React from "react"
+import downselect from "../assets/images/downselect.svg"
 
-const Select = styled.select.attrs({
-  className:
-    "b--dark-pink ba dark-pink bg-pink mv1 db w5-ns w-100 apercu font-5 br0 relative",
-})`
-  padding-left: 12px;
-  border-width: 3px;
-  height: 34px;
-  &::after {
-  }
+const Select = styled.select.attrs(({ theme }) => ({
+  className: `${
+    theme === "light"
+      ? "b--dark-pink dark-pink bg-pink"
+      : "b--light-pink light-pink bg-dark-pink"
+  } ba mt1 pt0-ns db w5-ns w-100 bw1 apercu pl2 font-5 br0 relative`,
+}))`
+  -webkit-appearance: none;
+  background-image: url(${downselect});
+  background-repeat: no-repeat;
+  background-position: right center;
 `
 
 const Option = styled.option.attrs({})``
 
-const CountrySelect = () => (
-  <Select name="country">
-    <Option value="" disabled selected>
+const CountrySelect = ({ theme, updateOnChange }) => (
+  <Select
+    name="country"
+    theme={theme}
+    onChange={updateOnChange}
+    defaultValue="country"
+  >
+    <Option value="country" disabled>
       Country
     </Option>
     <Option value="AF">Afghanistan</Option>

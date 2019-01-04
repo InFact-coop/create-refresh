@@ -2,58 +2,70 @@
 
 @font-face {
   font-family: "Apercu";
-  src: url("../assets/fonts/Apercu.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: normal;
+  src: url("../assets/fonts/Apercu.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "Apercu";
-  src: url("../assets/fonts/Apercu-Medium.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: medium;
+  src: url("../assets/fonts/Apercu-Medium.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 500;
 }
 
 @font-face {
   font-family: "Apercu";
-  src: url("../assets/fonts/Apercu-MediumItalic.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: medium;
+  src: url("../assets/fonts/Apercu-MediumItalic.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Apercu";
-  src: url("../assets/fonts/Apercu-Italic.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: normal;
+  src: url("../assets/fonts/Apercu-Italic.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Apercu Mono";
-  src: url("../assets/fonts/Apercu-Mono.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: normal;
+  src: url("../assets/fonts/Apercu-Mono.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "ITC Franklin Gothic";
-  src: url("../assets/fonts/ITCFranklinGothicStd-Hvy.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: bold;
+  src: url("../assets/fonts/ITCFranklinGothicStd-Hvy.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "Separat";
-  src: url("../assets/fonts/Separat-Regular.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: normal;
+  src: url("../assets/fonts/Separat-Regular.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "Calibre";
-  src: url("../assets/fonts/Calibre-Regular.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: normal;
+  src: url("../assets/fonts/Calibre-Regular.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Calibre-Medium";
+  src: url("../assets/fonts/calibre-medium-webfont.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "Calibre";
-  src: url("../assets/fonts/Calibre-Bold.otf") format("truetype"); /* Safari, Android, iOS */
-  font-weight: bold;
+  src: url("../assets/fonts/Calibre-Semibold.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../assets/fonts/Calibre-Bold.otf") format("opentype"); /* Safari, Android, iOS */
+  font-weight: 700;
 }
 
 .apercu {
@@ -66,6 +78,14 @@
 
 .calibre {
   font-family: "Calibre";
+}
+
+.calibreMedium {
+  font-family: "Calibre-Medium";
+}
+
+.mono {
+  font-family: "Apercu Mono";
 }
 
 .franklin {
@@ -81,13 +101,6 @@
   line-height: var(--line-height-subheadline);
   font-size: var(--font-size-subheadline);
 }
-
-.mobile-body {
-  font-family: "Apercu";
-  font-weight: normal;
-  font-size: 14px;
-  line-height: var(--line-height-5)
-} 
 
 .font-1 {
   line-height: var(--line-height-1);
@@ -130,6 +143,26 @@
 }
 
 @media (--breakpoint-not-small) {
+  .apercu-ns {
+    font-family: "Apercu";
+  }
+
+  .separat-ns {
+    font-family: "Separat";
+  }
+
+  .calibre-ns {
+    font-family: "Calibre";
+  }
+
+  .mono-ns {
+    font-family: "Apercu Mono";
+  }
+
+  .franklin-ns {
+    font-family: "ITC Franklin Gothic";
+  }
+
   .headline-ns {
     line-height: var(--line-height-headline);
     font-size: var(--font-size-headline);

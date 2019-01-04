@@ -19,6 +19,7 @@ const StyledFooter = styled.footer`
     ". license . . ."
     ". . . . .";
   @media (max-width: 500px) {
+    background-position: 127% 0%;
     grid-template-columns: 0.5rem auto 0.5rem;
     grid-template-rows: 1fr;
     grid-gap: 0.5rem;
@@ -33,25 +34,25 @@ const GridElement = ({ className, children }) => (
   <div className={className}>{children}</div>
 )
 
-const License = styled(GridElement)`
+const License = styled(GridElement).attrs(({ className }) => ({
+  className: `${className} calibreMedium self-end-ns tc tl-ns white font-footer-ns font-7  mb3-ns `,
+}))`
   grid-area: license;
-  font-size: 0.75rem;
-  align-self: end;
-  color: white;
-  line-height: 1.5;
-  font-weight: 400;
+
+  @media (min-width: 500px) {
+    margin-right: 28px;
+  }
+
   @media (max-width: 500px) {
-    text-align: center;
+    line-height: 10px;
+    max-width: 186px;
   }
 `
 
-const Social = styled(GridElement)`
+const Social = styled(GridElement).attrs(({ className }) => ({
+  className: `${className} mh3 mh0-ns mb2 mb0-ns font-7 font-6-ns flex flex-column bg-dark-gray pb2 ph4 white`,
+}))`
   grid-area: social;
-  background: #26302f;
-  padding: 32px 47px;
-  color: white;
-  display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   line-height: 1.5;
 `
@@ -65,22 +66,27 @@ const Icon = props => (
 const Footer = () => (
   <StyledFooter>
     <Social>
-      <div className="flex justify-end">
+      <div className="flex justify-end-ns justify-between">
         <Icon url="https://facebook.com/create.refresh" img={facebookIcon} />
         <Icon url="http://twitter.com/createrefresh" img={twitterIcon} />
         <Icon url="http://instagram.com/create.refresh" img={instagramIcon} />
       </div>
-      <div className="tr">
+      <div className="tr-ns tc">
         <p>Visit our social media channels for more info and cool content</p>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-end-ns justify-center font-6 underline">
         <FooterLink className="mr4" href="https://createrefresh.eu/privacy/">
           Privacy
         </FooterLink>
         <FooterLink href="https://createrefresh.eu/faq/">FAQ</FooterLink>
       </div>
+      <License className="dn-ns center">
+        Except where otherwise noted, content on this site is licensed under a
+        Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC
+        4.0)
+      </License>
     </Social>
-    <License>
+    <License className="dn db-ns">
       Except where otherwise noted, content on this site is licensed under a
       Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC
       4.0)

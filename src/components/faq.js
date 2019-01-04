@@ -2,29 +2,34 @@ import React from "react"
 import styled from "styled-components"
 
 const Container = styled.div.attrs({
-  className: "mh7-ns mh2 ph1",
-})`
-  margin-top: 31px;
-`
+  className: "mh7-ns mh2 ph1 mv4-ns",
+})``
 
 const Heading = styled.h1.attrs({
-  className: "separat font-1-ns font-3 dark-pink ma0",
+  className: "separat fw5 font-1-ns font-3 dark-pink ma0",
 })``
 
 const SubHeading = styled.h2.attrs({
-  className: "font-3-ns font-4 separat i-ns dark-pink mb3",
+  className: "font-3-ns f4 apercu i dark-pink mb3",
 })`
   padding-top: 33px;
+  @media (max-width: 40em) {
+    line-height: 32px;
+  }
 `
 
 const Paragraph = styled.p.attrs({
-  className: "font-5-ns mid-gray mobile-body",
+  className: "f6 font-5-ns mid-gray",
 })`
   padding-bottom: 27px;
+
+  @media (max-width: 40em) {
+    line-height: 29px;
+  }
 `
 
-const Link = styled.p.attrs({
-  className: "underline di",
+const Link = styled.a.attrs({
+  className: "underline di mid-gray",
   target: "_blank",
   rel: "noopener noreferrer",
 })``
@@ -34,7 +39,7 @@ const Faq = () => (
     <Heading>FAQ</Heading>
     <SubHeading>Will memes really be censored?</SubHeading>
     <Paragraph>
-      You maybe dubious, but the current proposals in Article 13 of the EU’s
+      You may be dubious, but the current proposals in Article 13 of the EU’s
       proposed Copyright Directive are worrying. If Article 13 passes, Internet
       platforms rather than Internet users will liable for copyright, which
       means most will resort to automatically censoring content with upload
