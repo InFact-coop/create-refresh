@@ -59,6 +59,7 @@ class Upload extends Component {
     cartoon: null,
     view: "",
     showMenu: false,
+    showShareModal: false,
   }
 
   //eslint-disable-next-line
@@ -136,6 +137,9 @@ class Upload extends Component {
   toggleMenu = () => {
     this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
   }
+  toggleShareModal = () => {
+    this.setState(prevProps => ({ showShareModal: !prevProps.showShareModal }))
+  }
   handleStartOver = () => {
     this.setState({
       file: null,
@@ -144,10 +148,20 @@ class Upload extends Component {
       error: "",
       cartoon: null,
       view: "",
+      showMenu: false,
+      showShareModal: false,
     })
   }
   render() {
-    const { file, fileURL, error, cartoon, view, showMenu } = this.state
+    const {
+      file,
+      fileURL,
+      error,
+      cartoon,
+      view,
+      showMenu,
+      showShareModal,
+    } = this.state
     const { submitForm } = this.props
 
     const UploadView = () => {
@@ -230,6 +244,8 @@ class Upload extends Component {
               <ShareButtons
                 cartoon={cartoon}
                 handleStartOver={this.handleStartOver}
+                showShareModal={showShareModal}
+                toggleShare={this.toggleShareModal}
               />
             ) : (
               <UploadButton file={file} onImageSelect={this.onImageSelect} />
