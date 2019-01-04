@@ -10,6 +10,8 @@ import Faq from "../components/faq"
 import Footer from "../components/footer"
 // import axios from "axios"
 
+import encode from "../utils/encode"
+
 class IndexPage extends Component {
   state = {
     formCompleted: false,
@@ -23,11 +25,20 @@ class IndexPage extends Component {
     )
   }
   postData = data => {
-    // Mailchimp connection to go here
-    // axios.post("/", data)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+    // post user information to proxy Mailchimp server
+    const URIdata = encode({ ...data })
+    fetch("http://127.0.0.1:5000/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: URIdata,
+    })
+      .then(response => this.setState({ submitted: response.json() }))
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: true })
+      })
   }
+
   render() {
     const { formCompleted } = this.state
     return (
