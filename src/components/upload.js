@@ -160,7 +160,7 @@ class Upload extends Component {
 
   shareImageOnTwitter = () => {
     document.getElementsByTagName("meta")[
-      "twitter:image"
+      "og:image"
     ].content = this.state.cartoon
 
     const link = document.createElement("a")
