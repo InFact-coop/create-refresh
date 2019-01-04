@@ -23,8 +23,8 @@ const Container = styled.div.attrs({
 const Input = styled.input.attrs(({ theme }) => ({
   className: `${
     theme === "light"
-      ? "b--dark-pink dark-pink bg-pink"
-      : "b--light-pink light-pink bg-dark-pink"
+      ? "b--dark-pink dark-pink bg-transparent"
+      : "b--light-pink light-pink bg-transparent"
   } ba mv1 pt0-ns db pl2 bw1 w5-ns w-100 calibreMedium apercu-ns font-5`,
 }))`
   &::placeholder {

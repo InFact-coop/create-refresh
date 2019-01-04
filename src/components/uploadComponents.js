@@ -73,7 +73,7 @@ const Label = styled.label.attrs({
 `
 
 const LinkToForm = styled.p.attrs({
-  className: "white i font-7 pv2 tc mh4",
+  className: "white i font-7 pv2 tc mh4 db-ns dn",
 })``
 
 const NavContainer = styled.div.attrs({
