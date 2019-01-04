@@ -11,6 +11,7 @@ import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
 import Hamburger from "./hamburger"
 import loading from "../assets/images/loading.svg"
+import ShareModal from "./shareImage"
 
 const rotate = keyframes`
   from {
@@ -142,7 +143,10 @@ const UploadButton = ({ file, onImageSelect }) => (
 
 const ShareButtons = props => (
   <ButtonHolder display="justify-between">
-    <RedButton>Share</RedButton>
+    <RedButton className="relative" onClick={props.toggleShare}>
+      Share
+      {props.showShareModal && <ShareModal />}
+    </RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <a href={props.cartoon} download="eu-compliant-meme" className="dn db-ns">
       <RedButton>Save</RedButton>
