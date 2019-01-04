@@ -2,10 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 const Container = styled.div.attrs({
-  className: "mh7-ns mh2 ph1",
-})`
-  margin-top: 31px;
-`
+  className: "mh7-ns mh2 ph1 mv4-ns",
+})``
 
 const Heading = styled.h1.attrs({
   className: "separat fw5 font-1-ns font-3 dark-pink ma0",

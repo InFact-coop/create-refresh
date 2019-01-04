@@ -1,6 +1,6 @@
 import React from "react"
 import RedButton from "./shared/redButton"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 import facebook from "../assets/images/fb_outline.svg"
 import twitter from "../assets/images/twitter_outline.svg"
@@ -10,6 +10,17 @@ import logo from "../assets/images/logo-desktop.svg"
 import logoMobile from "../assets/images/logo-mobile.svg"
 import menuLines from "../assets/images/menu-lines.svg"
 import Hamburger from "./hamburger"
+import loading from "../assets/images/loading.svg"
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
 
 const Background = styled.div.attrs(({ view }) => ({
   className: `${
@@ -20,7 +31,7 @@ const Background = styled.div.attrs(({ view }) => ({
 }))``
 
 const ButtonHolder = styled.div.attrs(({ display }) => ({
-  className: `flex ${display} pb3 ph3 ph0-ns pt2`,
+  className: `flex ${display} pb3 ph2 ph0-ns pt2`,
 }))`
   width: 90vw;
   max-width: 483px;
@@ -133,9 +144,22 @@ const ShareButtons = props => (
   <ButtonHolder display="justify-between">
     <RedButton>Share</RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
-    <RedButton className="dn db-ns">Save</RedButton>
+    <a href={props.cartoon} download="eu-compliant-meme" className="dn db-ns">
+      <RedButton>Save</RedButton>
+    </a>
   </ButtonHolder>
 )
+
+const LoadingSpinner = styled.div.attrs({
+  className:
+    "dib w-50 h-50 flex justify-center items-center black ttu separat font-5",
+})`
+  background-image: url(${loading});
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: ${rotate} 2s linear infinite;
+`
 
 export {
   Background,
@@ -147,4 +171,5 @@ export {
   FileInput,
   Clickable,
   Label,
+  LoadingSpinner,
 }

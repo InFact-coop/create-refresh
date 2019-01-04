@@ -24,7 +24,6 @@ class IndexPage extends Component {
   }
   postData = data => {
     // Mailchimp connection to go here
-    console.log(data)
     // axios.post("/", data)
     //   .then(res => console.log(res))
     //   .catch(err => console.log(err))
