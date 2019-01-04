@@ -8,7 +8,7 @@ const googleScript = () => {
   const newScript = document.createElement("script")
   newScript.type = "text/javascript"
   newScript.innerHTML =
-    "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'UA-108065136-4');"
+    " window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-108065136-4'); "
   document.head.appendChild(newScript)
 }
 
