@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import fileNameFormatter from "../utils/fileNameFormat"
+import { insertTwitter } from "../utils/socialScripts"
 import styled from "styled-components"
 import isValidFileType from "../utils/isValidFileType"
 import {
@@ -59,6 +60,12 @@ class Upload extends Component {
     view: "",
     showMenu: false,
   }
+
+  //eslint-disable-next-line
+  componentDidMount() {
+    insertTwitter()
+  }
+
   validateImage = file => {
     if (!isValidFileType(file)) {
       this.setState({

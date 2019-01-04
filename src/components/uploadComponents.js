@@ -101,11 +101,13 @@ const DesktopNav = ({ view }) => (
           alt="facebook"
           view={view}
         />
-        <Icon
-          src={view === "form" ? twitterPink : twitter}
-          alt="twitter"
-          view={view}
-        />
+        <a href="https://twitter.com/intent/tweet?text=EU%20Compliant%20Meme%20Generator">
+          <Icon
+            src={view === "form" ? twitterPink : twitter}
+            alt="twitter"
+            view={view}
+          />
+        </a>
       </Socials>
     </NavContainer>
   </div>
