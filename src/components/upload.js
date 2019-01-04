@@ -163,9 +163,8 @@ class Upload extends Component {
       "twitter:image"
     ].content = this.state.cartoon
 
-   const link = document.createElement("a")
-    link.href =
-      "https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/"
+    const link = document.createElement("a")
+    link.href = "https://twitter.com/intent/tweet"
     document.body.appendChild(link)
     link.click()
   }
