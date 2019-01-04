@@ -18,6 +18,9 @@ const Container = styled.div.attrs({
   background-position: bottom right;
   background-repeat: no-repeat;
   max-width: 797px;
+  @media (max-width: 30em) {
+    background-position: bottom left;
+  }
 `
 
 const Input = styled.input.attrs(({ theme }) => ({
