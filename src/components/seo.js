@@ -18,6 +18,10 @@ function SEO({ description, lang, title }) {
           content: title,
         },
         {
+          property: "og:type",
+          content: "website",
+        },
+        {
           property: "og:description",
           content: description,
         },
@@ -30,19 +34,19 @@ function SEO({ description, lang, title }) {
           content: "create-refresh",
         },
         {
-          name: "og:image",
+          property: "og:image",
           content: "https://i.imgflip.com/2ilji1.jpg",
         },
         {
-          name: "og:url",
+          property: "og:url",
           content: "http://compliantmemegenerator.eu",
         },
         {
-          name: "og:image:height",
+          property: "og:image:height",
           content: "600",
         },
         {
-          name: "og:image:width",
+          property: "og:image:width",
           content: "600",
         },
       ]}
