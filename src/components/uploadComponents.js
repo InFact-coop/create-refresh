@@ -155,7 +155,7 @@ const ShareButtons = props => (
   <ButtonHolder display="justify-between">
     <RedButton className="relative" onClick={props.toggleShare}>
       Share
-      {props.showShareModal && <ShareModal />}
+      {props.showShareModal && <ShareModal shareImageOnTwitter={props.shareImageOnTwitter} />}
     </RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <a href={props.cartoon} download="eu-compliant-meme" className="dn db-ns">

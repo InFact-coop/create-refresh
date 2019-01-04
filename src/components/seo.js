@@ -41,6 +41,10 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: "twitter:description",
           content: "EU Compliant meme generator",
         },
+        {
+          name: "twitter:image",
+          content: "",
+        },
       ]}
     />
   )

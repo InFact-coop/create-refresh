@@ -107,30 +107,34 @@ class Upload extends Component {
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
-    axios
-      .post(endpoint, data)
-      .then(res => {
-        setTimeout(
-          () =>
-            this.setState({
-              view: this.props.formCompleted ? "" : "form",
-              cartoon: `data:image/png;base64,${res.data.base64}`,
-            }),
-          3000
-        )
-      })
-      .catch(err => {
-        setTimeout(
-          () =>
-            this.setState({
-              view: "",
-              error:
-                "Oops, something went wrong creating your meme. Please try again!",
-            }),
-          2000
-        )
-        console.log(err)
-      })
+    // axios
+    //   .post(endpoint, data)
+    //   .then(res => {
+    //     setTimeout(
+    //       () =>
+    //         this.setState({
+    //           view: this.props.formCompleted ? "" : "form",
+    //           cartoon: `data:image/png;base64,${res.data.base64}`,
+    //         }),
+    //       3000
+    //     )
+    //   })
+    //   .catch(err => {
+    //     setTimeout(
+    //       () =>
+    //         this.setState({
+    //           view: "",
+    //           error:
+    //             "Oops, something went wrong creating your meme. Please try again!",
+    //         }),
+    //       2000
+    //     )
+    //     console.log(err)
+    //   })
+    this.setState({
+      view: "",
+      cartoon: this.state.fileURL,
+    })
   }
   seeMeme = () => {
     this.setState({ view: "" })
@@ -153,6 +157,20 @@ class Upload extends Component {
       showShareModal: false,
     })
   }
+
+  shareImageOnTwitter = () => {
+    document.getElementsByTagName("meta")[
+      "twitter:image"
+    ].content = this.state.cartoon
+
+    document.getElementsByTagName("meta")["twitter:card"].content =
+      "summary_large_image"
+
+    window.open(
+      "https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/"
+    )
+  }
+
   render() {
     const {
       file,
@@ -247,6 +265,7 @@ class Upload extends Component {
                 handleStartOver={this.handleStartOver}
                 showShareModal={showShareModal}
                 toggleShare={this.toggleShareModal}
+                shareImageOnTwitter={this.shareImageOnTwitter}
               />
             ) : (
               <UploadButton file={file} onImageSelect={this.onImageSelect} />
