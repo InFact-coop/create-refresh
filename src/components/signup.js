@@ -164,6 +164,7 @@ class Signup extends Component {
                   value={checked}
                   theme={theme}
                   onClick={this.clickCheckBox}
+                  required
                 />
                 <ConsentText theme={theme}>
                   I allow Create.Refresh to use my contact information to send
