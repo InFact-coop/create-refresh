@@ -25,5 +25,4 @@ def subscribe():
         "ip": get_ip()
     }
     response = mc.subscribe_list_member(new_user)
-    print(response)
     return jsonify(status=response["status"])
