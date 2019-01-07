@@ -22,6 +22,7 @@ def subscribe():
         "lname": request.form.get("lastname"),
         "country": request.form.get("country"),
         "social": request.form.get("socialmedia"),
+        "consent": request.form.get("checked"),
         "ip": get_ip()
     }
     response = mc.subscribe_list_member(new_user)

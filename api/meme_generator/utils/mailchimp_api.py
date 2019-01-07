@@ -21,7 +21,7 @@ class Mailchimp(object):
 
     def subscribe_list_member(self, user):
         """Add a new subscriber to the self.list_id mailing list and return response as JSON"""
-        subscribed = "subscribed" if user["checked"] else "unsubscribed"
+        subscribed = "subscribed" if user["consent"] else "unsubscribed"
         payload = {
             "email_address": user["email"],
             "status": subscribed,
