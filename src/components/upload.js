@@ -58,6 +58,7 @@ class Upload extends Component {
     cartoon: null,
     view: "",
     showMenu: false,
+    showShareModal: false,
   }
   validateImage = file => {
     if (!isValidFileType(file)) {
@@ -95,6 +96,8 @@ class Upload extends Component {
       view: "loading",
     })
 
+    const isMobile = window.innerWidth < 500
+
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
@@ -104,7 +107,7 @@ class Upload extends Component {
         setTimeout(
           () =>
             this.setState({
-              view: this.props.formCompleted ? "" : "form",
+              view: this.props.formCompleted ? "" : isMobile ? "" : "form",
               cartoon: `data:image/png;base64,${res.data.base64}`,
             }),
           3000
@@ -123,11 +126,20 @@ class Upload extends Component {
         console.log(err)
       })
   }
+  autoScrollToForm = () => {
+    const formTop = document
+      .querySelector("#form-section")
+      .getBoundingClientRect().top
+    window.scrollTo(0, formTop)
+  }
   seeMeme = () => {
     this.setState({ view: "" })
   }
   toggleMenu = () => {
     this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
+  }
+  toggleShareModal = () => {
+    this.setState(prevProps => ({ showShareModal: !prevProps.showShareModal }))
   }
   handleStartOver = () => {
     this.setState({
@@ -137,10 +149,20 @@ class Upload extends Component {
       error: "",
       cartoon: null,
       view: "",
+      showMenu: false,
+      showShareModal: false,
     })
   }
   render() {
-    const { file, fileURL, error, cartoon, view, showMenu } = this.state
+    const {
+      file,
+      fileURL,
+      error,
+      cartoon,
+      view,
+      showMenu,
+      showShareModal,
+    } = this.state
     const { submitForm } = this.props
 
     const UploadView = () => {
@@ -217,12 +239,16 @@ class Upload extends Component {
           <div className="flex flex-column justify-center items-center">
             <LinkToForm>
               Want to be part of the network to stop Article 13?{" "}
-              <a className="underline">Join now and save your memes!</a>
+              <a className="underline white" onClick={this.autoScrollToForm}>
+                Join now and save your memes!
+              </a>
             </LinkToForm>
             {cartoon ? (
               <ShareButtons
                 cartoon={cartoon}
                 handleStartOver={this.handleStartOver}
+                showShareModal={showShareModal}
+                toggleShare={this.toggleShareModal}
               />
             ) : (
               <UploadButton file={file} onImageSelect={this.onImageSelect} />

@@ -18,13 +18,16 @@ const Container = styled.div.attrs({
   background-position: bottom right;
   background-repeat: no-repeat;
   max-width: 797px;
+  @media (max-width: 30em) {
+    background-position: bottom left;
+  }
 `
 
 const Input = styled.input.attrs(({ theme }) => ({
   className: `${
     theme === "light"
-      ? "b--dark-pink dark-pink bg-pink"
-      : "b--light-pink light-pink bg-dark-pink"
+      ? "b--dark-pink dark-pink bg-transparent"
+      : "b--light-pink light-pink bg-transparent"
   } ba mv1 pt0-ns db pl2 bw1 w5-ns w-100 calibreMedium apercu-ns font-5`,
 }))`
   &::placeholder {
@@ -116,7 +119,7 @@ class Signup extends Component {
     const { theme, view, submitForm, seeMeme, display } = this.props
     return (
       <div className={display}>
-        <Section view={view}>
+        <Section view={view} id="form-section">
           <Container theme={theme}>
             <form>
               <Input

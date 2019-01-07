@@ -8,13 +8,15 @@ import Video from "../components/video"
 import Signup from "../components/signup"
 import Faq from "../components/faq"
 import Footer from "../components/footer"
-import axios from "axios"
-
 import encode from "../utils/encode"
+import appendTrackingScripts from "../utils/trackingScripts"
 
 class IndexPage extends Component {
   state = {
     formCompleted: false,
+  }
+  componentDidMount() {
+    appendTrackingScripts()
   }
   submitForm = data => {
     this.setState(
