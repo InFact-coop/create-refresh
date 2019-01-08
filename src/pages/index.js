@@ -8,8 +8,8 @@ import Video from "../components/video"
 import Signup from "../components/signup"
 import Faq from "../components/faq"
 import Footer from "../components/footer"
+import encode from "../utils/encode"
 import appendTrackingScripts from "../utils/trackingScripts"
-// import axios from "axios"
 
 class IndexPage extends Component {
   state = {
@@ -27,11 +27,20 @@ class IndexPage extends Component {
     )
   }
   postData = data => {
-    // Mailchimp connection to go here
-    // axios.post("/", data)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+    // post user information to proxy Mailchimp server
+    const URIdata = encode({ ...data })
+    fetch("http://127.0.0.1:5000/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: URIdata,
+    })
+      .then(response => this.setState({ submitted: response.json() }))
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: true })
+      })
   }
+
   render() {
     const { formCompleted } = this.state
     return (

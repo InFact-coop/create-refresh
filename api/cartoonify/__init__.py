@@ -41,7 +41,9 @@ def cartoonify(path):
     path = Path(path)
     if str(path) != '.' or 'exit':
         app.process(str(path), top_x=3)
-        return app.save_results()
+        path = app.save_results()
+        app.close()
+        return path
     else:
         app.close()
         return "Error"
