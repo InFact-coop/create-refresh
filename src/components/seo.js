@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-function SEO({ description, lang, title }) {
+function SEO({ lang, title, image }) {
   return (
     <Helmet
       htmlAttributes={{
@@ -9,9 +9,10 @@ function SEO({ description, lang, title }) {
       }}
       title="EU Compliant meme generator"
       meta={[
+        { name: "title", content: "EU Compliant meme generator" },
         {
           name: "description",
-          content: "EU Compliant meme generator",
+          content: "Make sure your memes survive Article 13!",
         },
         {
           property: "og:title",
@@ -23,7 +24,7 @@ function SEO({ description, lang, title }) {
         },
         {
           property: "og:description",
-          content: description,
+          content: "Make sure your memes survive Article 13!",
         },
         {
           name: "twitter:card",
@@ -33,10 +34,22 @@ function SEO({ description, lang, title }) {
           name: "twitter:creator",
           content: "create-refresh",
         },
+        { name: "twitter:title", content: "EU Compliant Meme Generator" },
         {
-          name: "image",
+          name: "twitter:description",
+          content: "Make sure your memes survive Article 13!",
+        },
+        {
+          name: "twitter:image",
+          content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
+        },
+        {
           property: "og:image",
-          content: "https://i.imgflip.com/2ilji1.jpg",
+          content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
+        },
+        {
+          property: "og:image:secure_url",
+          content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
         },
         {
           property: "og:url",
@@ -44,12 +57,17 @@ function SEO({ description, lang, title }) {
         },
         {
           property: "og:image:height",
-          content: "600",
+          content: "630",
         },
         {
           property: "og:image:width",
-          content: "600",
+          content: "1200",
         },
+        {
+          property: "og:locale",
+          content: "en",
+        },
+        { name: "robots", content: "index" },
       ]}
     />
   )
