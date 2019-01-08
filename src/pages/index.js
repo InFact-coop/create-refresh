@@ -101,8 +101,16 @@ class IndexPage extends Component {
     }
   }
   sendImage = () => {
+    const isMobile = window.innerWidth < 500
+
+    const viewToShow = () => {
+      if (this.props.formCompleted) return "loading"
+      else if (!this.props.formCompleted && isMobile) return "loading"
+      return "form"
+    }
+
     this.setState({
-      view: "loading",
+      view: viewToShow(),
     })
 
     const data = new FormData()
@@ -140,7 +148,7 @@ class IndexPage extends Component {
   }
 
   seeMeme = () => {
-    this.setState({ view: "" })
+    this.setState({ view: "loading" })
   }
 
   toggleMenu = () => {
