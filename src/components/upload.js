@@ -101,12 +101,14 @@ class Upload extends Component {
   sendImage = () => {
     const isMobile = window.innerWidth < 500
 
+    const viewToShow = () => {
+      if (this.props.formCompleted) return "loading"
+      else if (!this.props.formCompleted && isMobile) return "loading"
+      return "form"
+    }
+
     this.setState({
-      view: this.props.formCompleted
-        ? "loading"
-        : isMobile
-        ? "loading"
-        : "form",
+      view: viewToShow(),
     })
 
     const data = new FormData()
