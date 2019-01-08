@@ -60,6 +60,13 @@ class Upload extends Component {
     showMenu: false,
     showShareModal: false,
   }
+
+  componentDidUpdate() {
+    if (this.state.view === "loading" && this.state.cartoon) {
+      setTimeout(() => this.setState({ view: "" }), 3000)
+    }
+  }
+
   validateImage = file => {
     if (!isValidFileType(file)) {
       this.setState({
@@ -92,11 +99,15 @@ class Upload extends Component {
     }
   }
   sendImage = () => {
-    this.setState({
-      view: "loading",
-    })
-
     const isMobile = window.innerWidth < 500
+
+    this.setState({
+      view: this.props.formCompleted
+        ? "loading"
+        : isMobile
+        ? "loading"
+        : "form",
+    })
 
     const data = new FormData()
     const { file, fileName } = this.state
@@ -104,14 +115,9 @@ class Upload extends Component {
     axios
       .post(endpoint, data)
       .then(res => {
-        setTimeout(
-          () =>
-            this.setState({
-              view: this.props.formCompleted ? "" : isMobile ? "" : "form",
-              cartoon: `data:image/png;base64,${res.data.base64}`,
-            }),
-          3000
-        )
+        this.setState({
+          cartoon: `data:image/png;base64,${res.data.base64}`,
+        })
       })
       .catch(err => {
         setTimeout(
@@ -126,6 +132,7 @@ class Upload extends Component {
         console.log(err)
       })
   }
+
   autoScrollToForm = () => {
     const formTop = document
       .querySelector("#form-section")
@@ -133,7 +140,7 @@ class Upload extends Component {
     window.scrollTo(0, formTop)
   }
   seeMeme = () => {
-    this.setState({ view: "" })
+    this.setState({ view: "loading" })
   }
   toggleMenu = () => {
     this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
@@ -141,6 +148,7 @@ class Upload extends Component {
   toggleShareModal = () => {
     this.setState(prevProps => ({ showShareModal: !prevProps.showShareModal }))
   }
+
   handleStartOver = () => {
     this.setState({
       file: null,
@@ -189,7 +197,7 @@ class Upload extends Component {
         case "loading":
           return <Loading />
         default:
-          if (cartoon) {
+          if (cartoon && view === "") {
             return (
               <ImagesSidebyside>
                 <Image src={fileURL} alt="original image" />
@@ -243,7 +251,7 @@ class Upload extends Component {
                 Join now and save your memes!
               </a>
             </LinkToForm>
-            {cartoon ? (
+            {cartoon && view === "" ? (
               <ShareButtons
                 cartoon={cartoon}
                 handleStartOver={this.handleStartOver}

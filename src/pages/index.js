@@ -15,9 +15,11 @@ class IndexPage extends Component {
   state = {
     formCompleted: false,
   }
+  //eslint-disable-next-line
   componentDidMount() {
     appendTrackingScripts()
   }
+
   submitForm = data => {
     this.setState(
       {
@@ -26,6 +28,7 @@ class IndexPage extends Component {
       this.postData(data)
     )
   }
+
   postData = data => {
     // post user information to proxy Mailchimp server
     const URIdata = encode({ ...data })
