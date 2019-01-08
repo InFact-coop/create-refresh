@@ -46,8 +46,6 @@ const Loading = () => (
 )
 
 class Upload extends Component {
-  //eslint-disable-next-line
-
   autoScrollToForm = () => {
     const formTop = document
       .querySelector("#form-section")
@@ -118,7 +116,7 @@ class Upload extends Component {
         case "loading":
           return <Loading />
         default:
-          if (cartoon) {
+          if (cartoon && view === "") {
             return (
               <ImagesSidebyside>
                 <Image src={fileURL} alt="original image" />
@@ -172,7 +170,7 @@ class Upload extends Component {
                 Join now and save your memes!
               </a>
             </LinkToForm>
-            {cartoon ? (
+            {cartoon && view === "" ? (
               <ShareButtons
                 cartoon={cartoon}
                 handleStartOver={handleStartOver}

@@ -15,7 +15,7 @@ import fileNameFormatter from "../utils/fileNameFormat"
 import isValidFileType from "../utils/isValidFileType"
 import { insertTwitter, insertFacebook } from "../utils/socialScripts"
 
-// import axios from "axios"
+import encode from "../utils/encode"
 
 const endpoint = "http://localhost:5000/upload"
 
@@ -31,12 +31,17 @@ class IndexPage extends Component {
     showShareModal: false,
     formCompleted: false,
   }
-
   //eslint-disable-next-line
   componentDidMount() {
     appendTrackingScripts()
     insertTwitter()
     insertFacebook()
+  }
+
+  componentDidUpdate() {
+    if (this.state.view === "loading" && this.state.cartoon) {
+      setTimeout(() => this.setState({ view: "" }), 3000)
+    }
   }
 
   submitForm = data => {
@@ -49,10 +54,18 @@ class IndexPage extends Component {
   }
 
   postData = data => {
-    // Mailchimp connection to go here
-    // axios.post("/", data)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+    // post user information to proxy Mailchimp server
+    const URIdata = encode({ ...data })
+    fetch("http://127.0.0.1:5000/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: URIdata,
+    })
+      .then(response => this.setState({ submitted: response.json() }))
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: true })
+      })
   }
 
   validateImage = file => {

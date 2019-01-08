@@ -18,13 +18,16 @@ const Container = styled.div.attrs({
   background-position: bottom right;
   background-repeat: no-repeat;
   max-width: 797px;
+  @media (max-width: 30em) {
+    background-position: bottom left;
+  }
 `
 
 const Input = styled.input.attrs(({ theme }) => ({
   className: `${
     theme === "light"
-      ? "b--dark-pink dark-pink bg-pink"
-      : "b--light-pink light-pink bg-dark-pink"
+      ? "b--dark-pink dark-pink bg-transparent"
+      : "b--light-pink light-pink bg-transparent"
   } ba mv1 pt0-ns db pl2 bw1 w5-ns w-100 calibreMedium apercu-ns font-5`,
 }))`
   &::placeholder {
@@ -161,9 +164,11 @@ class Signup extends Component {
               />
               <div className="flex items-center w5-ns w-100 mv2">
                 <Checkbox
+                  name="consent"
                   value={checked}
                   theme={theme}
                   onClick={this.clickCheckBox}
+                  required
                 />
                 <ConsentText theme={theme}>
                   I allow Create.Refresh to use my contact information to send
