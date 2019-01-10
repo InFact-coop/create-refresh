@@ -67,7 +67,7 @@ class Upload extends Component {
     link.target = "_blank"
     link.class = "fb-xfbml-parse-ignore"
     link.style.display = "none"
-    link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com;src=sdkpreparse`
+    link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&src=sdkpreparse`
 
     document.body.appendChild(link)
     link.click()
