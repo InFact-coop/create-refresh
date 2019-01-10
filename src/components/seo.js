@@ -57,7 +57,7 @@ function SEO({ lang, title, image }) {
         },
         {
           property: "og:url",
-          content: "http://compliantmemegenerator.eu",
+          content: "https://eu-compliant-meme-generator.netlify.com/",
         },
         {
           property: "og:image:height",
