@@ -132,7 +132,7 @@ const DesktopNav = ({ view }) => (
             view={view}
           />
         </a>
-        <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20EU%20Compliant%20Meme%20Generator%20here!&url=http://compliantmemegenerator.eu/">
+        <a href="https://twitter.com/intent/tweet">
           <SocialIcon
             src={view === "form" ? twitterPink : twitter}
             alt="twitter"
