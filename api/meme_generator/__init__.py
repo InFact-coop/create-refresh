@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
+from utils.get_dataset import Dataset
 
 
 APP_ROOT = os.path.join(os.path.dirname(__file__), '..')
@@ -17,7 +18,9 @@ def create_app(test_config=None):
     CORS(app)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        UPLOAD_FOLDER='uploads',
+        UPLOAD_FOLDER=os.getenv("UPLOAD_FOLDER"),
+        MODEL_FOLDER=os.getenv("MODEL_FOLDER"),
+        DATASET_FOLDER=os.getenv("DATASET_FOLDER"),
         ALLOWED_EXTENSIONS=set(['png', 'jpg', 'jpeg']),
         MAILCHIMP_API_KEY=os.getenv("MAILCHIMP_API_KEY"),
         MAILCHIMP_LIST=os.getenv("MAILCHIMP_LIST")
@@ -37,6 +40,13 @@ def create_app(test_config=None):
                                  app.config['UPLOAD_FOLDER']))
     except OSError:
         pass
+
+    dataset = Dataset(app.config['MODEL_FOLDER'],
+                      app.config["DATASET_FOLDER"],
+                      app.config["UPLOAD_FOLDER"],
+                      os.path.join(app.root_path, "utils/categories.txt"),
+                      logging=app.logger)
+    dataset.check()
 
     # register our api blueprints
     from . import api, mailchimp
