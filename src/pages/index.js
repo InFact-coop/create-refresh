@@ -13,7 +13,6 @@ import Footer from "../components/footer"
 import appendTrackingScripts from "../utils/trackingScripts"
 import fileNameFormatter from "../utils/fileNameFormat"
 import isValidFileType from "../utils/isValidFileType"
-import { insertTwitter, insertFacebook } from "../utils/socialScripts"
 
 import encode from "../utils/encode"
 
@@ -34,8 +33,6 @@ class IndexPage extends Component {
   //eslint-disable-next-line
   componentDidMount() {
     appendTrackingScripts()
-    insertTwitter()
-    insertFacebook()
   }
 
   componentDidUpdate() {
