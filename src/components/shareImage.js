@@ -37,10 +37,10 @@ const Triangle = styled.div.attrs({
 
 const ShareModal = () => (
   <SpeechBubble>
-    <Link href="">
+    <Link className="data-fb" href="">
       <ShareIcon src={facebookFilled} alt="share on facebook" />
     </Link>
-    <Link href="">
+    <Link className="data-tw" href="">
       <ShareIcon src={twitterFilled} alt="share on twitter" />
     </Link>
     <Triangle />

@@ -21,7 +21,7 @@ const endpoint = "http://localhost:5000/upload"
 
 const ImagesSidebyside = styled.div.attrs({
   className:
-    "flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
+    "data-view flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
 })``
 
 const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
@@ -33,7 +33,7 @@ const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
 `
 
 const ShowMeMeme = styled.a.attrs({
-  className: "apercu dark-pink font-5 pt2 pb3",
+  className: "apercu dark-pink font-5 pt2 pb3 data-view",
 })`
   &:hover {
     text-decoration: underline;
