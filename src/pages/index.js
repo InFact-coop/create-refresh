@@ -181,11 +181,7 @@ class IndexPage extends Component {
     } = this.state
     return (
       <Layout>
-        <SEO
-          image={fileURL}
-          title="Home"
-          keywords={["gatsby", "application", "react"]}
-        />
+        <SEO title="Home" keywords={["gatsby", "application", "react"]} />
         <Upload
           file={file}
           fileURL={fileURL}

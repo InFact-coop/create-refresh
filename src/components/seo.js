@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-function SEO({ lang, title, image }) {
+function SEO({ lang, title }) {
   return (
     <Helmet
       htmlAttributes={{
@@ -40,7 +40,7 @@ function SEO({ lang, title, image }) {
         {
           name: "og:image",
           property: "og:image",
-          content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
+          content: "https://i.imgflip.com/2ilji1.jpg",
         },
         {
           property: "og:image:type",
@@ -48,7 +48,7 @@ function SEO({ lang, title, image }) {
         },
         {
           property: "og:image:secure_url",
-          content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
+          content: "https://i.imgflip.com/2ilji1.jpg",
         },
         {
           property: "og:url",
