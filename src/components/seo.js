@@ -37,10 +37,6 @@ function SEO({ lang, title, image }) {
           name: "twitter:description",
           content: "Make sure your memes survive Article 13!",
         },
-        // {
-        //   name: "twitter:image",
-        //   content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
-        // },
         {
           name: "og:image",
           property: "og:image",
@@ -57,7 +53,7 @@ function SEO({ lang, title, image }) {
         {
           property: "og:url",
           name: "og:url",
-          content: "https://google.com",
+          content: "https://eu-compliant-meme-generator.netlify.com/",
         },
         {
           property: "og:image:height",
