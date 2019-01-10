@@ -23,6 +23,10 @@ function SEO({ lang, title, image }) {
           content: "website",
         },
         {
+          property: "fb:app_id",
+          content: "1627837104015374",
+        },
+        {
           property: "og:description",
           content: "Make sure your memes survive Article 13!",
         },
