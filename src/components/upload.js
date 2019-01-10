@@ -21,7 +21,7 @@ const endpoint = "http://localhost:5000/upload"
 
 const ImagesSidebyside = styled.div.attrs({
   className:
-    "flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
+    "data-view flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
 })``
 
 const Image = styled.div.attrs({ className: "ma2 image-comparison" })`

@@ -174,6 +174,7 @@ class Signup extends Component {
                 </ConsentText>
               </div>
               <FormButton
+                className="data-signup"
                 type="button"
                 theme={theme}
                 onClick={() => {

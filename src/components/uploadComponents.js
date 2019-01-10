@@ -149,7 +149,7 @@ const MobileNav = ({ showMenu, toggleMenu }) => (
 const UploadButton = ({ file, onImageSelect }) => (
   <ButtonHolder display="justify-center">
     <form>
-      <RedButton type="button">
+      <RedButton className="data-upload" type="button">
         <label htmlFor="buttonUpload">Upload</label>
       </RedButton>
       <FileInput
