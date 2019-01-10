@@ -48,6 +48,7 @@ function SEO({ lang, title, image }) {
           content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
         },
         {
+          name: "og:image",
           property: "og:image",
           content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
         },
