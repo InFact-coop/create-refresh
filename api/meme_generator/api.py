@@ -3,9 +3,9 @@ from flask import (current_app, Blueprint, request,
 import os
 from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
-
 from .image_convert import convert_to_base64
 from .image_watermark import add_watermark
+from utils.handle_files import hash_filename, cleanup_files
 
 # import application context and declare new blueprint
 app = current_app
@@ -27,17 +27,22 @@ def upload():
     file = request.files['file']
 
     if file and allowed_file(file.filename):
+
         filename = secure_filename(file.filename)
-        path = os.path.join(
-            app.instance_path, app.config['UPLOAD_FOLDER'], filename)
-        print("Going to upload the file now!")
+        uploaded_file_path = os.path.join(
+            app.config['UPLOAD_FOLDER'], filename)
 
-        file.save(path)
+        file.save(uploaded_file_path)
         file.close()
-        cartoon_path = cartoonify(path)
-        watermark_path = os.path.join(str(cartoon_path) + "_watermark.png")
-        add_watermark(str(cartoon_path), os.path.join(
-            app.root_path, "eu-compliant-watermark.png"), watermark_path)
 
-        print("Going to send a response now!")
-        return jsonify(status=200, base64=convert_to_base64(str(watermark_path)))
+        cartoon_file = cartoonify(
+            uploaded_file_path, app.config["DATASET_FOLDER"], os.path.join(app.config["MODEL_FOLDER"], "frozen_inference_graph.pb"))
+
+        watermarked_file_path = hash_filename(
+            location=app.config['UPLOAD_FOLDER'], ext="png")
+
+        add_watermark(str(cartoon_file), os.path.join(
+            app.root_path, "eu-compliant-watermark.png"), watermarked_file_path)
+
+        cleanup_files([uploaded_file_path, cartoon_file])
+        return jsonify(status=200, base64=convert_to_base64(str(watermarked_file_path)))

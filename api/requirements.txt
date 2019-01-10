@@ -8,7 +8,7 @@ backports.functools-lru-cache==1.5
 backports.weakref==1.0.post1
 bleach==1.5.0
 cairocffi==0.9.0
--e git+git@github.com:InFact-coop/create-refresh.git@ff0ff4836b1896a213944bf81ef721f95202e2d3#egg=cartoonify&subdirectory=api/cartoonify
+-e git+git@github.com:InFact-coop/create-refresh.git@84a1f2d4a5a6ac4255039a01a6678b84b0dc6254#egg=cartoonify&subdirectory=api/cartoonify
 certifi==2018.11.29
 cffi==1.11.5
 chardet==3.0.4
@@ -51,7 +51,6 @@ pylint==1.9.3
 pypng==0.0.18
 pytest==4.0.2
 python-dotenv==0.10.1
-remi==2018.12
 requests==2.21.0
 scandir==1.9.0
 singledispatch==3.4.0.3

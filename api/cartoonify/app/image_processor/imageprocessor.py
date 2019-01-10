@@ -1,19 +1,15 @@
 import numpy as np
 import os
 import six.moves.urllib as urllib
-import tarfile
 import tensorflow as tf
 from PIL import Image
 from app.object_detection import label_map_util
-# from app.object_detection import visualization_utils as vis_util
-import logging
 from pathlib import Path
 import click
+import logging
 
 
 root = Path(__file__).parent
-tensorflow_model_name = 'ssd_mobilenet_v1_coco_2017_11_17'
-model_path = root / '..' / '..' / 'downloads' / 'detection_models' / tensorflow_model_name / 'frozen_inference_graph.pb'
 
 class ImageProcessor(object):
     """performs object detection on an image
@@ -44,26 +40,10 @@ class ImageProcessor(object):
 
     def setup(self):
         self._logger = logging.getLogger(self.__class__.__name__)
-        if not Path(self._path_to_model).exists():
-            if click.confirm('no object detection model available, would you like to download the model? '
-                             'download will take approx 100mb of space'):
-                self.download_model(self._download_url, self._model_name + '.tar.gz')
         self.load_model(self._path_to_model)
         self._labels = self.load_labels(self._path_to_labels)
         # run a detection once, because first model run is always slow
         self.detect(np.ones((150, 150, 3), dtype=np.uint8))
-
-    def download_model(self, url, filename):
-        """download a model file from the url and unzip it
-        """
-        self._logger.info('downloading model: {}'.format(filename))
-        opener = urllib.request.URLopener()
-        opener.retrieve(url + filename, filename)
-        tar_file = tarfile.open(filename)
-        for file in tar_file.getmembers():
-            file_name = os.path.basename(file.name)
-            if 'frozen_inference_graph.pb' in file_name:
-                tar_file.extract(file, path=str(Path(self._path_to_model).parents[1]))
 
     def load_model(self, path):
         """load saved model from protobuf file
