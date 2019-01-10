@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Upload from "../components/upload"
@@ -31,8 +31,9 @@ class IndexPage extends Component {
 
   postData = data => {
     // post user information to proxy Mailchimp server
+    const backend = this.props.data.site.siteMetadata.backend
     const URIdata = encode({ ...data })
-    fetch("http://127.0.0.1:5000/subscribe", {
+    fetch(`${backend}/subscribe`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: URIdata,
@@ -45,11 +46,16 @@ class IndexPage extends Component {
   }
 
   render() {
+    const backend = this.props.data.site.siteMetadata.backend
     const { formCompleted } = this.state
     return (
       <Layout>
         <SEO title="Home" keywords={["gatsby", "application", "react"]} />
-        <Upload formCompleted={formCompleted} submitForm={this.submitForm} />
+        <Upload
+          backend={backend}
+          formCompleted={formCompleted}
+          submitForm={this.submitForm}
+        />
         <Info />
         <Video />
         <Signup theme="light" submitForm={this.submitForm} />
@@ -59,5 +65,15 @@ class IndexPage extends Component {
     )
   }
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        backend
+      }
+    }
+  }
+`
 
 export default IndexPage

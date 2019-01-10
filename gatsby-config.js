@@ -3,6 +3,7 @@ module.exports = {
     title: "EU Compliant Meme Generator",
     description: "Turn your dreams into memes",
     author: "@infact-coop",
+    backend: "127.0.0.1:5500", // do not add trailing slash
   },
   plugins: [
     "gatsby-plugin-react-helmet",

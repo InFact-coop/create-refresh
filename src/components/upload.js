@@ -17,8 +17,6 @@ import {
 } from "./uploadComponents"
 import SignUp from "./signup"
 
-const endpoint = "http://localhost:5000/upload"
-
 const ImagesSidebyside = styled.div.attrs({
   className:
     "flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
@@ -115,8 +113,9 @@ class Upload extends Component {
     const { file, fileName } = this.state
     data.set("file", file, fileName)
     axios
-      .post(endpoint, data)
+      .post(`${this.props.backend}/upload`, data)
       .then(res => {
+        console.log(this.props.backend)
         this.setState({
           cartoon: `data:image/png;base64,${res.data.base64}`,
         })
