@@ -15,6 +15,7 @@ function SEO({ lang, title, image }) {
           content: "Make sure your memes survive Article 13!",
         },
         {
+          name: "og:title",
           property: "og:title",
           content: title,
         },
@@ -23,34 +24,31 @@ function SEO({ lang, title, image }) {
           content: "website",
         },
         {
-          property: "fb:app_id",
-          content: "1627837104015374",
-        },
-        {
           property: "og:description",
+          name: "og:description",
           content: "Make sure your memes survive Article 13!",
         },
         {
           name: "twitter:card",
           content: "summary_large_image",
         },
-        {
-          name: "twitter:creator",
-          content: "create-refresh",
-        },
         { name: "twitter:title", content: "EU Compliant Meme Generator" },
         {
           name: "twitter:description",
           content: "Make sure your memes survive Article 13!",
         },
-        {
-          name: "twitter:image",
-          content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
-        },
+        // {
+        //   name: "twitter:image",
+        //   content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
+        // },
         {
           name: "og:image",
           property: "og:image",
           content: image === null ? "https://i.imgflip.com/2ilji1.jpg" : image,
+        },
+        {
+          property: "og:image:type",
+          content: "image/jpg",
         },
         {
           property: "og:image:secure_url",
@@ -58,7 +56,8 @@ function SEO({ lang, title, image }) {
         },
         {
           property: "og:url",
-          content: "https://eu-compliant-meme-generator.netlify.com/",
+          name: "og:url",
+          content: "https://google.com",
         },
         {
           property: "og:image:height",
@@ -70,6 +69,7 @@ function SEO({ lang, title, image }) {
         },
         {
           property: "og:locale",
+          name: "og:locale",
           content: "en",
         },
         { name: "robots", content: "index" },
