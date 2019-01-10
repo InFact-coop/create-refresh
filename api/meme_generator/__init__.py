@@ -4,6 +4,7 @@ from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
 from utils.get_dataset import Dataset
+from utils.handle_files import hash_filename
 
 
 APP_ROOT = os.path.join(os.path.dirname(__file__), '..')

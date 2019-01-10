@@ -5,6 +5,7 @@ from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 from .image_convert import convert_to_base64
 from .image_watermark import add_watermark
+from utils.handle_files import hash_filename
 
 # import application context and declare new blueprint
 app = current_app
@@ -34,9 +35,14 @@ def upload():
         file.close()
         cartoon_path = cartoonify(
             path, app.config["DATASET_FOLDER"], os.path.join(app.config["MODEL_FOLDER"], "frozen_inference_graph.pb"))
-        watermark_path = os.path.join(str(cartoon_path) + "_watermark.png")
+
+        watermark_path = os.path.join(
+            app.config['UPLOAD_FOLDER'], hash_filename() + ".png")
         add_watermark(str(cartoon_path), os.path.join(
             app.root_path, "eu-compliant-watermark.png"), watermark_path)
+
+        os.remove(path)
+        os.remove(str(cartoon_path))
 
         print("Going to send a response now!")
         return jsonify(status=200, base64=convert_to_base64(str(watermark_path)))

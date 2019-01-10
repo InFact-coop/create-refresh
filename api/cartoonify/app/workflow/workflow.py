@@ -6,6 +6,8 @@ import logging
 from app.sketch import SketchGizeh
 import subprocess
 from csv import writer
+import time
+from random import randint
 
 
 class Workflow(object):
@@ -74,7 +76,7 @@ class Workflow(object):
         :return tuple: (path to annotated image, path to cartoon image)
         """
         self._logger.info('saving results...')
-        cartoon_path = self._image_path.with_name('cartoon' + str(self.count) + '.png')
+        cartoon_path = self._image_path.with_name('cartoon' + str(int(time.time() * randint(1, 10))) + '.png')
         self._sketcher.save_png(cartoon_path)
         return cartoon_path
 
