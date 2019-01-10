@@ -3,7 +3,6 @@ from flask import (current_app, Blueprint, request,
 import os
 from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
-
 from .image_convert import convert_to_base64
 from .image_watermark import add_watermark
 
@@ -28,13 +27,13 @@ def upload():
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        path = os.path.join(
-            app.instance_path, app.config['UPLOAD_FOLDER'], filename)
+        path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         print("Going to upload the file now!")
 
         file.save(path)
         file.close()
-        cartoon_path = cartoonify(path)
+        cartoon_path = cartoonify(
+            path, app.config["DATASET_FOLDER"], os.path.join(app.config["MODEL_FOLDER"], "frozen_inference_graph.pb"))
         watermark_path = os.path.join(str(cartoon_path) + "_watermark.png")
         add_watermark(str(cartoon_path), os.path.join(
             app.root_path, "eu-compliant-watermark.png"), watermark_path)

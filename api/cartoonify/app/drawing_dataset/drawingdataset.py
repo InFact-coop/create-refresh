@@ -27,7 +27,7 @@ class DrawingDataset(object):
                 self._category_mapping = reader.read()
         except IOError as e:
             self._logger.exception(e)
-            print('label_mapping.jsonl not found')
+            print('label_mapping.jsonl not found at ' + self._category_mapping_filepath)
             raise e
         self._categories = self.load_categories(self._path)
         if not self._categories:

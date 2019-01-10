@@ -76,3 +76,6 @@ class Dataset(object):
                 f.write(response.content)
 
         return response.status_code
+
+    def get_model_path(self):
+        return self.model_path
