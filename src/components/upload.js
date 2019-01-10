@@ -67,9 +67,7 @@ class Upload extends Component {
     link.target = "_blank"
     link.class = "fb-xfbml-parse-ignore"
     link.style.display = "none"
-    const imgUrl =
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tree_in_field_during_extreme_cold_with_frozen_fog.png/239px-Tree_in_field_during_extreme_cold_with_frozen_fog.png"
-    link.href = `https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcompliantmemegenerator.eu&picture=${imgUrl}%2F&amp;src=sdkpreparse`
+    link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com;src=sdkpreparse`
 
     document.body.appendChild(link)
     link.click()
