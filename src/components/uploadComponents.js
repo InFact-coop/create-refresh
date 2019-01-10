@@ -44,7 +44,7 @@ const ButtonHolder = styled.div.attrs(({ display }) => ({
 `
 
 const FileInput = styled.input.attrs({
-  className: "",
+  className: "data-upload",
 })`
   width: 0.1px;
   height: 0.1px;
@@ -157,7 +157,7 @@ const MobileNav = ({ showMenu, toggleMenu }) => (
 const UploadButton = ({ file, onImageSelect }) => (
   <ButtonHolder display="justify-center">
     <form>
-      <RedButton type="button">
+      <RedButton className="data-upload" type="button">
         <label htmlFor="buttonUpload">Upload</label>
       </RedButton>
       <FileInput
@@ -186,7 +186,7 @@ const ShareButtons = props => (
     </RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <a href={props.cartoon} download="eu-compliant-meme" className="dn db-ns">
-      <RedButton>Save</RedButton>
+      <RedButton className="data-save">Save</RedButton>
     </a>
   </ButtonHolder>
 )

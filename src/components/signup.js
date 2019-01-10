@@ -59,7 +59,7 @@ const Checkbox = styled.div.attrs(({ theme }) => ({
 const FormButton = styled.button.attrs(({ theme }) => ({
   className: `${
     theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
-  } bn ph2 tc calibreMedium apercu-ns font-5 ma0-ns mv3`,
+  } bn ph2 tc calibreMedium apercu-ns font-5 ma0-ns mv3 data-signup`,
 }))`
   width: 184px;
   height: 40px;
@@ -176,6 +176,7 @@ class Signup extends Component {
                 </ConsentText>
               </div>
               <FormButton
+                className="data-signup"
                 type="button"
                 theme={theme}
                 onClick={() => {
