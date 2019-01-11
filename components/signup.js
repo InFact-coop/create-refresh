@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import bitSteps from "../assets/images/8bit.svg"
+import bitSteps from "../static/images/8bit.svg"
 import CountrySelect from "./countrySelect"
 
 const Section = styled.section.attrs(({ view }) => ({

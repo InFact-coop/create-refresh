@@ -11,6 +11,8 @@ import Footer from "../components/footer"
 import encode from "../utils/encode"
 import appendTrackingScripts from "../utils/trackingScripts"
 
+import "../styles/index.css"
+
 class IndexPage extends Component {
   state = {
     formCompleted: false,
@@ -39,6 +41,7 @@ class IndexPage extends Component {
     })
       .then(response => this.setState({ submitted: response.json() }))
       .catch(error => {
+        //eslint-disable-next-line
         console.log(error)
         this.setState({ error: true })
       })

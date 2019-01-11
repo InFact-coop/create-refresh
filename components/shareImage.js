@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import twitterFilled from "../assets/images/tw_hamburger.svg"
-import facebookFilled from "../assets/images/fb_hamburger.svg"
+import twitterFilled from "../static/images/tw_hamburger.svg"
+import facebookFilled from "../static/images/fb_hamburger.svg"
 
 const SpeechBubble = styled.div.attrs({
   className:
