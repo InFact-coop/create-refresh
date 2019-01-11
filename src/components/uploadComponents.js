@@ -121,16 +121,24 @@ const DesktopNav = ({ view }) => (
       </Link>
       <GifLogo src={gifLogo} alt="main logo" />
       <Socials>
-        <SocialIcon
-          src={view === "form" ? facebookPink : facebook}
-          alt="facebook"
-          view={view}
-        />
-        <SocialIcon
-          src={view === "form" ? twitterPink : twitter}
-          alt="twitter"
-          view={view}
-        />
+        <a
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&amp;src=sdkpreparse"
+          className="fb-xfbml-parse-ignore"
+        >
+          <SocialIcon
+            src={view === "form" ? facebookPink : facebook}
+            alt="facebook"
+            view={view}
+          />
+        </a>
+        <a href="https://twitter.com/intent/tweet">
+          <SocialIcon
+            src={view === "form" ? twitterPink : twitter}
+            alt="twitter"
+            view={view}
+          />
+        </a>
       </Socials>
     </NavContainer>
   </div>
@@ -169,7 +177,12 @@ const ShareButtons = props => (
   <ButtonHolder display="justify-between">
     <RedButton className="relative" onClick={props.toggleShare}>
       Share
-      {props.showShareModal && <ShareModal />}
+      {props.showShareModal && (
+        <ShareModal
+          shareImageOnTwitter={props.shareImageOnTwitter}
+          shareImageOnFacebook={props.shareImageOnFacebook}
+        />
+      )}
     </RedButton>
     <RedButton onClick={props.handleStartOver}>Start Over</RedButton>
     <a href={props.cartoon} download="eu-compliant-meme" className="dn db-ns">

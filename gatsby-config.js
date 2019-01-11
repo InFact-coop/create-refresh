@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "EU Compliant Meme Generator",
     description: "Turn your dreams into memes",
-    author: "@infact-coop",
+    author: "@createrefresh",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

@@ -35,12 +35,12 @@ const Triangle = styled.div.attrs({
   clip-path: polygon(0 0, 50% 100%, 100% 0);
 `
 
-const ShareModal = () => (
+const ShareModal = ({ shareImageOnTwitter, shareImageOnFacebook }) => (
   <SpeechBubble>
-    <Link className="data-fb" href="">
+    <Link className="data-fb" onClick={shareImageOnFacebook}>
       <ShareIcon src={facebookFilled} alt="share on facebook" />
     </Link>
-    <Link className="data-tw" href="">
+    <Link className="data-tw" onClick={shareImageOnTwitter}>
       <ShareIcon src={twitterFilled} alt="share on twitter" />
     </Link>
     <Triangle />
