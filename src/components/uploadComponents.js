@@ -148,10 +148,10 @@ const DesktopNav = ({ view }) => (
 const MobileNav = ({ showMenu, toggleMenu }) => (
   <div className="dn-ns db w-100 mb1">
     <Hamburger showMenu={showMenu} toggleMenu={toggleMenu} />
-    <NavContainer className="pr2">
+    <div className="flex justify-between w-100 pr2">
       <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
       <img className="w-75 mv1" src={logoMobile} alt="main logo" />
-    </NavContainer>
+    </div>
   </div>
 )
 
