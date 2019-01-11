@@ -116,7 +116,7 @@ const GifLogo = styled.img.attrs({
 const DesktopNav = ({ view }) => (
   <div className="db-ns dn w-100 mb1">
     <NavContainer>
-      <Link href="http://createrefresh.eu" view={view}>
+      <Link target="_blank" href="http://createrefresh.eu" view={view}>
         More info
       </Link>
       <GifLogo src={gifLogo} alt="main logo" />
