@@ -45,8 +45,6 @@ const License = styled(GridElement).attrs(({ className }) => ({
   }
 `
 
-const Credits = styled(License).attrs({ className: `center` })``
-
 const Social = styled(GridElement).attrs(({ className }) => ({
   className: `${className} mh3 mh0-ns mb2 mb0-ns font-7 font-6-ns flex flex-column bg-dark-gray pb2 ph4 white`,
 }))`
