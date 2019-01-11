@@ -1,8 +1,6 @@
 import React, { Component } from "react"
-import axios from "axios"
-import fileNameFormatter from "../utils/fileNameFormat"
 import styled from "styled-components"
-import isValidFileType from "../utils/isValidFileType"
+
 import {
   Background,
   LinkToForm,
@@ -16,8 +14,6 @@ import {
   LoadingSpinner,
 } from "./uploadComponents"
 import SignUp from "./signup"
-
-const endpoint = "http://localhost:5000/upload"
 
 const ImagesSidebyside = styled.div.attrs({
   className:
@@ -50,119 +46,33 @@ const Loading = () => (
 )
 
 class Upload extends Component {
-  state = {
-    file: null,
-    fileName: null,
-    fileURL: null,
-    error: "",
-    cartoon: null,
-    view: "",
-    showMenu: false,
-    showShareModal: false,
-  }
-
-  componentDidUpdate() {
-    if (this.state.view === "loading" && this.state.cartoon) {
-      setTimeout(() => this.setState({ view: "" }), 3000)
-    }
-  }
-
-  validateImage = file => {
-    if (!isValidFileType(file)) {
-      this.setState({
-        error:
-          "Oops, it looks like your file is the wrong type! Try uploading a jpg or png.",
-      })
-      return false
-    } else if (file.size > 1048576) {
-      this.setState({
-        error:
-          "Oops, it looks like your file is too big! Try uploading a smaller image.",
-      })
-      return false
-    }
-    this.setState({ error: "" })
-    return true
-  }
-  onImageSelect = event => {
-    event.preventDefault()
-    const file = event.target.files[0]
-    if (file && this.validateImage(file)) {
-      this.setState(
-        {
-          file,
-          fileName: fileNameFormatter(file.name),
-          fileURL: URL.createObjectURL(file),
-        },
-        this.sendImage
-      )
-    }
-  }
-  sendImage = () => {
-    const isMobile = window.innerWidth < 500
-
-    const viewToShow = () => {
-      if (this.props.formCompleted) return "loading"
-      else if (!this.props.formCompleted && isMobile) return "loading"
-      return "form"
-    }
-
-    this.setState({
-      view: viewToShow(),
-    })
-
-    const data = new FormData()
-    const { file, fileName } = this.state
-    data.set("file", file, fileName)
-    axios
-      .post(endpoint, data)
-      .then(res => {
-        this.setState({
-          cartoon: `data:image/png;base64,${res.data.base64}`,
-        })
-      })
-      .catch(err => {
-        setTimeout(
-          () =>
-            this.setState({
-              view: "",
-              error:
-                "Oops, something went wrong creating your meme. Please try again!",
-            }),
-          2000
-        )
-        console.log(err)
-      })
-  }
-
   autoScrollToForm = () => {
     const formTop = document
       .querySelector("#form-section")
       .getBoundingClientRect().top
     window.scrollTo(0, formTop)
   }
-  seeMeme = () => {
-    this.setState({ view: "loading" })
-  }
-  toggleMenu = () => {
-    this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
-  }
-  toggleShareModal = () => {
-    this.setState(prevProps => ({ showShareModal: !prevProps.showShareModal }))
+
+  shareImageOnTwitter = () => {
+    const link = document.createElement("a")
+    link.class = "twitter-share-button"
+    link.href = "https://twitter.com/intent/tweet"
+    link.style.display = "none"
+    document.body.appendChild(link)
+    link.click()
   }
 
-  handleStartOver = () => {
-    this.setState({
-      file: null,
-      fileName: null,
-      fileURL: null,
-      error: "",
-      cartoon: null,
-      view: "",
-      showMenu: false,
-      showShareModal: false,
-    })
+  shareImageOnFacebook = () => {
+    const link = document.createElement("a")
+    link.target = "_blank"
+    link.class = "fb-xfbml-parse-ignore"
+    link.style.display = "none"
+    link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&src=sdkpreparse`
+
+    document.body.appendChild(link)
+    link.click()
   }
+
   render() {
     const {
       file,
@@ -172,8 +82,13 @@ class Upload extends Component {
       view,
       showMenu,
       showShareModal,
-    } = this.state
-    const { submitForm } = this.props
+      submitForm,
+      seeMeme,
+      onImageSelect,
+      toggleMenu,
+      handleStartOver,
+      toggleShareModal,
+    } = this.props
 
     const UploadView = () => {
       switch (view) {
@@ -185,14 +100,14 @@ class Upload extends Component {
                 theme="dark"
                 view={view}
                 submitForm={submitForm}
-                seeMeme={this.seeMeme}
+                seeMeme={seeMeme}
               />
               <SignUp
                 display="db dn-ns"
                 theme="light"
                 view={view}
                 submitForm={submitForm}
-                seeMeme={this.seeMeme}
+                seeMeme={seeMeme}
               />
             </div>
           )
@@ -227,7 +142,7 @@ class Upload extends Component {
                   accept="image/png, image/jpeg"
                   multiple={false}
                   files={file}
-                  onChange={this.onImageSelect}
+                  onChange={onImageSelect}
                 />
               </Clickable>
             </form>
@@ -236,13 +151,13 @@ class Upload extends Component {
     }
     return (
       <Background view={view}>
-        <MobileNav toggleMenu={this.toggleMenu} showMenu={showMenu} />
+        <MobileNav toggleMenu={toggleMenu} showMenu={showMenu} />
         <DesktopNav view={view} />
 
         <UploadView />
 
         {view === "form" ? (
-          <ShowMeMeme onClick={this.seeMeme}>
+          <ShowMeMeme onClick={seeMeme}>
             No thanks, just give me my meme!
           </ShowMeMeme>
         ) : (
@@ -256,12 +171,14 @@ class Upload extends Component {
             {cartoon && view === "" ? (
               <ShareButtons
                 cartoon={cartoon}
-                handleStartOver={this.handleStartOver}
+                handleStartOver={handleStartOver}
                 showShareModal={showShareModal}
-                toggleShare={this.toggleShareModal}
+                toggleShare={toggleShareModal}
+                shareImageOnTwitter={this.shareImageOnTwitter}
+                shareImageOnFacebook={this.shareImageOnFacebook}
               />
             ) : (
-              <UploadButton file={file} onImageSelect={this.onImageSelect} />
+              <UploadButton file={file} onImageSelect={onImageSelect} />
             )}
           </div>
         )}
