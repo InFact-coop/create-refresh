@@ -77,9 +77,11 @@ const InfoText = styled.div.attrs({
   }
 `
 
-const TinyLink = styled.a.attrs({
-  className: "db font-7 light-pink underline i",
-})`
+const TinyLink = styled.a.attrs(({ theme }) => ({
+  className: `${
+    theme === "light" ? "dark-pink" : "light-pink"
+  } db font-7 no-underline underline-hover i`,
+}))`
   font-size: 8px;
 `
 

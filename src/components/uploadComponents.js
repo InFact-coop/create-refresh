@@ -123,6 +123,7 @@ const DesktopNav = ({ view }) => (
       <Socials>
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&amp;src=sdkpreparse"
           className="fb-xfbml-parse-ignore"
         >
