@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-function SEO({ lang, title }) {
+function SEO({ lang, title, description, image }) {
   return (
     <Helmet
       htmlAttributes={{
@@ -9,10 +9,10 @@ function SEO({ lang, title }) {
       }}
       title="EU Compliant meme generator"
       meta={[
-        { name: "title", content: "EU Compliant meme generator" },
+        { name: "title", content: title },
         {
           name: "description",
-          content: "Make sure your memes survive Article 13!",
+          content: description,
         },
         {
           name: "og:title",
@@ -26,7 +26,7 @@ function SEO({ lang, title }) {
         {
           property: "og:description",
           name: "og:description",
-          content: "Make sure your memes survive Article 13!",
+          content: description,
         },
         {
           name: "twitter:card",
@@ -35,12 +35,12 @@ function SEO({ lang, title }) {
         { name: "twitter:title", content: "EU Compliant Meme Generator" },
         {
           name: "twitter:description",
-          content: "Make sure your memes survive Article 13!",
+          content: description,
         },
         {
           name: "og:image",
           property: "og:image",
-          content: "https://i.imgflip.com/2ilji1.jpg",
+          content: image,
         },
         {
           property: "og:image:type",
@@ -48,7 +48,7 @@ function SEO({ lang, title }) {
         },
         {
           property: "og:image:secure_url",
-          content: "https://i.imgflip.com/2ilji1.jpg",
+          content: image,
         },
         {
           property: "og:url",

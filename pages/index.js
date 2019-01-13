@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Router from "next/router"
 import axios from "axios"
 
 import Layout from "../components/layout"
@@ -39,7 +40,17 @@ class IndexPage extends Component {
 
   componentDidUpdate() {
     if (this.state.view === "loading" && this.state.cartoon) {
-      setTimeout(() => this.setState({ view: "" }), 3000)
+      setTimeout(
+        () =>
+          Router.push({
+            pathname: "/cartoon",
+            query: {
+              cartoon: this.state.cartoon,
+              formCompleted: this.state.formCompleted,
+            },
+          }),
+        3000
+      )
     }
   }
 
@@ -184,7 +195,12 @@ class IndexPage extends Component {
     } = this.state
     return (
       <Layout>
-        <SEO title="Home" keywords={["gatsby", "application", "react"]} />
+        <SEO
+          title="EU Compliant meme generator"
+          description="EU Compliant meme generator"
+          keywords={["gatsby", "application", "react"]}
+          image="http://2.bp.blogspot.com/-iZrz18JbTmI/TVawBtfshiI/AAAAAAAADsk/X1mN0pAUI18/s1600/04.jpg"
+        />
         <Upload
           file={file}
           fileURL={fileURL}

@@ -114,7 +114,7 @@ class Upload extends Component {
         case "loading":
           return <Loading />
         default:
-          if (cartoon && view === "") {
+          if (cartoon && view === "cartoon") {
             return (
               <ImagesSidebyside>
                 <Image src={fileURL} alt="original image" />
@@ -168,7 +168,7 @@ class Upload extends Component {
                 Join now and save your memes!
               </a>
             </LinkToForm>
-            {cartoon && view === "" ? (
+            {cartoon && view === "cartoon" ? (
               <ShareButtons
                 cartoon={cartoon}
                 handleStartOver={handleStartOver}
