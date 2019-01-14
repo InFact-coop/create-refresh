@@ -195,12 +195,7 @@ class IndexPage extends Component {
     } = this.state
     return (
       <Layout>
-        <SEO
-          title="EU Compliant meme generator"
-          description="EU Compliant meme generator"
-          keywords={["gatsby", "application", "react"]}
-          image="http://2.bp.blogspot.com/-iZrz18JbTmI/TVawBtfshiI/AAAAAAAADsk/X1mN0pAUI18/s1600/04.jpg"
-        />
+        <SEO />
         <Upload
           file={file}
           fileURL={fileURL}

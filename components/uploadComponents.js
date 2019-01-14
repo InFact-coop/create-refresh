@@ -132,7 +132,14 @@ const DesktopNav = ({ view }) => (
             view={view}
           />
         </a>
-        <a href="https://twitter.com/intent/tweet">
+        <a
+          href="https://twitter.com/intent/tweet"
+          data-text="Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
+          data-url="https://eu-compliant-meme-generator.herokuapp.com/"
+          data-hashtags="SaveYourInternet"
+          data-via="lucydev5"
+        >
+          >
           <SocialIcon
             src={view === "form" ? twitterPink : twitter}
             alt="twitter"

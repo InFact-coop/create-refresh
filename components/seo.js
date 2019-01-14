@@ -1,92 +1,58 @@
-import React from "react"
-import Helmet from "react-helmet"
+import Head from "next/head"
 
-function SEO({ lang, title, description, image }) {
+function SEO({ title, description, image }) {
+  const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
+  const defaultTitle = "Make ANY Meme EU Complaint!"
+  const defaultImage =
+    "https://ih0.redbubble.net/image.453375841.1314/flat,550x550,075,f.u1.jpg"
+
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title="EU Compliant meme generator"
-      meta={[
-        { name: "title", content: title },
-        {
-          name: "description",
-          content: description,
-        },
-        {
-          name: "og:title",
-          property: "og:title",
-          content: title,
-        },
-        {
-          property: "og:type",
-          content: "website",
-        },
-        {
-          property: "og:description",
-          name: "og:description",
-          content: description,
-        },
-        {
-          name: "twitter:card",
-          content: "summary_large_image",
-        },
-        { name: "twitter:title", content: "EU Compliant Meme Generator" },
-        {
-          name: "twitter:description",
-          content: description,
-        },
-        {
-          name: "og:image",
-          property: "og:image",
-          content: image,
-        },
-        {
-          property: "og:image:type",
-          content: "image/jpg",
-        },
-        {
-          property: "og:image:secure_url",
-          content: image,
-        },
-        {
-          property: "og:url",
-          name: "og:url",
-          content: "https://eu-compliant-meme-generator.netlify.com/",
-        },
-        {
-          property: "og:image:height",
-          content: "630",
-        },
-        {
-          property: "og:image:width",
-          content: "1200",
-        },
-        {
-          property: "og:locale",
-          name: "og:locale",
-          content: "en",
-        },
-        { name: "robots", content: "index" },
-      ]}
-    >
-      <script>{`
+    <Head>
+      <meta charSet="UTF-8" />
+      <title>{title || ""}</title>
+      <meta name="description" content={description || defaultDescription} />
+      <meta name="title" content={title || defaultTitle} />
+      <meta name="og:title" content={title || defaultTitle} />
+      <meta name="og:type" content="website" />
+      <meta name="og:description" content={description || defaultDescription} />
+      <meta name="og:image" content={image || defaultImage} />
+      <meta name="og:image:secure_url" content={image || defaultImage} />
+      <meta name="og:image:type" content="image/jpg" />
+      <meta name="og:image:height" content="630" />
+      <meta name="og:image:width" content="1200" />
+      <meta name="og:locale" content="en" />
+      <meta
+        name="og:url"
+        content="https://eu-compliant-meme-generator.herokuapp.com/"
+      />
+      <meta name="twitter:title" content={title || defaultTitle} />
+      <meta
+        name="twitter:description"
+        content={description || defaultDescription}
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `
           window.twttr = (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0],t = window.twttr || {};
             if (d.getElementById(id)) return t;
             js = d.createElement(s);js.id = id;
-            js.src = 'https://platform.twitter.com/widgets.js';
+            js.src = "https://platform.twitter.com/widgets.js:";
             fjs.parentNode.insertBefore(js, fjs);
             t._e = [];
             t.ready = function(f) {t._e.push(f);
             }; 
           return t;
-        }(document, 'script', 'twitter-wjs'));
-            `}</script>
-      <script>
-        {`
-        window.fbAsyncInit = function() {
+        }(document, "script", "twitter-wjs"));`,
+        }}
+      />
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `window.fbAsyncInit = function() {
           FB.init({
             appId            : 'your-app-id',
             autoLogAppEvents : true,
@@ -99,12 +65,12 @@ function SEO({ lang, title, description, image }) {
            var js, fjs = d.getElementsByTagName(s)[0];
            if (d.getElementById(id)) {return;}
            js = d.createElement(s); js.id = id;
-           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           js.src = 'https://connect.facebook.net/en_US/sdk.js';
            fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-        `}
-      </script>
-    </Helmet>
+         }(document, 'script', 'facebook-jssdk'));`,
+        }}
+      />
+    </Head>
   )
 }
 

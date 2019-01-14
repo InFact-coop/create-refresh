@@ -83,11 +83,7 @@ class CartoonPage extends Component {
     const { fileURL, cartoon } = this.props
     return (
       <Layout>
-        <SEO
-          title="Make ANY Meme EU Complaint!"
-          description="Try the EU Compliant Meme Generator for yourself"
-          image={cartoon}
-        />
+        <SEO image={cartoon} />
         <Upload
           fileURL={fileURL}
           error={error}
