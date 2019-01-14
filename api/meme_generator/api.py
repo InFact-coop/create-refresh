@@ -71,4 +71,4 @@ def upload():
             app.root_path, "eu-compliant-watermark.png"), watermarked_file_path)
 
         cleanup_files([cartoon_file])
-        return jsonify(status=200, base64=convert_to_base64(str(watermarked_file_path)))
+        return jsonify(status=200, base64_original=convert_to_base64(uploaded_file_path), base64=convert_to_base64(str(watermarked_file_path)))
