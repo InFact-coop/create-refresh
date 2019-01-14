@@ -16,10 +16,23 @@ def allowed_file(filename):
     """Check file extension being uploaded is allowed within the application factory setup"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+@bp.route("/fetch/<string:fileid>")
+def fetch(fileid):
+    """Return a JSON object containing base64 encoded versions of original and compliant image of fileid hash"""
 
-@bp.route("/view/<string:view>/<string:fileid>")
+    compliant_filename = get_filename_from_hash(fileid, "png")
+    compliant_path = os.path.join(app.config["UPLOAD_FOLDER"], compliant_filename)
+    original_path = check_hash_exists(fileid + "_orig", app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
+
+    if not os.path.exists(compliant_path) or not os.path.exists(original_path):
+        return jsonify(status=404)
+
+    return jsonify(status=200, original=convert_to_base64(original_path), compliant=convert_to_base64(compliant_path))
+
+
+@bp.route("/fetch/img/<string:view>/<string:fileid>")
 def compliant_view(view, fileid):
-    """Return an image image from the uploads folder if exists in querystring"""
+    """Return an original or compliant image from the uploads folder if exists in querystring"""
 
     if view == "original":
 
@@ -32,7 +45,6 @@ def compliant_view(view, fileid):
         return send_from_directory(os.path.abspath(app.config["UPLOAD_FOLDER"]), image_filename)
 
     if view == "compliant":
-        print("Searching for compliant!")
 
         image_filename = get_filename_from_hash(fileid, "png")
 
@@ -71,4 +83,4 @@ def upload():
             app.root_path, "eu-compliant-watermark.png"), watermarked_file_path)
 
         cleanup_files([cartoon_file])
-        return jsonify(status=200, base64_original=convert_to_base64(uploaded_file_path), base64=convert_to_base64(str(watermarked_file_path)))
+        return jsonify(status=200, id=file_hash.split("/")[1])

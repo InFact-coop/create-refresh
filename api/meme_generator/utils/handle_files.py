@@ -35,6 +35,6 @@ def check_hash_exists(hashed, allowed_extensions, folder):
         filename = get_filename_from_hash(hashed, extension)
         search_path = path.join(folder, filename)
         if path.exists(search_path):
-            return filename
+            return search_path
 
     return False
