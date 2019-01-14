@@ -113,12 +113,12 @@ const GifLogo = styled.img.attrs({
   max-height: calc(700px / 4.4195);
 `
 
-const DesktopNav = ({ view, id }) => {
+const DesktopNav = ({ view, cartoonId }) => {
   const getTwitterHref = () => {
     const text =
       "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
-    const url = id
-      ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon=${id}&formCompleted=false&fromSocial=false`
+    const url = cartoonId
+      ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon=${cartoonId}&formCompleted=false&fromSocial=true`
       : "https://eu-compliant-meme-generator.herokuapp.com/"
     const hashtags = "SaveYourInternet"
     const via = "lucydev5"

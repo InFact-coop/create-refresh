@@ -34,7 +34,6 @@ class CartoonPage extends Component {
     // do api call to get cartoon and original image using id from aws
     // if no original redirect to home
 
-
     return {
       cartoonId: "1536577",
       cartoon: "https://tinyurl.com/ybhexc65",
@@ -99,7 +98,7 @@ class CartoonPage extends Component {
           handleStartOver={this.handleStartOver}
           toggleShareModal={this.toggleShareModal}
           toggleMenu={this.toggleMenu}
-          id={cartoonId}
+          cartoonId={cartoonId}
         />
         <Info />
         <Video />

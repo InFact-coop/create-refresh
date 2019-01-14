@@ -88,7 +88,9 @@ class Upload extends Component {
       toggleMenu,
       handleStartOver,
       toggleShareModal,
+      cartoonId,
     } = this.props
+
 
     const UploadView = () => {
       switch (view) {
@@ -152,7 +154,7 @@ class Upload extends Component {
     return (
       <Background view={view}>
         <MobileNav toggleMenu={toggleMenu} showMenu={showMenu} />
-        <DesktopNav view={view} />
+        <DesktopNav view={view} cartoonId={cartoonId} />
 
         <UploadView />
 
