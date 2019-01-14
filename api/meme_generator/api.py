@@ -1,11 +1,11 @@
 from flask import (current_app, Blueprint, request,
-                   url_for, redirect, send_from_directory, jsonify)
+                   url_for, redirect, send_from_directory, jsonify, abort)
 import os
 from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 from .image_convert import convert_to_base64
 from .image_watermark import add_watermark
-from utils.handle_files import hash_filename, cleanup_files
+from utils.handle_files import hash_filename, cleanup_files, get_filename_from_hash
 
 # import application context and declare new blueprint
 app = current_app
@@ -15,6 +15,18 @@ bp = Blueprint('api', __name__)
 def allowed_file(filename):
     """Check file extension being uploaded is allowed within the application factory setup"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+
+@bp.route("/view/<string:fileid>")
+def view(fileid):
+    """Return an image from the uploads folder if exists in querystring"""
+
+    image_filename = get_filename_from_hash(fileid, "png")
+
+    if not os.path.exists(os.path.join(app.config["UPLOAD_FOLDER"], image_filename)):
+        abort(404)
+
+    return send_from_directory(os.path.abspath(app.config['UPLOAD_FOLDER']), image_filename)
 
 
 @bp.route("/upload", methods=['POST'])

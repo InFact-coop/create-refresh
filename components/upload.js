@@ -145,7 +145,7 @@ class Upload extends Component {
                   ) : file ? (
                     <p>Loading...</p>
                   ) : (
-                    <p>Click to upload</p>
+                    <p>Click to upload a pic or a meme</p>
                   )}
                 </Label>
                 <FileInput

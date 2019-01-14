@@ -87,11 +87,6 @@ const Faq = () => (
       culture that enables connections and democratises information – will
       become bureaucratic and restrictive.
     </Paragraph>
-    <Paragraph>
-      <Link href="https://createrefresh.eu/privacy/">
-        See Create.Refresh privacy policy here{" "}
-      </Link>
-    </Paragraph>
   </Container>
 )
 

@@ -59,7 +59,7 @@ const Checkbox = styled.div.attrs(({ theme }) => ({
 const FormButton = styled.button.attrs(({ theme }) => ({
   className: `${
     theme === "light" ? "bg-dark-pink light-pink" : "bg-light-pink dark-pink"
-  } bn ph2 tc calibreMedium apercu-ns font-5 ma0-ns mv3 data-signup`,
+  } bn ph2 tc calibreMedium apercu-ns font-5 ma0-ns mv3 data-signup db dib-ns center`,
 }))`
   width: 184px;
   height: 40px;
@@ -77,9 +77,11 @@ const InfoText = styled.div.attrs({
   }
 `
 
-const TinyLink = styled.a.attrs({
-  className: "db font-7 light-pink underline i",
-})`
+const TinyLink = styled.a.attrs(({ theme }) => ({
+  className: `${
+    theme === "light" ? "dark-pink" : "light-pink"
+  } tc tl-ns db font-7 no-underline underline-hover i`,
+}))`
   font-size: 8px;
 `
 
@@ -121,7 +123,7 @@ class Signup extends Component {
       <div className={display}>
         <Section view={view} id="form-section">
           <Container theme={theme}>
-            <form>
+            <form className="w-100">
               <Input
                 name="firstname"
                 placeholder="First Name"

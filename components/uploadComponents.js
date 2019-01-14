@@ -116,13 +116,16 @@ const GifLogo = styled.img.attrs({
 const DesktopNav = ({ view, cartoonId, getTwitterHref }) => (
   <div className="db-ns dn w-100 mb1">
     <NavContainer>
-      <Link href="http://createrefresh.eu" view={view}>
+      <Link target="_blank" href="http://createrefresh.eu" view={view}>
         More info
       </Link>
-      <GifLogo src={gifLogo} alt="main logo" />
+      <a href="/">
+        <GifLogo src={gifLogo} alt="main logo" />
+      </a>
       <Socials>
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&amp;src=sdkpreparse"
           className="fb-xfbml-parse-ignore"
         >
@@ -147,10 +150,12 @@ const DesktopNav = ({ view, cartoonId, getTwitterHref }) => (
 const MobileNav = ({ showMenu, toggleMenu }) => (
   <div className="dn-ns db w-100 mb1">
     <Hamburger showMenu={showMenu} toggleMenu={toggleMenu} />
-    <NavContainer className="pr2">
+    <div className="flex justify-between w-100 pr2">
       <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
-      <img className="w-75 mv1" src={logoMobile} alt="main logo" />
-    </NavContainer>
+      <a href="/">
+        <img className="w-75 mv1" src={logoMobile} alt="main logo" />
+      </a>
+    </div>
   </div>
 )
 
