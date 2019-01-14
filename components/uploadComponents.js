@@ -139,7 +139,6 @@ const DesktopNav = ({ view }) => (
           data-hashtags="SaveYourInternet"
           data-via="lucydev5"
         >
-          >
           <SocialIcon
             src={view === "form" ? twitterPink : twitter}
             alt="twitter"
