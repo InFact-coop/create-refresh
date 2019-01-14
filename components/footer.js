@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
-import footerBg from "../assets/images/footer.svg"
-import facebookIcon from "../assets/images/footer-facebook.svg"
-import twitterIcon from "../assets/images/footer-twitter.svg"
-import instagramIcon from "../assets/images/footer-instagram.svg"
+import footerBg from "../static/images/footer.svg"
+import facebookIcon from "../static/images/footer-facebook.svg"
+import twitterIcon from "../static/images/footer-twitter.svg"
+import instagramIcon from "../static/images/footer-instagram.svg"
 
 const StyledFooter = styled.footer`
   background-image: url(${footerBg});
@@ -88,7 +88,7 @@ const Footer = () => (
             className="color-inherit link underline"
             href="https://www.infactcoop.com/"
           >
-            InFact Digital Co-Op
+            InFact Digital Co-op
           </a>{" "}
           using Dan McNish's amazing{" "}
           <a

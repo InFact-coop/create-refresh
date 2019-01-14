@@ -53,10 +53,22 @@ class Upload extends Component {
     window.scrollTo(0, formTop)
   }
 
+  getTwitterHref = cartoonId => {
+    const text =
+      "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
+    const url = cartoonId
+      ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoon=${cartoonId}`
+      : "https://eu-compliant-meme-generator.herokuapp.com/"
+    const hashtags = "SaveYourInternet"
+    const via = "lucydev5"
+
+    const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtag=${hashtags}&via=${via}`
+    return href
+  }
+
   shareImageOnTwitter = () => {
     const link = document.createElement("a")
-    link.class = "twitter-share-button"
-    link.href = "https://twitter.com/intent/tweet"
+    link.href = this.getTwitterHref(this.props.cartoonId)
     link.style.display = "none"
     document.body.appendChild(link)
     link.click()
@@ -88,6 +100,7 @@ class Upload extends Component {
       toggleMenu,
       handleStartOver,
       toggleShareModal,
+      cartoonId,
     } = this.props
 
     const UploadView = () => {
@@ -114,7 +127,7 @@ class Upload extends Component {
         case "loading":
           return <Loading />
         default:
-          if (cartoon && view === "") {
+          if (cartoon && view === "cartoon") {
             return (
               <ImagesSidebyside>
                 <Image src={fileURL} alt="original image" />
@@ -152,7 +165,11 @@ class Upload extends Component {
     return (
       <Background view={view}>
         <MobileNav toggleMenu={toggleMenu} showMenu={showMenu} />
-        <DesktopNav view={view} />
+        <DesktopNav
+          view={view}
+          cartoonId={cartoonId}
+          getTwitterHref={this.getTwitterHref}
+        />
 
         <UploadView />
 
@@ -168,13 +185,14 @@ class Upload extends Component {
                 Join now and save your memes!
               </a>
             </LinkToForm>
-            {cartoon && view === "" ? (
+            {cartoon && view === "cartoon" ? (
               <ShareButtons
                 cartoon={cartoon}
+                cartoonId={cartoonId}
                 handleStartOver={handleStartOver}
                 showShareModal={showShareModal}
                 toggleShare={toggleShareModal}
-                shareImageOnTwitter={this.shareImageOnTwitter}
+                getTwitterHref={this.getTwitterHref}
                 shareImageOnFacebook={this.shareImageOnFacebook}
               />
             ) : (

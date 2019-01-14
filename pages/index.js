@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Router from "next/router"
 import axios from "axios"
 
 import Layout from "../components/layout"
@@ -17,6 +18,8 @@ import isValidFileType from "../utils/isValidFileType"
 import encode from "../utils/encode"
 
 const endpoint = "http://localhost:5000/upload"
+
+import "../styles/index.css"
 
 class IndexPage extends Component {
   state = {
@@ -37,7 +40,18 @@ class IndexPage extends Component {
 
   componentDidUpdate() {
     if (this.state.view === "loading" && this.state.cartoon) {
-      setTimeout(() => this.setState({ view: "" }), 3000)
+      setTimeout(
+        () =>
+          Router.push({
+            pathname: "/cartoon",
+            query: {
+              cartoon: this.state.cartoon,
+              formCompleted: this.state.formCompleted,
+              fromIndex: true,
+            },
+          }),
+        3000
+      )
     }
   }
 
@@ -60,6 +74,7 @@ class IndexPage extends Component {
     })
       .then(response => this.setState({ submitted: response.json() }))
       .catch(error => {
+        //eslint-disable-next-line
         console.log(error)
         this.setState({ error: true })
       })
@@ -179,9 +194,10 @@ class IndexPage extends Component {
       showMenu,
       showShareModal,
     } = this.state
+
     return (
       <Layout>
-        <SEO title="Home" keywords={["gatsby", "application", "react"]} />
+        <SEO />
         <Upload
           file={file}
           fileURL={fileURL}
