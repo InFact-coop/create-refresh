@@ -119,7 +119,9 @@ const DesktopNav = ({ view }) => (
       <Link target="_blank" href="http://createrefresh.eu" view={view}>
         More info
       </Link>
-      <GifLogo src={gifLogo} alt="main logo" />
+      <a href="/">
+        <GifLogo src={gifLogo} alt="main logo" />
+      </a>
       <Socials>
         <a
           target="_blank"
@@ -150,7 +152,9 @@ const MobileNav = ({ showMenu, toggleMenu }) => (
     <Hamburger showMenu={showMenu} toggleMenu={toggleMenu} />
     <div className="flex justify-between w-100 pr2">
       <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
-      <img className="w-75 mv1" src={logoMobile} alt="main logo" />
+      <a href="/">
+        <img className="w-75 mv1" src={logoMobile} alt="main logo" />
+      </a>
     </div>
   </div>
 )
