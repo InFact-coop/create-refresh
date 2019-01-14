@@ -113,42 +113,48 @@ const GifLogo = styled.img.attrs({
   max-height: calc(700px / 4.4195);
 `
 
-const DesktopNav = ({ view }) => (
-  <div className="db-ns dn w-100 mb1">
-    <NavContainer>
-      <Link href="http://createrefresh.eu" view={view}>
-        More info
-      </Link>
-      <GifLogo src={gifLogo} alt="main logo" />
-      <Socials>
-        <a
-          target="_blank"
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&amp;src=sdkpreparse"
-          className="fb-xfbml-parse-ignore"
-        >
-          <SocialIcon
-            src={view === "form" ? facebookPink : facebook}
-            alt="facebook"
-            view={view}
-          />
-        </a>
-        <a
-          href="https://twitter.com/intent/tweet"
-          data-text="Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
-          data-url="https://eu-compliant-meme-generator.herokuapp.com/"
-          data-hashtags="SaveYourInternet"
-          data-via="lucydev5"
-        >
-          <SocialIcon
-            src={view === "form" ? twitterPink : twitter}
-            alt="twitter"
-            view={view}
-          />
-        </a>
-      </Socials>
-    </NavContainer>
-  </div>
-)
+const DesktopNav = ({ view }) => {
+  const getTwitterHref = () => {
+    const text =
+      "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
+    const url = "https://eu-compliant-meme-generator.herokuapp.com/"
+    const hashtags = "SaveYourInternet"
+    const via = "lucydev5"
+
+    const href = `https://twitter.com/intent/tweet?url=${url}&text=${text}&hashtag=${hashtags}&via=${via}`
+    return href
+  }
+  return (
+    <div className="db-ns dn w-100 mb1">
+      <NavContainer>
+        <Link href="http://createrefresh.eu" view={view}>
+          More info
+        </Link>
+        <GifLogo src={gifLogo} alt="main logo" />
+        <Socials>
+          <a
+            target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&amp;src=sdkpreparse"
+            className="fb-xfbml-parse-ignore"
+          >
+            <SocialIcon
+              src={view === "form" ? facebookPink : facebook}
+              alt="facebook"
+              view={view}
+            />
+          </a>
+          <a href={getTwitterHref()}>
+            <SocialIcon
+              src={view === "form" ? twitterPink : twitter}
+              alt="twitter"
+              view={view}
+            />
+          </a>
+        </Socials>
+      </NavContainer>
+    </div>
+  )
+}
 
 const MobileNav = ({ showMenu, toggleMenu }) => (
   <div className="dn-ns db w-100 mb1">
