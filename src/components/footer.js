@@ -88,7 +88,7 @@ const Footer = () => (
             className="color-inherit link underline"
             href="https://www.infactcoop.com/"
           >
-            InFact Digital Co-Op
+            InFact Digital Co-op
           </a>{" "}
           using Dan McNish's amazing{" "}
           <a
