@@ -84,12 +84,15 @@ const Footer = () => (
         </p>
         <p className="mt3 mt2-ns font-7-ns tr-ns">
           Built by{" "}
-          <a className="color-inherit link" href="https://www.infactcoop.com/">
-            inFact Digital Co-Op
+          <a
+            className="color-inherit link underline"
+            href="https://www.infactcoop.com/"
+          >
+            InFact Digital Co-Op
           </a>{" "}
           using Dan McNish's amazing{" "}
           <a
-            className="color-inherit link"
+            className="color-inherit link underline"
             href="https://github.com/danmacnish/cartoonify"
           >
             Cartoonify
