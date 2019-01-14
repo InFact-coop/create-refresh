@@ -47,7 +47,7 @@ class IndexPage extends Component {
             query: {
               cartoon: this.state.cartoon,
               formCompleted: this.state.formCompleted,
-              fromSocial: false,
+              fromIndex: true,
             },
           }),
         3000
@@ -194,6 +194,7 @@ class IndexPage extends Component {
       showMenu,
       showShareModal,
     } = this.state
+
     return (
       <Layout>
         <SEO />
