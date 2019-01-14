@@ -9,7 +9,6 @@ function SEO({ title, description, image }) {
   return (
     <Head>
       <meta charSet="UTF-8" />
-      <title>{title || ""}</title>
       <meta name="description" content={description || defaultDescription} />
       <meta name="title" content={title || defaultTitle} />
       <meta name="og:title" content={title || defaultTitle} />

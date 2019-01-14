@@ -26,12 +26,17 @@ class CartoonPage extends Component {
   }
 
   static async getInitialProps({ query }) {
-    const { cartoon, formCompleted } = query
+    const { cartoonId, formCompleted, fromSocial } = query
+    const redirectHome = () => Router.push({ pathname: "/" })
+
+    if (fromSocial === true) redirectHome()
 
     // do api call to get cartoon and original image using id from aws
     // if no original redirect to home
 
+
     return {
+      cartoonId: "1536577",
       cartoon: "https://tinyurl.com/ybhexc65",
       fileURL: "https://tinyurl.com/ybhexc65",
       formCompleted,
@@ -80,7 +85,7 @@ class CartoonPage extends Component {
   render() {
     const { error, view, showMenu, showShareModal } = this.state
 
-    const { fileURL, cartoon } = this.props
+    const { fileURL, cartoon, cartoonId } = this.props
     return (
       <Layout>
         <SEO image={cartoon} />
@@ -94,6 +99,7 @@ class CartoonPage extends Component {
           handleStartOver={this.handleStartOver}
           toggleShareModal={this.toggleShareModal}
           toggleMenu={this.toggleMenu}
+          id={cartoonId}
         />
         <Info />
         <Video />

@@ -47,6 +47,7 @@ class IndexPage extends Component {
             query: {
               cartoon: this.state.cartoon,
               formCompleted: this.state.formCompleted,
+              fromSocial: false,
             },
           }),
         3000
