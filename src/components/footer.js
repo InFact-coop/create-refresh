@@ -35,13 +35,9 @@ const GridElement = ({ className, children }) => (
 )
 
 const License = styled(GridElement).attrs(({ className }) => ({
-  className: `${className} calibreMedium self-end-ns tc tl-ns white font-footer-ns font-7  mb3-ns `,
+  className: `${className} calibreMedium self-end-ns tc tl-ns white font-footer-ns font-7 mb3-ns `,
 }))`
   grid-area: license;
-
-  @media (min-width: 500px) {
-    margin-right: 28px;
-  }
 
   @media (max-width: 500px) {
     line-height: 10px;
@@ -80,10 +76,29 @@ const Footer = () => (
         </FooterLink>
         <FooterLink href="https://createrefresh.eu/faq/">FAQ</FooterLink>
       </div>
-      <License className="dn-ns center">
-        Except where otherwise noted, content on this site is licensed under a
-        Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC
-        4.0)
+      <License className="center">
+        <p className="mt1 dn-ns db">
+          Except where otherwise noted, content on this site is licensed under a
+          Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC
+          4.0)
+        </p>
+        <p className="mt3 mt2-ns font-7-ns tr-ns">
+          Built by{" "}
+          <a
+            className="color-inherit link underline"
+            href="https://www.infactcoop.com/"
+          >
+            InFact Digital Co-op
+          </a>{" "}
+          using Dan McNish's amazing{" "}
+          <a
+            className="color-inherit link underline"
+            href="https://github.com/danmacnish/cartoonify"
+          >
+            Cartoonify
+          </a>{" "}
+          project.
+        </p>
       </License>
     </Social>
     <License className="dn db-ns">
