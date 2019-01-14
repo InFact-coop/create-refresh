@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
-import facebook from "../assets/images/fb_hamburger.svg"
-import twitter from "../assets/images/tw_hamburger.svg"
-import close from "../assets/images/close_menu.svg"
-import background from "../assets/images/menu_bg.svg"
+import facebook from "../static/images/fb_hamburger.svg"
+import twitter from "../static/images/tw_hamburger.svg"
+import close from "../static/images/close_menu.svg"
+import background from "../static/images/menu_bg.svg"
 
 const BackgroundDiv = styled.div.attrs(({ showMenu }) => ({
   className: `${showMenu ? "fixed top-0 left-0 vh-100 w-100" : "dn"}`,

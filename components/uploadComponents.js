@@ -2,16 +2,16 @@ import React from "react"
 import RedButton from "./shared/redButton"
 import styled, { keyframes } from "styled-components"
 
-import facebook from "../assets/images/fb_outline.svg"
-import twitter from "../assets/images/twitter_outline.svg"
-import facebookPink from "../assets/images/fb-outline-pink.svg"
-import twitterPink from "../assets/images/twitter-outline-pink.svg"
-import logoMobile from "../assets/images/logo-mobile.svg"
-import menuLines from "../assets/images/menu-lines.svg"
+import facebook from "../static/images/fb_outline.svg"
+import twitter from "../static/images/twitter_outline.svg"
+import facebookPink from "../static/images/fb-outline-pink.svg"
+import twitterPink from "../static/images/twitter-outline-pink.svg"
+import logoMobile from "../static/images/logo-mobile.svg"
+import menuLines from "../static/images/menu-lines.svg"
 import Hamburger from "./hamburger"
-import loading from "../assets/images/loading.svg"
+import loading from "../static/images/loading.svg"
 import ShareModal from "./shareImage"
-import gifLogo from "../assets/images/headerGif.gif"
+import gifLogo from "../static/images/headerGif.gif"
 
 const rotate = keyframes`
   from {
@@ -113,7 +113,7 @@ const GifLogo = styled.img.attrs({
   max-height: calc(700px / 4.4195);
 `
 
-const DesktopNav = ({ view }) => (
+const DesktopNav = ({ view, cartoonId, getTwitterHref }) => (
   <div className="db-ns dn w-100 mb1">
     <NavContainer>
       <Link target="_blank" href="http://createrefresh.eu" view={view}>
@@ -135,7 +135,7 @@ const DesktopNav = ({ view }) => (
             view={view}
           />
         </a>
-        <a href="https://twitter.com/intent/tweet">
+        <a href={getTwitterHref(cartoonId)}>
           <SocialIcon
             src={view === "form" ? twitterPink : twitter}
             alt="twitter"
@@ -184,7 +184,8 @@ const ShareButtons = props => (
       Share
       {props.showShareModal && (
         <ShareModal
-          shareImageOnTwitter={props.shareImageOnTwitter}
+          cartoonId={props.cartoonId}
+          getTwitterHref={props.getTwitterHref}
           shareImageOnFacebook={props.shareImageOnFacebook}
         />
       )}

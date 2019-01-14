@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import twitterFilled from "../assets/images/tw_hamburger.svg"
-import facebookFilled from "../assets/images/fb_hamburger.svg"
+import twitterFilled from "../static/images/tw_hamburger.svg"
+import facebookFilled from "../static/images/fb_hamburger.svg"
 
 const SpeechBubble = styled.div.attrs({
   className:
@@ -35,12 +35,12 @@ const Triangle = styled.div.attrs({
   clip-path: polygon(0 0, 50% 100%, 100% 0);
 `
 
-const ShareModal = ({ shareImageOnTwitter, shareImageOnFacebook }) => (
+const ShareModal = ({ cartoonId, getTwitterHref, shareImageOnFacebook }) => (
   <SpeechBubble>
     <Link className="data-fb" onClick={shareImageOnFacebook}>
       <ShareIcon src={facebookFilled} alt="share on facebook" />
     </Link>
-    <Link className="data-tw" onClick={shareImageOnTwitter}>
+    <Link className="data-tw" href={getTwitterHref(cartoonId)}>
       <ShareIcon src={twitterFilled} alt="share on twitter" />
     </Link>
     <Triangle />

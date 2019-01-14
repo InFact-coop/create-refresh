@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React from "react"
-import downselect from "../assets/images/downselect.svg"
+import downselect from "../static/images/downselect.svg"
 
 const Select = styled.select.attrs(({ theme }) => ({
   className: `${
