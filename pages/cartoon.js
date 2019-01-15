@@ -30,12 +30,12 @@ class CartoonPage extends Component {
   static async getInitialProps({ query }) {
     const { cartoonId, formCompleted, fromIndex } = query
 
-    axios
+    return await axios
       .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
       .then(res => ({
         cartoonId,
-        cartoon: `data:image/png;base64,${res.data.compliant.base64}`,
-        fileURL: `data:image/png;base64,${res.data.original.base64}`,
+        cartoon: `data:image/png;base64,${res.data.compliant}`,
+        fileURL: `data:image/png;base64,${res.data.original}`,
         formCompleted,
         fromIndex,
         error: "",
