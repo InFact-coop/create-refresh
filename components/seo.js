@@ -53,7 +53,7 @@ function SEO({ title, description, image }) {
         dangerouslySetInnerHTML={{
           __html: `window.fbAsyncInit = function() {
           FB.init({
-            appId            : 'your-app-id',
+            appId            : 1627837104015374,
             autoLogAppEvents : true,
             xfbml            : true,
             version          : 'v3.2'

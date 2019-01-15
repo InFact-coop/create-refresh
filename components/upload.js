@@ -74,15 +74,31 @@ class Upload extends Component {
     link.click()
   }
 
-  shareImageOnFacebook = () => {
-    const link = document.createElement("a")
-    link.target = "_blank"
-    link.class = "fb-xfbml-parse-ignore"
-    link.style.display = "none"
-    link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&src=sdkpreparse`
+  shareOnFacebook = () => {
+    // const link = document.createElement("a")
+    // link.target = "_blank"
+    // link.class = "fb-xfbml-parse-ignore"
+    // link.style.display = "none"
+    // link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&src=sdkpreparse`
 
-    document.body.appendChild(link)
-    link.click()
+    // document.body.appendChild(link)
+    // link.click()
+
+    //eslint-disable-next-line
+    FB.ui(
+      {
+        method: "share",
+        display: "popup",
+        quote:
+          "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖",
+        url: this.props.cartoonId
+          ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoon=${cartoonId}`
+          : "https://eu-compliant-meme-generator.herokuapp.com/",
+        hashtag: "SaveYourInternet",
+        mobile_iframe: true,
+      },
+      () => {}
+    )
   }
 
   render() {
@@ -169,6 +185,7 @@ class Upload extends Component {
           view={view}
           cartoonId={cartoonId}
           getTwitterHref={this.getTwitterHref}
+          shareOnFacebook={this.shareOnFacebook}
         />
 
         <UploadView />
