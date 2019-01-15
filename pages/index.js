@@ -17,7 +17,7 @@ import isValidFileType from "../utils/isValidFileType"
 
 import encode from "../utils/encode"
 
-const endpoint = "http://localhost:5000/upload"
+const cartoonEndpoint = "http://localhost:5000"
 
 import "../styles/index.css"
 
@@ -28,14 +28,24 @@ class IndexPage extends Component {
     fileURL: null,
     error: "",
     cartoon: null,
+    cartoonId: null,
     view: "",
     showMenu: false,
     showShareModal: false,
     formCompleted: false,
   }
+
+  static async getInitialProps({ query }) {
+    const { error } = query
+    if (error) return { error }
+    return {}
+  }
   //eslint-disable-next-line
   componentDidMount() {
     appendTrackingScripts()
+    if (this.props.error) {
+      this.setState({ error: this.props.error })
+    }
   }
 
   componentDidUpdate() {
@@ -45,7 +55,7 @@ class IndexPage extends Component {
           Router.push({
             pathname: "/cartoon",
             query: {
-              cartoon: this.state.cartoon,
+              cartoonId: this.state.cartoonId,
               formCompleted: this.state.formCompleted,
               fromIndex: true,
             },
@@ -129,13 +139,13 @@ class IndexPage extends Component {
     const { file, fileName, fileURL } = this.state
     data.set("file", file, fileName)
     // axios
-    //   .post(endpoint, data)
+    //   .post(`${cartoonEndpoint}/upload`, data)
     //   .then(res => {
     //     setTimeout(
     //       () =>
     //         this.setState({
     //           view: this.props.formCompleted ? "" : "form",
-    //           cartoon: `data:image/png;base64,${res.data.base64}`,
+    //           cartoonId: res.data,
     //         }),
     //       3000
     //     )
