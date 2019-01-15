@@ -49,7 +49,7 @@ class IndexPage extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.view === "loading" && this.state.cartoon) {
+    if (this.state.view === "loading" && this.state.cartoonId) {
       setTimeout(
         () =>
           Router.push({
@@ -136,37 +136,33 @@ class IndexPage extends Component {
     })
 
     const data = new FormData()
-    const { file, fileName, fileURL } = this.state
+    const { file, fileName } = this.state
     data.set("file", file, fileName)
-    // axios
-    //   .post(`${cartoonEndpoint}/upload`, data)
-    //   .then(res => {
-    //     setTimeout(
-    //       () =>
-    //         this.setState({
-    //           view: this.props.formCompleted ? "" : "form",
-    //           cartoonId: res.data,
-    //         }),
-    //       3000
-    //     )
-    //   })
-    //   .catch(err => {
-    //     setTimeout(
-    //       () =>
-    //         this.setState({
-    //           view: "",
-    //           error:
-    //             "Oops, something went wrong creating your meme. Please try again!",
-    //         }),
-    //       2000
-    //     )
-    //     console.log(err)
-    //   })
-
-    this.setState({
-      view: this.props.formCompleted ? "" : "form",
-      cartoon: fileURL,
-    })
+    axios
+      .post(`${cartoonEndpoint}/upload`, data)
+      .then(res => {
+        const { id: cartoonId } = res.data
+        setTimeout(
+          () =>
+            this.setState({
+              view: this.props.formCompleted ? "" : "form",
+              cartoonId,
+            }),
+          3000
+        )
+      })
+      .catch(err => {
+        setTimeout(
+          () =>
+            this.setState({
+              view: "",
+              error:
+                "Oops, something went wrong creating your meme. Please try again!",
+            }),
+          2000
+        )
+        console.log(err)
+      })
   }
 
   seeMeme = () => {
