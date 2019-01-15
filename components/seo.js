@@ -11,17 +11,31 @@ function SEO({ title, description, image }) {
       <meta charSet="UTF-8" />
       <meta name="description" content={description || defaultDescription} />
       <meta name="title" content={title || defaultTitle} />
-      <meta name="og:title" content={title || defaultTitle} />
+      <meta
+        name="og:title"
+        property="og:title"
+        content={title || defaultTitle}
+      />
       <meta name="og:type" content="website" />
-      <meta name="og:description" content={description || defaultDescription} />
-      <meta name="og:image" content={image || defaultImage} />
+      <meta
+        name="og:description"
+        property="og:description"
+        content={description || defaultDescription}
+      />
+      <meta
+        name="og:image"
+        property="og:image"
+        content={image || defaultImage}
+      />
       <meta name="og:image:secure_url" content={image || defaultImage} />
       <meta name="og:image:type" content="image/jpg" />
       <meta name="og:image:height" content="630" />
       <meta name="og:image:width" content="1200" />
       <meta name="og:locale" content="en" />
+      <meta name="fb:app_id" content="en" />
       <meta
         name="og:url"
+        property="og:url"
         content="https://eu-compliant-meme-generator.herokuapp.com/"
       />
       <meta name="twitter:title" content={title || defaultTitle} />
@@ -30,6 +44,7 @@ function SEO({ title, description, image }) {
         content={description || defaultDescription}
       />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="fb:app_id" content="1627837104015374" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script
         type="text/javascript"
