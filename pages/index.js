@@ -126,8 +126,8 @@ class IndexPage extends Component {
     const isMobile = window.innerWidth < 500
 
     const viewToShow = () => {
-      if (this.props.formCompleted) return "loading"
-      else if (!this.props.formCompleted && isMobile) return "loading"
+      if (this.state.formCompleted) return "loading"
+      else if (!this.state.formCompleted && isMobile) return "loading"
       return "form"
     }
 
@@ -145,7 +145,6 @@ class IndexPage extends Component {
         setTimeout(
           () =>
             this.setState({
-              view: this.props.formCompleted ? "" : "form",
               cartoonId,
             }),
           3000
