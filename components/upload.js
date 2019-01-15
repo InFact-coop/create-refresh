@@ -29,7 +29,7 @@ const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
 `
 
 const ShowMeMeme = styled.a.attrs({
-  className: "apercu dark-pink font-5 pt2 pb3 data-view",
+  className: "apercu dark-pink font-5 pt2 pb3 pointer data-view",
 })`
   &:hover {
     text-decoration: underline;
