@@ -27,7 +27,7 @@ const rotate = keyframes`
 const Background = styled.div.attrs(({ view }) => ({
   className: `${
     view === "form"
-      ? "bg-near-white dark-pink"
+      ? "bg-near-white b--solid b--near-white dark-pink"
       : "blue bg-blue b--solid b--light-blue"
   } flex items-center flex-column pv2-ns pv0`,
 }))`
