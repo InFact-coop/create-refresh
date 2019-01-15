@@ -21,8 +21,8 @@ const ImagesSidebyside = styled.div.attrs({
 })``
 
 const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
-  max-width: 483px;
-  max-height: 370px;
+  max-width: 380px;
+  max-height: 380px;
   background-image: ${({ src }) => `url(${src})`};
   background-size: cover;
   background-repeat: no-repeat;
