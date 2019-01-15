@@ -61,43 +61,32 @@ class Upload extends Component {
       : "https://eu-compliant-meme-generator.herokuapp.com/"
     const hashtags = "SaveYourInternet"
     const via = "lucydev5"
-
-    const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtag=${hashtags}&via=${via}`
+    const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}&via=${via}`
     return href
   }
 
-  shareImageOnTwitter = () => {
-    const link = document.createElement("a")
-    link.href = this.getTwitterHref(this.props.cartoonId)
-    link.style.display = "none"
-    document.body.appendChild(link)
-    link.click()
-  }
-
   shareOnFacebook = () => {
-    // const link = document.createElement("a")
-    // link.target = "_blank"
-    // link.class = "fb-xfbml-parse-ignore"
-    // link.style.display = "none"
-    // link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&src=sdkpreparse`
-
-    // document.body.appendChild(link)
-    // link.click()
-
     //eslint-disable-next-line
     FB.ui(
       {
         method: "share",
-        display: "popup",
         quote:
-          "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖",
-        url: this.props.cartoonId
-          ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoon=${cartoonId}`
+          "Make any meme last beyond Article 13 with the EU Compliant Meme Generator",
+        href: this.props.cartoonId
+          ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoon=${
+              this.props.cartoonId
+            }`
           : "https://eu-compliant-meme-generator.herokuapp.com/",
-        hashtag: "SaveYourInternet",
+        hashtag: "#SaveYourInternet",
         mobile_iframe: true,
       },
-      () => {}
+      response => {
+        if (response && !response.error_message) {
+          console.log("Posting completed.")
+        } else {
+          console.log("Error while posting.")
+        }
+      }
     )
   }
 

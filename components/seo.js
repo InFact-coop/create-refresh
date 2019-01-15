@@ -1,10 +1,10 @@
 import Head from "next/head"
+import metadata from "../static/images/metadata.png"
 
 function SEO({ title, description, image }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Complaint!"
-  const defaultImage =
-    "https://ih0.redbubble.net/image.453375841.1314/flat,550x550,075,f.u1.jpg"
+  const defaultImage = metadata
 
   return (
     <Head>
@@ -28,7 +28,7 @@ function SEO({ title, description, image }) {
         content={image || defaultImage}
       />
       <meta name="og:image:secure_url" content={image || defaultImage} />
-      <meta name="og:image:type" content="image/jpg" />
+      <meta name="og:image:type" content="image/png" />
       <meta name="og:image:height" content="630" />
       <meta name="og:image:width" content="1200" />
       <meta name="og:locale" content="en" />
@@ -54,7 +54,7 @@ function SEO({ title, description, image }) {
             var js, fjs = d.getElementsByTagName(s)[0],t = window.twttr || {};
             if (d.getElementById(id)) return t;
             js = d.createElement(s);js.id = id;
-            js.src = "https://platform.twitter.com/widgets.js:";
+            js.src = "https://platform.twitter.com/widgets.js";
             fjs.parentNode.insertBefore(js, fjs);
             t._e = [];
             t.ready = function(f) {t._e.push(f);
