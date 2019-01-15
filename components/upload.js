@@ -66,6 +66,7 @@ class Upload extends Component {
   }
 
   shareOnFacebook = () => {
+    console.log("here", this.props.cartoonId)
     //eslint-disable-next-line
     FB.ui(
       {
@@ -169,7 +170,13 @@ class Upload extends Component {
     }
     return (
       <Background view={view}>
-        <MobileNav toggleMenu={toggleMenu} showMenu={showMenu} />
+        <MobileNav
+          cartoonId={cartoonId}
+          getTwitterHref={this.getTwitterHref}
+          shareOnFacebook={this.shareOnFacebook}
+          toggleMenu={toggleMenu}
+          showMenu={showMenu}
+        />
         <DesktopNav
           view={view}
           cartoonId={cartoonId}
@@ -199,7 +206,7 @@ class Upload extends Component {
                 showShareModal={showShareModal}
                 toggleShare={toggleShareModal}
                 getTwitterHref={this.getTwitterHref}
-                shareImageOnFacebook={this.shareImageOnFacebook}
+                shareOnFacebook={this.shareOnFacebook}
               />
             ) : (
               <UploadButton file={file} onImageSelect={onImageSelect} />

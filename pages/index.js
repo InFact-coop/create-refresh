@@ -138,30 +138,33 @@ class IndexPage extends Component {
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
-    axios
-      .post(`${cartoonEndpoint}/upload`, data)
-      .then(res => {
-        const { id: cartoonId } = res.data
-        setTimeout(
-          () =>
-            this.setState({
-              cartoonId,
-            }),
-          3000
-        )
-      })
-      .catch(err => {
-        setTimeout(
-          () =>
-            this.setState({
-              view: "",
-              error:
-                "Oops, something went wrong creating your meme. Please try again!",
-            }),
-          2000
-        )
-        console.log(err)
-      })
+    // axios
+    //   .post(`${cartoonEndpoint}/upload`, data)
+    //   .then(res => {
+    //     const { id: cartoonId } = res.data
+    //     setTimeout(
+    //       () =>
+    //         this.setState({
+    //           cartoonId,
+    //         }),
+    //       3000
+    //     )
+    //   })
+    //   .catch(err => {
+    //     setTimeout(
+    //       () =>
+    //         this.setState({
+    //           view: "",
+    //           error:
+    //             "Oops, something went wrong creating your meme. Please try again!",
+    //         }),
+    //       2000
+    //     )
+    //     console.log(err)
+    //   })
+    this.setState({
+      cartoonId: 666,
+    })
   }
 
   seeMeme = () => {

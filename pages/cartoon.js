@@ -30,31 +30,43 @@ class CartoonPage extends Component {
   static async getInitialProps({ query }) {
     const { cartoonId, formCompleted, fromIndex } = query
 
-    return await axios
-      .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
-      .then(res => ({
-        cartoonId,
-        cartoon: `data:image/png;base64,${res.data.compliant}`,
-        fileURL: `data:image/png;base64,${res.data.original}`,
-        formCompleted,
-        fromIndex,
-        error: "",
-        view: "cartoon",
-      }))
-      .catch(err => {
-        console.log(err)
+    // return await axios
+    //   .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
+    //   .then(res => ({
+    //     cartoonId,
+    //     cartoon: `data:image/png;base64,${res.data.compliant}`,
+    //     fileURL: `data:image/png;base64,${res.data.original}`,
+    //     formCompleted,
+    //     fromIndex,
+    //     error: "",
+    //     view: "cartoon",
+    //   }))
+    //   .catch(err => {
+    //     console.log(err)
 
-        return {
-          cartoonId,
-          cartoon: null,
-          fileURL: null,
-          formCompleted,
-          fromIndex,
-          view: "",
-          error:
-            "Oops, something went wrong creating your meme. Please try again!",
-        }
-      })
+    //     return {
+    //       cartoonId,
+    //       cartoon: null,
+    //       fileURL: null,
+    //       formCompleted,
+    //       fromIndex,
+    //       view: "",
+    //       error:
+    //         "Oops, something went wrong creating your meme. Please try again!",
+    //     }
+    //   })
+
+    return {
+      cartoonId,
+      fileURL:
+        "https://www.akc.org/wp-content/themes/akc/component-library/assets/img/welcome.jpg",
+      cartoon:
+        "https://previews.123rf.com/images/izakowski/izakowski1309/izakowski130900029/21993641-black-and-white-cartoon-illustration-of-cute-purebred-pug-dog-for-children-to-coloring-book.jpg",
+      formCompleted,
+      fromIndex,
+      error: "",
+      view: "cartoon",
+    }
   }
 
   componentDidMount() {

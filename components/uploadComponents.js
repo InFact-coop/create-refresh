@@ -150,9 +150,19 @@ const DesktopNav = ({ view, cartoonId, getTwitterHref, shareOnFacebook }) => (
   </div>
 )
 
-const MobileNav = ({ showMenu, toggleMenu }) => (
+const MobileNav = ({
+  showMenu,
+  toggleMenu,
+  shareOnFacebook,
+  getTwitterHref,
+}) => (
   <div className="dn-ns db w-100 mb1">
-    <Hamburger showMenu={showMenu} toggleMenu={toggleMenu} />
+    <Hamburger
+      showMenu={showMenu}
+      toggleMenu={toggleMenu}
+      shareOnFacebook={shareOnFacebook}
+      getTwitterHref={getTwitterHref}
+    />
     <div className="flex justify-between w-100 pr2">
       <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
       <a href="/">
@@ -189,7 +199,7 @@ const ShareButtons = props => (
         <ShareModal
           cartoonId={props.cartoonId}
           getTwitterHref={props.getTwitterHref}
-          shareImageOnFacebook={props.shareImageOnFacebook}
+          shareOnFacebook={props.shareOnFacebook}
         />
       )}
     </RedButton>
