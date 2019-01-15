@@ -63,7 +63,7 @@ class CartoonPage extends Component {
       cartoon:
         "https://previews.123rf.com/images/izakowski/izakowski1309/izakowski130900029/21993641-black-and-white-cartoon-illustration-of-cute-purebred-pug-dog-for-children-to-coloring-book.jpg",
       formCompleted,
-      fromIndex,
+      fromIndex: false,
       error: "",
       view: "cartoon",
     }
