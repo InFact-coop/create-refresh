@@ -52,7 +52,15 @@ class HandleImage(object):
     def crop(self):
         box_coords = self.crop_x_smallest_axis(
         ) if self.smallest_axis == "X" else self.crop_y_smallest_axis()
-        return self.resized.crop(box_coords)
+        crop = self.resized.crop(box_coords)
+
+        check_x = crop.size[0]
+        check_y = crop.size[1]
+
+        if check_x > 1080 or check_y > 1080:
+            crop = crop.crop((0, 0, 1080, 1080))
+
+        return crop
 
     def get_cropped(self):
         return self.crop_image
