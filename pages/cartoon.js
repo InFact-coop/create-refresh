@@ -123,9 +123,31 @@ class CartoonPage extends Component {
 
   render() {
     const { showMenu, showShareModal } = this.state
-    const { fileURL, cartoon, cartoonId, fromIndex, error, view } = this.props
+    const { fileURL, cartoon, cartoonId, error, view } = this.props
 
-    return fromIndex ? (
+    // return fromIndex ? (
+    //   <Layout>
+    //     <SEO image={cartoon} />
+    //     <Upload
+    //       fileURL={fileURL}
+    //       error={error}
+    //       cartoon={cartoon}
+    //       view={view}
+    //       showMenu={showMenu}
+    //       showShareModal={showShareModal}
+    //       handleStartOver={this.handleStartOver}
+    //       toggleShareModal={this.toggleShareModal}
+    //       toggleMenu={this.toggleMenu}
+    //       cartoonId={cartoonId}
+    //     />
+    //     <Info />
+    //     <Video />
+    //     <Signup theme="light" submitForm={this.submitForm} />
+    //     <Faq />
+    //     <Footer />
+    //   </Layout>
+    // ) : null
+    return (
       <Layout>
         <SEO image={cartoon} />
         <Upload
@@ -146,7 +168,7 @@ class CartoonPage extends Component {
         <Faq />
         <Footer />
       </Layout>
-    ) : null
+    )
   }
 }
 
