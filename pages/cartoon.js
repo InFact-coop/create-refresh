@@ -149,7 +149,7 @@ class CartoonPage extends Component {
     // ) : null
     return (
       <Layout>
-        <SEO image={cartoon} />
+        <SEO image={cartoon} cartoonId={cartoonId} />
         <Upload
           fileURL={fileURL}
           error={error}

@@ -1,8 +1,8 @@
 import Head from "next/head"
 
-function SEO({ title, description, image }) {
+function SEO({ title, description, image, cartoonId }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
-  const defaultTitle = "Make ANY Meme EU Complaint!"
+  const defaultTitle = "Make ANY Meme EU Compliant!"
   const defaultImage = "https://i.ibb.co/3v4Bk6G/metadata.png"
   return (
     <Head>
@@ -20,9 +20,14 @@ function SEO({ title, description, image }) {
       <meta name="og:image:height" content="630" />
       <meta name="og:image:width" content="1200" />
       <meta proprty="og:locale" content="en" />
+
       <meta
         property="og:url"
-        content="https://eu-compliant-meme-generator.herokuapp.com/"
+        content={
+          cartoonId
+            ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${cartoonId}`
+            : "https://eu-compliant-meme-generator.herokuapp.com"
+        }
       />
       <meta name="twitter:title" content={title || defaultTitle} />
       <meta
