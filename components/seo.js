@@ -3,9 +3,7 @@ import Head from "next/head"
 function SEO({ title, description, image }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Complaint!"
-  const defaultImage =
-    "https://user-images.githubusercontent.com/44616991/51125305-3e98e500-1818-11e9-9022-c3fa867b8e0d.png"
-
+  const defaultImage = "https://i.ibb.co/3v4Bk6G/metadata.png"
   return (
     <Head>
       <meta charSet="UTF-8" />
