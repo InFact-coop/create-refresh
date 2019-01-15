@@ -12,6 +12,7 @@ import Hamburger from "./hamburger"
 import loading from "../static/images/loading.svg"
 import ShareModal from "./shareImage"
 import gifLogo from "../static/images/headerGif.gif"
+import upload_bg from "../static/images/upload_bg.svg"
 
 const rotate = keyframes`
   from {
@@ -34,6 +35,13 @@ const Background = styled.div.attrs(({ view }) => ({
   @media (max-width: 40rem) {
     border-width: 18px;
   }
+  ${({ view }) =>
+    view === "form"
+      ? ""
+      : `
+  background-image: url(${upload_bg});
+  background-size: 100%;
+  `}
 `
 
 const ButtonHolder = styled.div.attrs(({ display }) => ({

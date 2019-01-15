@@ -1,13 +1,17 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import bitSteps from "../static/images/8bit.svg"
+import form_bg from "../static/images/form_bg.svg"
 import CountrySelect from "./countrySelect"
 
 const Section = styled.section.attrs(({ view }) => ({
   className: `${
     view === "form" ? "pa0" : "pv4-ns"
   } flex justify-center w-100 bg-near-white`,
-}))``
+}))`
+  background-image: url(${form_bg});
+  background-size: 100%;
+`
 
 const Container = styled.div.attrs({
   className:
