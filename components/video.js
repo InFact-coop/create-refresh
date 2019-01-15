@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import video_bg from "../static/images/video_bg.svg"
 
 const Background = styled.div.attrs({
   className: "flex justify-center bg-light-pink align-center b0 m0 p0",
-})``
+})`
+  background-image: url(${video_bg});
+  background-size: 100%;
+`
 
 const VideoContainer = styled.div.attrs({
   className: "flex justify-center align-center bg-black mb4 mb0-ns",

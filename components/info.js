@@ -1,10 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import info_bg from "../static/images/info_bg.svg"
 
 const Container = styled.div.attrs({
   className:
     "mid-gray flex flex-column flex-row-ns items-center justify-center justify-between-ns ph7-ns pt2 pt4-ns pb4-ns",
 })`
+  background-image: url(${info_bg});
+  background-size: 100%;
   @media (max-width: 40em) {
     background-color: var(--light-pink);
   }

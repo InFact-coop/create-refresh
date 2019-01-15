@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Router from "next/router"
+import axios from "axios"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -14,10 +15,11 @@ import encode from "../utils/encode"
 
 import "../styles/index.css"
 
+const cartoonEndpoint = "http://localhost:5000"
+
 class CartoonPage extends Component {
   state = {
     fileURL: null,
-    error: "",
     cartoon: null,
     view: "cartoon",
     showMenu: false,
@@ -28,20 +30,44 @@ class CartoonPage extends Component {
   static async getInitialProps({ query }) {
     const { cartoonId, formCompleted, fromIndex } = query
 
-    // do api call to get cartoon and original image using id from aws
-    // if no original redirect to home
+    axios
+      .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
+      .then(res => ({
+        cartoonId,
+        cartoon: `data:image/png;base64,${res.data.compliant.base64}`,
+        fileURL: `data:image/png;base64,${res.data.original.base64}`,
+        formCompleted,
+        fromIndex,
+        error: "",
+        view: "cartoon",
+      }))
+      .catch(err => {
+        console.log(err)
 
-    return {
-      cartoonId: "1536577",
-      cartoon: "https://tinyurl.com/ybhexc65",
-      fileURL: "https://tinyurl.com/ybhexc65",
-      formCompleted,
-      fromIndex,
-    }
+        return {
+          cartoonId,
+          cartoon: null,
+          fileURL: null,
+          formCompleted,
+          fromIndex,
+          view: "",
+          error:
+            "Oops, something went wrong creating your meme. Please try again!",
+        }
+      })
   }
 
   componentDidMount() {
     if (!this.props.fromIndex) Router.push("/")
+    if (this.props.error) {
+      Router.push({
+        pathname: "/",
+        query: {
+          error:
+            "Oops, something went wrong creating your meme. Please try again!",
+        },
+      })
+    }
   }
 
   submitForm = data => {
@@ -84,8 +110,8 @@ class CartoonPage extends Component {
   }
 
   render() {
-    const { error, view, showMenu, showShareModal } = this.state
-    const { fileURL, cartoon, cartoonId, fromIndex } = this.props
+    const { showMenu, showShareModal } = this.state
+    const { fileURL, cartoon, cartoonId, fromIndex, error, view } = this.props
 
     return fromIndex ? (
       <Layout>
