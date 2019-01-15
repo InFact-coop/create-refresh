@@ -28,7 +28,7 @@ class CartoonPage extends Component {
   }
 
   static async getInitialProps({ query }) {
-    const { cartoonId, formCompleted, fromIndex } = query
+    const { cartoonId } = query
 
     // return await axios
     //   .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
@@ -62,15 +62,15 @@ class CartoonPage extends Component {
         "https://www.akc.org/wp-content/themes/akc/component-library/assets/img/welcome.jpg",
       cartoon:
         "https://previews.123rf.com/images/izakowski/izakowski1309/izakowski130900029/21993641-black-and-white-cartoon-illustration-of-cute-purebred-pug-dog-for-children-to-coloring-book.jpg",
-      formCompleted,
-      fromIndex: true,
+      // formCompleted,
+      // fromIndex: true,
       error: "",
       view: "cartoon",
     }
   }
 
   componentDidMount() {
-    if (!this.props.fromIndex) Router.push("/")
+    // if (!this.props.fromIndex) Router.push("/")
     if (this.props.error) {
       Router.push({
         pathname: "/",

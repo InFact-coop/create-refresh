@@ -66,7 +66,14 @@ class Upload extends Component {
   }
 
   shareOnFacebook = () => {
-    console.log("here", this.props.cartoonId)
+    console.log(
+      "here",
+      this.props.cartoonId
+        ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoon=${
+            this.props.cartoonId
+          }&formCompleted=false&fromIndex=false`
+        : "https://eu-compliant-meme-generator.herokuapp.com/"
+    )
     //eslint-disable-next-line
     FB.ui(
       {
