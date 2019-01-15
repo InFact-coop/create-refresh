@@ -61,7 +61,7 @@ class CartoonPage extends Component {
       fileURL:
         "https://www.akc.org/wp-content/themes/akc/component-library/assets/img/welcome.jpg",
       cartoon:
-        "https://previews.123rf.com/images/izakowski/izakowski1309/izakowski130900029/21993641-black-and-white-cartoon-illustration-of-cute-purebred-pug-dog-for-children-to-coloring-book.jpg",
+        "https://dogbreedcartoon.com/wp-content/uploads/2016/11/Ainu-Dog-Special.png",
       // formCompleted,
       // fromIndex: true,
       error: "",
