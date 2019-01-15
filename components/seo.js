@@ -1,40 +1,29 @@
 import Head from "next/head"
-import metadata from "../static/images/metadata.png"
 
 function SEO({ title, description, image }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Complaint!"
-  const defaultImage = metadata
+  const defaultImage =
+    "https://user-images.githubusercontent.com/44616991/51125305-3e98e500-1818-11e9-9022-c3fa867b8e0d.png"
 
   return (
     <Head>
       <meta charSet="UTF-8" />
       <meta name="description" content={description || defaultDescription} />
       <meta name="title" content={title || defaultTitle} />
+      <meta property="og:title" content={title || defaultTitle} />
+      <meta property="og:type" content="website" />
       <meta
-        name="og:title"
-        property="og:title"
-        content={title || defaultTitle}
-      />
-      <meta name="og:type" content="website" />
-      <meta
-        name="og:description"
         property="og:description"
         content={description || defaultDescription}
       />
-      <meta
-        name="og:image"
-        property="og:image"
-        content={image || defaultImage}
-      />
+      <meta property="og:image" content={image || defaultImage} />
       <meta name="og:image:secure_url" content={image || defaultImage} />
       <meta name="og:image:type" content="image/png" />
       <meta name="og:image:height" content="630" />
       <meta name="og:image:width" content="1200" />
-      <meta name="og:locale" content="en" />
-      <meta name="fb:app_id" content="en" />
+      <meta proprty="og:locale" content="en" />
       <meta
-        name="og:url"
         property="og:url"
         content="https://eu-compliant-meme-generator.herokuapp.com/"
       />
@@ -44,7 +33,7 @@ function SEO({ title, description, image }) {
         content={description || defaultDescription}
       />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="fb:app_id" content="1627837104015374" />
+      <meta property="fb:app_id" content="1627837104015374" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script
         type="text/javascript"
