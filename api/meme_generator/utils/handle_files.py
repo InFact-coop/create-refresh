@@ -5,10 +5,14 @@ from datetime import datetime
 from os import path, remove
 
 
-def hash_filename(location, ext):
+def hash_filename(location):
     hashed = adler32(str(time() * randint(1, 10)))
     date = datetime.utcnow().strftime("%d%m%Y-%H%M%S")
-    return path.join(location, str(hashed) + "-" + str(date) + "." + ext)
+    return path.join(location, str(hashed) + "-" + str(date))
+
+
+def get_extension(filename):
+    return filename.split(".")[-1]
 
 
 def cleanup_files(files):
@@ -24,3 +28,13 @@ def get_hash_from_filename(filename):
 def get_filename_from_hash(hashed, ext):
     ext = ext.replace(".", "")
     return ".".join([hashed, ext])
+
+
+def check_hash_exists(hashed, allowed_extensions, folder):
+    for extension in allowed_extensions:
+        filename = get_filename_from_hash(hashed, extension)
+        search_path = path.join(folder, filename)
+        if path.exists(search_path):
+            return search_path
+
+    return False

@@ -5,7 +5,7 @@ from cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 from .image_convert import convert_to_base64
 from .image_watermark import add_watermark
-from utils.handle_files import hash_filename, cleanup_files, get_filename_from_hash
+from utils.handle_files import hash_filename, cleanup_files, get_extension, get_filename_from_hash, check_hash_exists
 
 # import application context and declare new blueprint
 app = current_app
@@ -16,17 +16,44 @@ def allowed_file(filename):
     """Check file extension being uploaded is allowed within the application factory setup"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+@bp.route("/fetch/<string:fileid>")
+def fetch(fileid):
+    """Return a JSON object containing base64 encoded versions of original and compliant image of fileid hash"""
 
-@bp.route("/view/<string:fileid>")
-def view(fileid):
-    """Return an image from the uploads folder if exists in querystring"""
+    compliant_filename = get_filename_from_hash(fileid, "png")
+    compliant_path = os.path.join(app.config["UPLOAD_FOLDER"], compliant_filename)
+    original_path = check_hash_exists(fileid + "_orig", app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
 
-    image_filename = get_filename_from_hash(fileid, "png")
+    if not os.path.exists(compliant_path) or not os.path.exists(original_path):
+        return jsonify(status=404)
 
-    if not os.path.exists(os.path.join(app.config["UPLOAD_FOLDER"], image_filename)):
-        abort(404)
+    return jsonify(status=200, original=convert_to_base64(original_path), compliant=convert_to_base64(compliant_path))
 
-    return send_from_directory(os.path.abspath(app.config['UPLOAD_FOLDER']), image_filename)
+
+@bp.route("/fetch/img/<string:view>/<string:fileid>")
+def compliant_view(view, fileid):
+    """Return an original or compliant image from the uploads folder if exists in querystring"""
+
+    if view == "original":
+
+        image_filename = check_hash_exists(
+            fileid + "_orig", app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
+
+        if not image_filename:
+            abort(404)
+
+        return send_from_directory(os.path.abspath(app.config["UPLOAD_FOLDER"]), image_filename)
+
+    if view == "compliant":
+
+        image_filename = get_filename_from_hash(fileid, "png")
+
+        if not os.path.exists(os.path.join(app.config["UPLOAD_FOLDER"], image_filename)):
+            abort(404)
+
+        return send_from_directory(os.path.abspath(app.config['UPLOAD_FOLDER']), image_filename)
+
+    abort(404)
 
 
 @bp.route("/upload", methods=['POST'])
@@ -41,8 +68,10 @@ def upload():
     if file and allowed_file(file.filename):
 
         filename = secure_filename(file.filename)
-        uploaded_file_path = os.path.join(
-            app.config['UPLOAD_FOLDER'], filename)
+
+        file_hash = hash_filename(app.config['UPLOAD_FOLDER'])
+        uploaded_file_path = file_hash + "_orig." + get_extension(filename)
+        watermarked_file_path = file_hash + ".png"
 
         file.save(uploaded_file_path)
         file.close()
@@ -50,11 +79,8 @@ def upload():
         cartoon_file = cartoonify(
             uploaded_file_path, app.config["DATASET_FOLDER"], os.path.join(app.config["MODEL_FOLDER"], "frozen_inference_graph.pb"))
 
-        watermarked_file_path = hash_filename(
-            location=app.config['UPLOAD_FOLDER'], ext="png")
-
         add_watermark(str(cartoon_file), os.path.join(
             app.root_path, "eu-compliant-watermark.png"), watermarked_file_path)
 
-        cleanup_files([uploaded_file_path, cartoon_file])
-        return jsonify(status=200, base64=convert_to_base64(str(watermarked_file_path)))
+        cleanup_files([cartoon_file])
+        return jsonify(status=200, id=file_hash.split("/")[1])
