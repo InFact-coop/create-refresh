@@ -6,17 +6,15 @@ def add_watermark(input_path, watermark_path, output_path):
     """Add EU-compliant meme watermark to a supplied image"""
     try:
         original_image = Image.open(input_path)
-        _original_width, original_height = original_image.size
-
-        watermark_image = Image.open(watermark_path)
-        resize = int(round(original_height * 0.25))
-        watermark_resized = watermark_image.resize((resize, resize))
-        _resized_width, resized_height = watermark_resized.size
-
-        original_image.thumbnail((1080, 1080))
         _w, h = original_image.size
-        original_image.paste(watermark_resized, (8, h - resized_height - 8),
-                             mask=watermark_resized)
+        size = int(round(h * 0.4))
+        watermark_image = Image.open(watermark_path)
+        watermark_image.thumbnail((size, size))
+        print(watermark_image.size)
+        _resized_width, resized_height = watermark_image.size
+
+        original_image.paste(watermark_image, (8, h - resized_height - 8),
+                             mask=watermark_image)
         original_image.save(output_path)
         return "Success!"
     except IOError:
