@@ -56,8 +56,8 @@ class IndexPage extends Component {
             pathname: "/cartoon",
             query: {
               cartoonId: this.state.cartoonId,
-              // formCompleted: this.state.formCompleted,
-              // fromIndex: true,
+              formCompleted: this.state.formCompleted,
+              fromIndex: true,
             },
           }),
         3000

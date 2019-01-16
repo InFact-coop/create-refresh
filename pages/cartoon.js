@@ -28,7 +28,7 @@ class CartoonPage extends Component {
   }
 
   static async getInitialProps({ query }) {
-    const { cartoonId } = query
+    const { cartoonId, formCompleted, fromIndex } = query
 
     // return await axios
     //   .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
@@ -36,8 +36,8 @@ class CartoonPage extends Component {
     //     cartoonId,
     //     cartoon: `data:image/png;base64,${res.data.compliant}`,
     //     fileURL: `data:image/png;base64,${res.data.original}`,
-    //     formCompleted,
-    //     fromIndex,
+    //     formCompleted: {formCompleted ? formCompleted : false},
+    //     fromIndex: {fromIndex ? fromIndex : false},
     //     error: "",
     //     view: "cartoon",
     //   }))
@@ -48,8 +48,8 @@ class CartoonPage extends Component {
     //       cartoonId,
     //       cartoon: null,
     //       fileURL: null,
-    //       formCompleted,
-    //       fromIndex,
+    //       formCompleted: {formCompleted ? formCompleted : false},
+    //       fromIndex: {fromIndex ? fromIndex : false},
     //       view: "",
     //       error:
     //         "Oops, something went wrong creating your meme. Please try again!",
@@ -62,15 +62,15 @@ class CartoonPage extends Component {
         "https://www.akc.org/wp-content/themes/akc/component-library/assets/img/welcome.jpg",
       cartoon:
         "https://dogbreedcartoon.com/wp-content/uploads/2016/11/Ainu-Dog-Special.png",
-      // formCompleted,
-      // fromIndex: true,
+      formCompleted: false,
+      fromIndex: true,
       error: "",
       view: "cartoon",
     }
   }
 
   componentDidMount() {
-    // if (!this.props.fromIndex) Router.push("/")
+    if (!this.props.fromIndex) Router.push("/")
     if (this.props.error) {
       Router.push({
         pathname: "/",
