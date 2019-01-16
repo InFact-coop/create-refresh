@@ -80,6 +80,16 @@ const Label = styled.label.attrs({
   }
 `
 
+const LabelButton = styled.label.attrs({
+  className: "yellow pointer bg-red apercu font-5 bn",
+})`
+  width: 145px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const LinkToForm = styled.p.attrs({
   className: "white i font-7 pv2 tc mh4 db-ns dn",
 })``
@@ -170,9 +180,7 @@ const MobileNav = ({ showMenu, toggleMenu }) => (
 const UploadButton = ({ file, onImageSelect }) => (
   <ButtonHolder display="justify-center">
     <form>
-      <RedButton className="data-upload" type="button">
-        <label htmlFor="buttonUpload">Upload</label>
-      </RedButton>
+      <LabelButton htmlFor="buttonUpload">Upload</LabelButton>
       <FileInput
         type="file"
         id="buttonUpload"
