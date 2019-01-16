@@ -30,31 +30,41 @@ class CartoonPage extends Component {
   static async getInitialProps({ query }) {
     const { cartoonId, formCompleted, fromIndex } = query
 
-    return await axios
-      .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
-      .then(res => ({
-        cartoonId,
-        cartoon: `data:image/png;base64,${res.data.compliant}`,
-        fileURL: `data:image/png;base64,${res.data.original}`,
-        formCompleted: formCompleted || false,
-        fromIndex: fromIndex || false,
-        error: "",
-        view: "cartoon",
-      }))
-      .catch(err => {
-        console.log(err)
+    // return await axios
+    //   .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
+    //   .then(res => ({
+    //     cartoonId,
+    //     cartoon: `data:image/png;base64,${res.data.compliant}`,
+    //     fileURL: `data:image/png;base64,${res.data.original}`,
+    //     formCompleted: formCompleted || false,
+    //     fromIndex: fromIndex || false,
+    //     error: "",
+    //     view: "cartoon",
+    //   }))
+    //   .catch(err => {
+    //     console.log(err)
 
-        return {
-          cartoonId,
-          cartoon: null,
-          fileURL: null,
-          formCompleted: formCompleted || false,
-          fromIndex: fromIndex || false,
-          view: "",
-          error:
-            "Oops, something went wrong creating your meme. Please try again!",
-        }
-      })
+    //     return {
+    //       cartoonId,
+    //       cartoon: null,
+    //       fileURL: null,
+    //       formCompleted: formCompleted || false,
+    //       fromIndex: fromIndex || false,
+    //       view: "",
+    //       error:
+    //         "Oops, something went wrong creating your meme. Please try again!",
+    //     }
+    //   })
+
+    return {
+      cartoonId,
+      cartoon: `https://www.chickensmoothie.com/oekaki/image/image.php?id=2416574&size=large&format=auto&rev=1450032590`,
+      fileURL: `https://www.rd.com/wp-content/uploads/2017/10/These-Funny-Dog-Videos-Are-the-Break-You-Need-Right-Now_493370860-Jenn_C-760x506.jpg`,
+      formCompleted: formCompleted || false,
+      fromIndex: fromIndex || false,
+      error: "",
+      view: "cartoon",
+    }
   }
 
   componentDidMount() {
