@@ -57,32 +57,37 @@ class Upload extends Component {
     const text =
       "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
     const url = cartoonId
-      ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoon=${cartoonId}`
+    ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${cartoonId}`
       : "https://eu-compliant-meme-generator.herokuapp.com/"
     const hashtags = "SaveYourInternet"
     const via = "lucydev5"
-
-    const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtag=${hashtags}&via=${via}`
+    const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}&via=${via}`
     return href
   }
 
-  shareImageOnTwitter = () => {
-    const link = document.createElement("a")
-    link.href = this.getTwitterHref(this.props.cartoonId)
-    link.style.display = "none"
-    document.body.appendChild(link)
-    link.click()
-  }
-
-  shareImageOnFacebook = () => {
-    const link = document.createElement("a")
-    link.target = "_blank"
-    link.class = "fb-xfbml-parse-ignore"
-    link.style.display = "none"
-    link.href = `https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&src=sdkpreparse`
-
-    document.body.appendChild(link)
-    link.click()
+  shareOnFacebook = () => {
+    //eslint-disable-next-line
+    FB.ui(
+      {
+        method: "share",
+        quote:
+          "Make any meme last beyond Article 13 with the EU Compliant Meme Generator",
+        href: this.props.cartoonId
+          ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${
+              this.props.cartoonId
+            }`
+          : "https://eu-compliant-meme-generator.herokuapp.com/",
+        hashtag: "#SaveYourInternet",
+        mobile_iframe: true,
+      },
+      response => {
+        if (response && !response.error_message) {
+          console.log("Posting completed.")
+        } else {
+          console.log("Error while posting.")
+        }
+      }
+    )
   }
 
   render() {
@@ -164,11 +169,18 @@ class Upload extends Component {
     }
     return (
       <Background view={view}>
-        <MobileNav toggleMenu={toggleMenu} showMenu={showMenu} />
+        <MobileNav
+          cartoonId={cartoonId}
+          getTwitterHref={this.getTwitterHref}
+          shareOnFacebook={this.shareOnFacebook}
+          toggleMenu={toggleMenu}
+          showMenu={showMenu}
+        />
         <DesktopNav
           view={view}
           cartoonId={cartoonId}
           getTwitterHref={this.getTwitterHref}
+          shareOnFacebook={this.shareOnFacebook}
         />
 
         <UploadView />
@@ -193,7 +205,7 @@ class Upload extends Component {
                 showShareModal={showShareModal}
                 toggleShare={toggleShareModal}
                 getTwitterHref={this.getTwitterHref}
-                shareImageOnFacebook={this.shareImageOnFacebook}
+                shareOnFacebook={this.shareOnFacebook}
               />
             ) : (
               <UploadButton file={file} onImageSelect={onImageSelect} />

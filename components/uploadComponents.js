@@ -131,7 +131,7 @@ const GifLogo = styled.img.attrs({
   max-height: calc(700px / 4.4195);
 `
 
-const DesktopNav = ({ view, cartoonId, getTwitterHref }) => (
+const DesktopNav = ({ view, cartoonId, getTwitterHref, shareOnFacebook }) => (
   <div className="db-ns dn w-100 mb1">
     <NavContainer>
       <Link target="_blank" href="http://createrefresh.eu" view={view}>
@@ -141,12 +141,7 @@ const DesktopNav = ({ view, cartoonId, getTwitterHref }) => (
         <GifLogo src={gifLogo} alt="main logo" />
       </a>
       <Socials>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feu-compliant-meme-generator.netlify.com%2F&amp;src=sdkpreparse"
-          className="fb-xfbml-parse-ignore"
-        >
+        <a onClick={shareOnFacebook} className="pointer">
           <SocialIcon
             src={view === "form" ? facebookPink : facebook}
             alt="facebook"
@@ -165,9 +160,19 @@ const DesktopNav = ({ view, cartoonId, getTwitterHref }) => (
   </div>
 )
 
-const MobileNav = ({ showMenu, toggleMenu }) => (
+const MobileNav = ({
+  showMenu,
+  toggleMenu,
+  shareOnFacebook,
+  getTwitterHref,
+}) => (
   <div className="dn-ns db w-100 mb1">
-    <Hamburger showMenu={showMenu} toggleMenu={toggleMenu} />
+    <Hamburger
+      showMenu={showMenu}
+      toggleMenu={toggleMenu}
+      shareOnFacebook={shareOnFacebook}
+      getTwitterHref={getTwitterHref}
+    />
     <div className="flex justify-between w-100 pr2">
       <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
       <a href="/">
@@ -202,7 +207,7 @@ const ShareButtons = props => (
         <ShareModal
           cartoonId={props.cartoonId}
           getTwitterHref={props.getTwitterHref}
-          shareImageOnFacebook={props.shareImageOnFacebook}
+          shareOnFacebook={props.shareOnFacebook}
         />
       )}
     </RedButton>

@@ -45,14 +45,21 @@ const ShareText = styled.p.attrs({
   line-height: 23px;
 `
 
-const ShareBox = ({ icon, to, margin }) => (
+const ShareBox = ({ icon, to, margin, href, onClick }) => (
   <BoxContainer className={margin}>
-    <ShareText>Share to</ShareText>
-    <img src={icon} alt={to} />
+    <a href={href} onClick={onClick} className="no-underline white">
+      <ShareText>Share to</ShareText>
+      <img src={icon} alt={to} />
+    </a>
   </BoxContainer>
 )
 
-const Hamburger = ({ showMenu, toggleMenu }) => (
+const Hamburger = ({
+  showMenu,
+  toggleMenu,
+  shareOnFacebook,
+  getTwitterHref,
+}) => (
   <BackgroundDiv showMenu={showMenu}>
     <div className="flex items-top mb2">
       <Close src={close} alt="close menu" onClick={toggleMenu} />
@@ -62,8 +69,18 @@ const Hamburger = ({ showMenu, toggleMenu }) => (
         <Link href="https://createrefresh.eu/faq/">FAQ</Link>
       </NavLinks>
     </div>
-    <ShareBox margin="ml6" to="facebook" icon={facebook} href="" />
-    <ShareBox margin="mr4" to="twitter" icon={twitter} href="" />
+    <ShareBox
+      margin="ml6"
+      to="facebook"
+      icon={facebook}
+      onClick={shareOnFacebook}
+    />
+    <ShareBox
+      margin="mr4"
+      to="twitter"
+      icon={twitter}
+      href={getTwitterHref()}
+    />
   </BackgroundDiv>
 )
 
