@@ -30,43 +30,31 @@ class CartoonPage extends Component {
   static async getInitialProps({ query }) {
     const { cartoonId, formCompleted, fromIndex } = query
 
-    // return await axios
-    //   .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
-    //   .then(res => ({
-    //     cartoonId,
-    //     cartoon: `data:image/png;base64,${res.data.compliant}`,
-    //     fileURL: `data:image/png;base64,${res.data.original}`,
-    //     formCompleted: {formCompleted ? formCompleted : false},
-    //     fromIndex: {fromIndex ? fromIndex : false},
-    //     error: "",
-    //     view: "cartoon",
-    //   }))
-    //   .catch(err => {
-    //     console.log(err)
+    return await axios
+      .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
+      .then(res => ({
+        cartoonId,
+        cartoon: `data:image/png;base64,${res.data.compliant}`,
+        fileURL: `data:image/png;base64,${res.data.original}`,
+        formCompleted: formCompleted || false,
+        fromIndex: fromIndex || false,
+        error: "",
+        view: "cartoon",
+      }))
+      .catch(err => {
+        console.log(err)
 
-    //     return {
-    //       cartoonId,
-    //       cartoon: null,
-    //       fileURL: null,
-    //       formCompleted: {formCompleted ? formCompleted : false},
-    //       fromIndex: {fromIndex ? fromIndex : false},
-    //       view: "",
-    //       error:
-    //         "Oops, something went wrong creating your meme. Please try again!",
-    //     }
-    //   })
-
-    return {
-      cartoonId,
-      fileURL:
-        "https://www.akc.org/wp-content/themes/akc/component-library/assets/img/welcome.jpg",
-      cartoon:
-        "https://66.media.tumblr.com/68e07a18cc18e32d56256d1757c4cb92/tumblr_oa9ya4LRj41u9kf45o1_1280.jpg",
-      formCompleted: false,
-      fromIndex: true,
-      error: "",
-      view: "cartoon",
-    }
+        return {
+          cartoonId,
+          cartoon: null,
+          fileURL: null,
+          formCompleted: formCompleted || false,
+          fromIndex: fromIndex || false,
+          view: "",
+          error:
+            "Oops, something went wrong creating your meme. Please try again!",
+        }
+      })
   }
 
   componentDidMount() {
@@ -123,31 +111,9 @@ class CartoonPage extends Component {
 
   render() {
     const { showMenu, showShareModal } = this.state
-    const { fileURL, cartoon, cartoonId, error, view } = this.props
+    const { fileURL, cartoon, cartoonId, error, view, fromIndex } = this.props
 
-    // return fromIndex ? (
-    //   <Layout>
-    //     <SEO image={cartoon} />
-    //     <Upload
-    //       fileURL={fileURL}
-    //       error={error}
-    //       cartoon={cartoon}
-    //       view={view}
-    //       showMenu={showMenu}
-    //       showShareModal={showShareModal}
-    //       handleStartOver={this.handleStartOver}
-    //       toggleShareModal={this.toggleShareModal}
-    //       toggleMenu={this.toggleMenu}
-    //       cartoonId={cartoonId}
-    //     />
-    //     <Info />
-    //     <Video />
-    //     <Signup theme="light" submitForm={this.submitForm} />
-    //     <Faq />
-    //     <Footer />
-    //   </Layout>
-    // ) : null
-    return (
+    return fromIndex ? (
       <Layout>
         <SEO image={cartoon} cartoonId={cartoonId} />
         <Upload
@@ -168,7 +134,7 @@ class CartoonPage extends Component {
         <Faq />
         <Footer />
       </Layout>
-    )
+    ) : null
   }
 }
 
