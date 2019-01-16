@@ -36,8 +36,8 @@ class CartoonPage extends Component {
         cartoonId,
         cartoon: `data:image/png;base64,${res.data.compliant}`,
         fileURL: `data:image/png;base64,${res.data.original}`,
-        formCompleted,
-        fromIndex,
+        formCompleted: formCompleted || false,
+        fromIndex: fromIndex || false,
         error: "",
         view: "cartoon",
       }))
@@ -48,8 +48,8 @@ class CartoonPage extends Component {
           cartoonId,
           cartoon: null,
           fileURL: null,
-          formCompleted,
-          fromIndex,
+          formCompleted: formCompleted || false,
+          fromIndex: fromIndex || false,
           view: "",
           error:
             "Oops, something went wrong creating your meme. Please try again!",
@@ -111,11 +111,11 @@ class CartoonPage extends Component {
 
   render() {
     const { showMenu, showShareModal } = this.state
-    const { fileURL, cartoon, cartoonId, fromIndex, error, view } = this.props
+    const { fileURL, cartoon, cartoonId, error, view, fromIndex } = this.props
 
     return fromIndex ? (
       <Layout>
-        <SEO image={cartoon} />
+        <SEO image={cartoon} cartoonId={cartoonId} />
         <Upload
           fileURL={fileURL}
           error={error}
