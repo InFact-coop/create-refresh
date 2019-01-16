@@ -61,7 +61,7 @@ class CartoonPage extends Component {
       fileURL:
         "https://www.akc.org/wp-content/themes/akc/component-library/assets/img/welcome.jpg",
       cartoon:
-        "https://dogbreedcartoon.com/wp-content/uploads/2016/11/Ainu-Dog-Special.png",
+        "https://66.media.tumblr.com/68e07a18cc18e32d56256d1757c4cb92/tumblr_oa9ya4LRj41u9kf45o1_1280.jpg",
       formCompleted: false,
       fromIndex: true,
       error: "",
