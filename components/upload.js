@@ -17,19 +17,19 @@ import SignUp from "./signup"
 
 const ImagesSidebyside = styled.div.attrs({
   className:
-    "data-view flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
+    "data-view w-100 flex flex-column flex-row-ns justify-center items-center mv3 mv0-ns",
 })``
 
 const Image = styled.div.attrs({ className: "ma2 image-comparison" })`
-  max-width: 483px;
-  max-height: 370px;
+  max-width: 380px;
+  max-height: 380px;
   background-image: ${({ src }) => `url(${src})`};
   background-size: cover;
   background-repeat: no-repeat;
 `
 
 const ShowMeMeme = styled.a.attrs({
-  className: "apercu dark-pink font-5 pt2 pb3 data-view",
+  className: "apercu dark-pink font-5 pt2 pb3 pointer data-view",
 })`
   &:hover {
     text-decoration: underline;

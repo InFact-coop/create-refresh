@@ -6,6 +6,7 @@ function SEO({ title, description, image, cartoonId }) {
   const defaultImage = "https://i.ibb.co/VTRBHb7/metadata.png"
   return (
     <Head>
+      <title>{title || defaultTitle}</title>
       <meta charSet="UTF-8" />
       <meta name="description" content={description || defaultDescription} />
       <meta property="og:title" content={title || defaultTitle} />

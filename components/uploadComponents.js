@@ -27,7 +27,7 @@ const rotate = keyframes`
 const Background = styled.div.attrs(({ view }) => ({
   className: `${
     view === "form"
-      ? "bg-near-white dark-pink"
+      ? "bg-near-white b--solid b--near-white dark-pink"
       : "blue bg-blue b--solid b--light-blue"
   } flex items-center flex-column pv2-ns pv0`,
 }))`
@@ -78,6 +78,16 @@ const Label = styled.label.attrs({
   p {
     width: 50%;
   }
+`
+
+const LabelButton = styled.label.attrs({
+  className: "yellow pointer bg-red apercu font-5 bn",
+})`
+  width: 145px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const LinkToForm = styled.p.attrs({
@@ -175,9 +185,7 @@ const MobileNav = ({
 const UploadButton = ({ file, onImageSelect }) => (
   <ButtonHolder display="justify-center">
     <form>
-      <RedButton className="data-upload" type="button">
-        <label htmlFor="buttonUpload">Upload</label>
-      </RedButton>
+      <LabelButton htmlFor="buttonUpload">Upload</LabelButton>
       <FileInput
         type="file"
         id="buttonUpload"

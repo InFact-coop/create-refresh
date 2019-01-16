@@ -15,7 +15,7 @@ const Section = styled.section.attrs(({ view }) => ({
 
 const Container = styled.div.attrs({
   className:
-    "flex pa4-ns pa3 justify-between flex-column flex-row-ns flex-column-reverse ",
+    "flex pa3 justify-between flex-column flex-row-ns flex-column-reverse ",
 })`
   background: ${({ theme }) =>
     `url(${bitSteps}), var(--${theme === "light" ? `pink` : `dark-pink`})`};
@@ -71,7 +71,7 @@ const FormButton = styled.button.attrs(({ theme }) => ({
 
 const InfoText = styled.div.attrs({
   className:
-    "w-30-ns w-100 pa0-ns pv3 tr-ns tl dark-pink f6 font-5-ns self-end",
+    "w-30-ns w-100 pa0-ns pv1 tr-ns tl dark-pink f6 font-5-ns self-end",
 })`
   @media (min-width: 43.75em) {
     width: 25%;
