@@ -2,12 +2,13 @@ import Head from "next/head"
 
 function SEO({ title, description, image }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
-  const defaultTitle = "Make ANY Meme EU Complaint!"
+  const defaultTitle = "Make ANY Meme EU Compliant!"
   const defaultImage =
     "https://ih0.redbubble.net/image.453375841.1314/flat,550x550,075,f.u1.jpg"
 
   return (
     <Head>
+      <title>{title || defaultTitle}</title>
       <meta charSet="UTF-8" />
       <meta name="description" content={description || defaultDescription} />
       <meta name="title" content={title || defaultTitle} />
