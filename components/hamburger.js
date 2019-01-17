@@ -1,18 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 
-import facebook from "../static/images/fb_hamburger.svg"
-import twitter from "../static/images/tw_hamburger.svg"
 import close from "../static/images/close_menu.svg"
 import background from "../static/images/menu_bg.svg"
 
+import MenuShared from "./menuShared"
+
 const BackgroundDiv = styled.div.attrs(({ showMenu }) => ({
   className: `${showMenu ? "fixed top-0 left-0 vh-100 w-100" : "dn"}`,
-}))`
-  background: url(${background}) no-repeat;
-  background-size: cover;
-  background-position: top left;
-`
+}))``
+
 const Close = styled.img.attrs({
   className: "pv3 pr1 mt2 w2 h2",
 })`
@@ -61,25 +58,10 @@ const Hamburger = ({
   getTwitterHref,
 }) => (
   <BackgroundDiv showMenu={showMenu}>
-    <div className="flex items-top mb2">
-      <Close src={close} alt="close menu" onClick={toggleMenu} />
-      <NavLinks>
-        <Link href="https://createrefresh.eu">Home</Link>
-        <Link href="https://createrefresh.eu/privacy/">Privacy</Link>
-        <Link href="https://createrefresh.eu/faq/">FAQ</Link>
-      </NavLinks>
-    </div>
-    <ShareBox
-      margin="ml6"
-      to="facebook"
-      icon={facebook}
-      onClick={shareOnFacebook}
-    />
-    <ShareBox
-      margin="mr4"
-      to="twitter"
-      icon={twitter}
-      href={getTwitterHref()}
+    <MenuShared
+      fbOnClick={shareOnFacebook}
+      closeOnClick={toggleMenu}
+      twitterHref={getTwitterHref()}
     />
   </BackgroundDiv>
 )
