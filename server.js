@@ -14,7 +14,7 @@ nextApp.prepare().then(() => {
   const app = express()
 
   app.use((req, res, next) => {
-    if (!req.secure && !dev) {
+    if (req.get("X-Forwarded-Proto") !== "https" && !dev) {
       console.log("redirect", ["https://", req.get("Host"), req.url].join(""))
       return res.redirect(["https://", req.get("Host"), req.url].join(""))
     }
