@@ -37,8 +37,6 @@ def create_app(test_config=None):
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
-        os.makedirs(os.path.join(app.instance_path,
-                                 app.config['UPLOAD_FOLDER']))
     except OSError:
         pass
 
@@ -54,9 +52,9 @@ def create_app(test_config=None):
     app.register_blueprint(api.bp)
     app.register_blueprint(mailchimp.bp)
 
-    # a simple page that says hello
-    @app.route('/hello')
+    # help the AWS Health Monitor not freak out :)
+    @app.route('/')
     def hello():
-        return 'Hello, World!'
+        return 'OK'
 
     return app
