@@ -3,7 +3,7 @@ import Head from "next/head"
 function SEO({ title, description, image, cartoonId }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Compliant!"
-  const defaultImage = "https://i.imgur.com/c0UF6fP.png?1"
+  const defaultImage = "https://i.imgur.com/c0UF6fP.png?crop=1xw:0.8433xh;0xw,0.0253xh&resize=1200:*"
 
   return (
     <Head>
@@ -18,10 +18,11 @@ function SEO({ title, description, image, cartoonId }) {
       <meta property="og:image" content={image || defaultImage} />
       <meta name="og:image:secure_url" content={image || defaultImage} />
       <meta name="og:image:type" content="image/png" />
-      <meta property="og:image:height" content="672" />
-      <meta property="og:image:width" content="1280" />
+      <meta property="og:image:height" content="675" />
+      <meta property="og:image:width" content="1200" />
 
-      <meta proprty="og:locale" content="en" />
+      <meta property="og:locale" content="en" />
+      <meta property="og:type" content="article" />
 
       <meta
         property="og:url"
