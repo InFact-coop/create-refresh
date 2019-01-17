@@ -3,7 +3,7 @@ import os
 import six.moves.urllib as urllib
 import tensorflow as tf
 from PIL import Image
-from app.object_detection import label_map_util
+from ..object_detection import label_map_util
 from pathlib import Path
 import click
 import logging

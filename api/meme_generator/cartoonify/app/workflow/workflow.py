@@ -3,7 +3,7 @@ import png
 import numpy as np
 from pathlib import Path
 import logging
-from app.sketch import SketchGizeh
+from ..sketch import SketchGizeh
 import subprocess
 from csv import writer
 import time
