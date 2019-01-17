@@ -34,7 +34,7 @@
     "test": "jest",
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "heroku-postbuild": "npm run build",
     "mobile-dev": "next start --host $(ifconfig | awk '/inet 192\\.168\\.[0-9]+\\.[0-9]+/{print $2}') --port 8000"
   },
