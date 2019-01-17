@@ -75,7 +75,7 @@ class Upload extends Component {
         href: this.props.cartoonId
           ? `https://testing-meme-sharing.herokuapp.com/cartoon?cartoonId=${
               this.props.cartoonId
-            }`
+            }&formCompleted=false&fromIndex=false`
           : "https://testing-meme-sharing.herokuapp.com/",
         hashtag: "#SaveYourInternet",
         mobile_iframe: true,
