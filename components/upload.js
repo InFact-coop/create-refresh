@@ -57,8 +57,8 @@ class Upload extends Component {
     const text =
       "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
     const url = cartoonId
-    ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${cartoonId}`
-      : "https://eu-compliant-meme-generator.herokuapp.com/"
+      ? `https://testing-meme-sharing.herokuapp.com/cartoon?cartoonId=${cartoonId}`
+      : "https://testing-meme-sharing.herokuapp.com/"
     const hashtags = "SaveYourInternet"
     const via = "lucydev5"
     const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}&via=${via}`
@@ -73,10 +73,10 @@ class Upload extends Component {
         quote:
           "Make any meme last beyond Article 13 with the EU Compliant Meme Generator",
         href: this.props.cartoonId
-          ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${
+          ? `https://testing-meme-sharing.herokuapp.com/cartoon?cartoonId=${
               this.props.cartoonId
             }`
-          : "https://eu-compliant-meme-generator.herokuapp.com/",
+          : "https://testing-meme-sharing.herokuapp.com/",
         hashtag: "#SaveYourInternet",
         mobile_iframe: true,
       },
