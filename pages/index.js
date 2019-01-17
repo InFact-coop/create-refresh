@@ -17,7 +17,8 @@ import isValidFileType from "../utils/isValidFileType"
 
 import encode from "../utils/encode"
 
-const cartoonEndpoint = "http://localhost:5000"
+const cartoonEndpoint =
+  "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com/"
 
 import "../styles/index.css"
 
@@ -56,7 +57,6 @@ class IndexPage extends Component {
             pathname: "/cartoon",
             query: {
               cartoonId: this.state.cartoonId,
-              formCompleted: this.state.formCompleted,
               fromIndex: true,
             },
           }),
@@ -138,34 +138,26 @@ class IndexPage extends Component {
     const data = new FormData()
     const { file, fileName } = this.state
     data.set("file", file, fileName)
-    // axios
-    //   .post(`${cartoonEndpoint}/upload`, data)
-    //   .then(res => {
-    //     const { id: cartoonId } = res.data
-    //     setTimeout(
-    //       () =>
-    //         this.setState({
-    //           cartoonId,
-    //         }),
-    //       3000
-    //     )
-    //   })
-    //   .catch(err => {
-    //     setTimeout(
-    //       () =>
-    //         this.setState({
-    //           view: "",
-    //           error:
-    //             "Oops, something went wrong creating your meme. Please try again!",
-    //         }),
-    //       2000
-    //     )
-    //     console.log(err)
-    //   })]
-
-    this.setState({
-      cartoonId: "testcake123",
-    })
+    axios
+      .post(`${cartoonEndpoint}/upload`, data)
+      .then(res => {
+        const { id: cartoonId } = res.data
+        this.setState({
+          cartoonId,
+        })
+      })
+      .catch(err => {
+        setTimeout(
+          () =>
+            this.setState({
+              view: "",
+              error:
+                "Oops, something went wrong creating your meme. Please try again!",
+            }),
+          2000
+        )
+        console.log(err)
+      })
   }
 
   seeMeme = () => {
