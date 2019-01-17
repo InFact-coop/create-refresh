@@ -6,6 +6,7 @@ const RedButton = styled.button.attrs({
   width: 145px;
   height: 40px;
   font-weight: medium;
+  outline: none;
 `
 
 export default RedButton
