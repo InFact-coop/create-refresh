@@ -58,8 +58,8 @@ class CartoonPage extends Component {
 
     return {
       cartoonId,
-      cartoon: `http://images.hellokids.com/_uploads/_tiny_galerie/20120416/7wg_how-to-draw-a-hamburger-step-5.jpg`,
-      fileURL: `https://www.kfc.co.nz/getattachment/e2121533-15c3-41b9-a624-e9de266f5a53/menu/chicken-burgers/hawaiian-burger/`,
+      cartoon: `https://www.drawingtutorials101.com/drawing-tutorials/Food/Cakes/birthday-cake/how-to-draw-Birthday-Cake-step-0.png`,
+      fileURL: `https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/carrot-cake.jpg`,
       formCompleted,
       fromIndex,
       error: "",
