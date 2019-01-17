@@ -58,8 +58,8 @@ class CartoonPage extends Component {
 
     return {
       cartoonId,
-      cartoon: `https://orig00.deviantart.net/aaaf/f/2015/035/d/6/untitled_drawing_by_arieslefairy-d8gpkzl.png`,
-      fileURL: `https://www.thoughtco.com/thmb/eEiTXqd0o1Z-YpPyex-9DxhaCVs=/2123x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/hippoGE-5943d0e45f9b58d58ab484b7.jpg`,
+      cartoon: `http://images.hellokids.com/_uploads/_tiny_galerie/20120416/7wg_how-to-draw-a-hamburger-step-5.jpg`,
+      fileURL: `https://www.kfc.co.nz/getattachment/e2121533-15c3-41b9-a624-e9de266f5a53/menu/chicken-burgers/hawaiian-burger/`,
       formCompleted,
       fromIndex,
       error: "",
@@ -68,7 +68,8 @@ class CartoonPage extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.fromIndex) Router.push("/")
+    if (this.props.fromIndex === "false") Router.push("/")
+
     if (this.props.error) {
       Router.push({
         pathname: "/",
