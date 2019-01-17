@@ -60,8 +60,8 @@ class CartoonPage extends Component {
       cartoonId,
       cartoon: `https://orig00.deviantart.net/aaaf/f/2015/035/d/6/untitled_drawing_by_arieslefairy-d8gpkzl.png`,
       fileURL: `https://www.thoughtco.com/thmb/eEiTXqd0o1Z-YpPyex-9DxhaCVs=/2123x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/hippoGE-5943d0e45f9b58d58ab484b7.jpg`,
-      formCompleted: formCompleted,
-      fromIndex: fromIndex,
+      formCompleted,
+      fromIndex,
       error: "",
       view: "cartoon",
     }
