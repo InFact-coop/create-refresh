@@ -3,18 +3,19 @@
 // See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
 const { createServer } = require("http")
 const { parse, format } = require("url")
-const next = require("next")
+const nextJs = require("next")
 const express = require("express")
 
 const dev = process.env.NODE_ENV !== "production"
-const nextApp = next({ dev })
+const nextApp = nextJs({ dev })
 const handle = nextApp.getRequestHandler()
 
 nextApp.prepare().then(() => {
   const app = express()
 
   app.use((req, res, next) => {
-    if (!req.secure) {
+    if (!req.secure && !dev) {
+      console.log("redirect", ["https://", req.get("Host"), req.url].join(""))
       return res.redirect(["https://", req.get("Host"), req.url].join(""))
     }
     next()
