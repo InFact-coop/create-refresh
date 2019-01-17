@@ -4,13 +4,13 @@ function SEO({ title, description, image, cartoonId }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Compliant!"
   const defaultImage = "https://i.ibb.co/VTRBHb7/metadata.png"
+
   return (
     <Head>
       <title>{title || defaultTitle}</title>
       <meta charSet="UTF-8" />
       <meta name="description" content={description || defaultDescription} />
       <meta property="og:title" content={title || defaultTitle} />
-      <meta property="og:type" content="website" />
       <meta
         property="og:description"
         content={description || defaultDescription}
@@ -18,8 +18,9 @@ function SEO({ title, description, image, cartoonId }) {
       <meta property="og:image" content={image || defaultImage} />
       <meta name="og:image:secure_url" content={image || defaultImage} />
       <meta name="og:image:type" content="image/png" />
-      <meta name="og:image:height" content="630" />
-      <meta name="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content="1200" />
+
       <meta proprty="og:locale" content="en" />
 
       <meta
