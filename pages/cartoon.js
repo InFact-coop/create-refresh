@@ -30,31 +30,41 @@ class CartoonPage extends Component {
   static async getInitialProps({ query }) {
     const { cartoonId, formCompleted, fromIndex } = query
 
-    return await axios
-      .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
-      .then(res => ({
-        cartoonId,
-        cartoon: `data:image/png;base64,${res.data.compliant}`,
-        fileURL: `data:image/png;base64,${res.data.original}`,
-        formCompleted: formCompleted || false,
-        fromIndex: fromIndex || false,
-        error: "",
-        view: "cartoon",
-      }))
-      .catch(err => {
-        console.log(err)
+    // return await axios
+    //   .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
+    //   .then(res => ({
+    //     cartoonId,
+    //     cartoon: `data:image/png;base64,${res.data.compliant}`,
+    //     fileURL: `data:image/png;base64,${res.data.original}`,
+    //     formCompleted: formCompleted || false,
+    //     fromIndex: fromIndex || false,
+    //     error: "",
+    //     view: "cartoon",
+    //   }))
+    //   .catch(err => {
+    //     console.log(err)
 
-        return {
-          cartoonId,
-          cartoon: null,
-          fileURL: null,
-          formCompleted: formCompleted || false,
-          fromIndex: fromIndex || false,
-          view: "",
-          error:
-            "Oops, something went wrong creating your meme. Please try again!",
-        }
-      })
+    //     return {
+    //       cartoonId,
+    //       cartoon: null,
+    //       fileURL: null,
+    //       formCompleted: formCompleted || false,
+    //       fromIndex: fromIndex || false,
+    //       view: "",
+    //       error:
+    //         "Oops, something went wrong creating your meme. Please try again!",
+    //     }
+    //   })
+
+    return {
+      cartoonId,
+      cartoon: `https://i.imgur.com/MFdyfxu.jpg`,
+      fileURL: `https://cdn-images-1.medium.com/max/2600/1*mJ11PM4ZSBF0ZIAj5TebIw.png`,
+      formCompleted: formCompleted || false,
+      fromIndex: fromIndex || false,
+      error: "",
+      view: "cartoon",
+    }
   }
 
   componentDidMount() {
