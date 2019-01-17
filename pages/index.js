@@ -18,7 +18,7 @@ import isValidFileType from "../utils/isValidFileType"
 import encode from "../utils/encode"
 
 const cartoonEndpoint =
-  "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com/"
+  "https://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com"
 
 import "../styles/index.css"
 
