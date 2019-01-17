@@ -26,8 +26,8 @@ function SEO({ title, description, image, cartoonId }) {
         property="og:url"
         content={
           cartoonId
-            ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${cartoonId}`
-            : "https://eu-compliant-meme-generator.herokuapp.com"
+            ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
+            : "https://www.compliantmemegenerator.eu"
         }
       />
       <meta name="twitter:title" content={title || defaultTitle} />
