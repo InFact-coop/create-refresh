@@ -56,12 +56,17 @@ class Upload extends Component {
   getTwitterHref = cartoonId => {
     const text =
       "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
+
+    const encodedQuery = encodeURIComponent(
+      `?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
+    )
     const url = cartoonId
-    ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${cartoonId}`
-      : "https://eu-compliant-meme-generator.herokuapp.com/"
+      ? `https://www.compliantmemegenerator.eu/cartoon${encodedQuery}`
+      : "https://www.compliantmemegenerator.eu/"
+
     const hashtags = "SaveYourInternet"
     const via = "lucydev5"
-    const href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}&via=${via}`
+    const href = `https://twitter.com/intent/tweet?&text=${text}&hashtags=${hashtags}&via=${via}&url=${url}`
     return href
   }
 
@@ -70,13 +75,11 @@ class Upload extends Component {
     FB.ui(
       {
         method: "share",
-        quote:
-          "Make any meme last beyond Article 13 with the EU Compliant Meme Generator",
         href: this.props.cartoonId
-          ? `https://eu-compliant-meme-generator.herokuapp.com/cartoon?cartoonId=${
+          ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${
               this.props.cartoonId
-            }`
-          : "https://eu-compliant-meme-generator.herokuapp.com/",
+            }&formCompleted=false&fromIndex=false`
+          : "https://www.compliantmemegenerator.eu/",
         hashtag: "#SaveYourInternet",
         mobile_iframe: true,
       },

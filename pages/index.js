@@ -17,7 +17,7 @@ import isValidFileType from "../utils/isValidFileType"
 
 import encode from "../utils/encode"
 
-const cartoonEndpoint = "http://localhost:5000"
+const cartoonEndpoint = "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com"
 
 import "../styles/index.css"
 
@@ -56,7 +56,6 @@ class IndexPage extends Component {
             pathname: "/cartoon",
             query: {
               cartoonId: this.state.cartoonId,
-              formCompleted: this.state.formCompleted,
               fromIndex: true,
             },
           }),
@@ -142,13 +141,9 @@ class IndexPage extends Component {
       .post(`${cartoonEndpoint}/upload`, data)
       .then(res => {
         const { id: cartoonId } = res.data
-        setTimeout(
-          () =>
-            this.setState({
-              cartoonId,
-            }),
-          3000
-        )
+        this.setState({
+          cartoonId,
+        })
       })
       .catch(err => {
         setTimeout(

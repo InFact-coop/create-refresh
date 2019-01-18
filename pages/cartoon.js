@@ -15,7 +15,7 @@ import encode from "../utils/encode"
 
 import "../styles/index.css"
 
-const cartoonEndpoint = "http://localhost:5000"
+const cartoonEndpoint = "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com"
 
 class CartoonPage extends Component {
   state = {
@@ -28,7 +28,7 @@ class CartoonPage extends Component {
   }
 
   static async getInitialProps({ query }) {
-    const { cartoonId, formCompleted, fromIndex } = query
+    const { cartoonId, fromIndex } = query
 
     return await axios
       .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
@@ -36,8 +36,7 @@ class CartoonPage extends Component {
         cartoonId,
         cartoon: `data:image/png;base64,${res.data.compliant}`,
         fileURL: `data:image/png;base64,${res.data.original}`,
-        formCompleted: formCompleted || false,
-        fromIndex: fromIndex || false,
+        fromIndex,
         error: "",
         view: "cartoon",
       }))
@@ -48,8 +47,7 @@ class CartoonPage extends Component {
           cartoonId,
           cartoon: null,
           fileURL: null,
-          formCompleted: formCompleted || false,
-          fromIndex: fromIndex || false,
+          fromIndex,
           view: "",
           error:
             "Oops, something went wrong creating your meme. Please try again!",
@@ -58,7 +56,8 @@ class CartoonPage extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.fromIndex) Router.push("/")
+    if (this.props.fromIndex === "false") Router.push("/")
+
     if (this.props.error) {
       Router.push({
         pathname: "/",

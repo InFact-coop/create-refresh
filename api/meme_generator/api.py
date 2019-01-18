@@ -1,7 +1,7 @@
 from flask import (current_app, Blueprint, request,
                    url_for, redirect, send_from_directory, jsonify, abort)
 import os
-from cartoonify import cartoonify
+from .cartoonify import cartoonify
 from werkzeug.utils import secure_filename
 from .image_convert import convert_to_base64
 from .image_watermark import add_watermark
@@ -25,8 +25,10 @@ def fetch(fileid):
     compliant_filename = get_filename_from_hash(fileid, "png")
     compliant_path = os.path.join(
         app.config["UPLOAD_FOLDER"], compliant_filename)
-    original_path = check_hash_exists(
+    
+    original_filename = check_hash_exists(
         fileid + "_orig", app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
+    original_path = os.path.join(app.config["UPLOAD_FOLDER"], original_filename)
 
     if not os.path.exists(compliant_path) or not os.path.exists(original_path):
         return jsonify(status=404)
@@ -40,8 +42,10 @@ def compliant_view(view, fileid):
 
     if view == "original":
 
-        image_filename = check_hash_exists(
-            fileid + "_orig", app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
+        orig_name = fileid + "_orig"
+
+        image_filename = check_hash_exists(orig_name, app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
+
 
         if not image_filename:
             abort(404)
@@ -91,4 +95,4 @@ def upload():
             app.root_path, "eu-compliant-watermark.png"), watermarked_file_path)
 
         cleanup_files([original_file_path, cartoon_file])
-        return jsonify(status=200, id=file_hash.split("/")[1])
+        return jsonify(status=200, id=file_hash.split("/")[-1])
