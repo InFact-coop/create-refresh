@@ -29,8 +29,8 @@ function SEO({ title, description, image, cartoonId }) {
         property="og:url"
         content={
           cartoonId
-            ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
-            : "https://www.compliantmemegenerator.eu"
+            ? `http://www.compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
+            : "http://www.compliantmemegenerator.eu"
         }
       />
       <meta name="twitter:title" content={title || defaultTitle} />

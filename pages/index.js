@@ -50,17 +50,13 @@ class IndexPage extends Component {
 
   componentDidUpdate() {
     if (this.state.view === "loading" && this.state.cartoonId) {
-      setTimeout(
-        () =>
-          Router.push({
-            pathname: "/cartoon",
-            query: {
-              cartoonId: this.state.cartoonId,
-              fromIndex: true,
-            },
-          }),
-        3000
-      )
+      Router.push({
+        pathname: "/cartoon",
+        query: {
+          cartoonId: this.state.cartoonId,
+          fromIndex: true,
+        },
+      })
     }
   }
 
