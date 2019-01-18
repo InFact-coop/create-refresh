@@ -96,7 +96,7 @@ class IndexPage extends Component {
           "Oops, it looks like your file is the wrong type! Try uploading a jpg or png.",
       })
       return false
-    } else if (file.size > 1048576) {
+    } else if (file.size > 3000000) {
       this.setState({
         error:
           "Oops, it looks like your file is too big! Try uploading a smaller image.",
