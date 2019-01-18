@@ -108,7 +108,6 @@ function SEO({ title, description, image, cartoonId }) {
           />
         </noscript>
       )}
-      /> )}
     </Head>
   )
 }
