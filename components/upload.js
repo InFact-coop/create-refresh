@@ -75,8 +75,6 @@ class Upload extends Component {
     FB.ui(
       {
         method: "share",
-        quote:
-          "Make any meme last beyond Article 13 with the EU Compliant Meme Generator",
         href: this.props.cartoonId
           ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${
               this.props.cartoonId

@@ -10,19 +10,24 @@ function SEO({ title, description, image, cartoonId }) {
       <meta charSet="UTF-8" />
       <meta name="description" content={description || defaultDescription} />
       <meta property="og:title" content={title || defaultTitle} />
-      <meta property="og:type" content="website" />
       <meta
         property="og:description"
         content={description || defaultDescription}
       />
-      <meta property="og:image" content={image || defaultImage} />
-      <meta name="og:image:secure_url" content={image || defaultImage} />
-      <meta name="og:image:type" content="image/png" />
-      <meta name="og:image:height" content="630" />
-      <meta name="og:image:width" content="1200" />
-      <meta proprty="og:locale" content="en" />
+      <meta
+        name="og:image"
+        property="og:image"
+        content={image || defaultImage}
+      />
+      <meta name="og:image:type" property="og:image:type" content="image/png" />
+      <meta property="og:image:height" content="675" />
+      <meta property="og:image:width" content="1200" />
+
+      <meta property="og:locale" name="og:locale" content="en" />
+      <meta property="og:type" content="website" />
 
       <meta
+        name="og:url"
         property="og:url"
         content={
           cartoonId
