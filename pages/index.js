@@ -164,13 +164,14 @@ class IndexPage extends Component {
   }
 
   toggleMenu = () => {
-    this.setState(prevProps => {
-      prevProps.showMenu
-        ? (document.body.style.overflow = "auto")
-        : (document.body.style.overflow = "hidden")
-
-      return { showMenu: !prevProps.showMenu }
-    })
+    this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
+    if (this.state.showMenu) {
+      document.documentElement.style.overflow = "auto"
+      document.body.style.overflow = "auto"
+    } else {
+      document.documentElement.style.overflow = "hidden"
+      document.body.style.overflow = "hidden"
+    }
   }
 
   toggleShareModal = () => {
