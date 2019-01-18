@@ -82,7 +82,7 @@ class Upload extends Component {
               this.props.cartoonId
             }&formCompleted=false&fromIndex=false`
           : "https://www.compliantmemegenerator.eu/",
-        // hashtag: "#SaveYourInternet",
+        hashtag: "#SaveYourInternet",
         mobile_iframe: true,
       },
       response => {
