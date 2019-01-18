@@ -144,6 +144,10 @@ class Upload extends Component {
             )
           }
 
+          if (!cartoon && view === "cartoon") {
+            return <div />
+          }
+
           return (
             <form>
               <Clickable>
