@@ -79,35 +79,6 @@ function SEO({ title, description, image, cartoonId }) {
          }(document, 'script', 'facebook-jssdk'));`,
         }}
       />
-      {cartoonId && (
-        <script src="//platform.twitter.com/oct.js" type="text/javascript" />
-      )}
-      {cartoonId && (
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `twttr.conversion.trackPid('o167k', { tw_sale_amount: 0, tw_order_quantity: 0 });`,
-          }}
-        />
-      )}
-      {cartoonId && (
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style="display:none;"
-            alt=""
-            src="https://analytics.twitter.com/i/adsct?txn_id=o167k&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
-          />
-          <img
-            height="1"
-            width="1"
-            style="display:none;"
-            alt=""
-            src="//t.co/i/adsct?txn_id=o167k&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
-          />
-        </noscript>
-      )}
     </Head>
   )
 }
