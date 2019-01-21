@@ -1,5 +1,4 @@
 body {
-  position: relative;
   font-family: "Apercu";
   -webkit-font-smoothing: antialiased;
 }
@@ -17,7 +16,6 @@ body {
 }
 
 html {
-  position: relative;
   scroll-behavior: smooth;
 }
 
