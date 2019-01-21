@@ -77,7 +77,6 @@ class HandleImage(object):
 
     def save(self, path):
         """Save the cropped image as a JPG to the supplied path"""
-        self.crop_image.convert('RGB')
-        self.crop_image.save(path, format="JPEG", quality=60, optimize=True)
+        self.crop_image.convert("RGB").save(path, format="JPEG", quality=60, optimize=True)
         for image in [self.original, self.crop_image, self.resized]:
             image.close()

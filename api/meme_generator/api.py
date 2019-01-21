@@ -102,7 +102,7 @@ def upload():
         cleanup_files([original_file_path, cartoon_file])
 
         # push to garbage collector
-        for variable in [cartoon_file, file_hash, file, handle_image, watermark]:
+        for variable in [cartoon_file, file, handle_image, watermark]:
             variable = ""
             del(variable)
 
