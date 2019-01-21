@@ -20,3 +20,7 @@ html {
   position: relative;
   scroll-behavior: smooth;
 }
+
+.disabled-link {
+  pointer-events: none;
+}
