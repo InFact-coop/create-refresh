@@ -17,7 +17,8 @@ import isValidFileType from "../utils/isValidFileType"
 
 import encode from "../utils/encode"
 
-const cartoonEndpoint = "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com"
+const cartoonEndpoint =
+  "https://api.compliantmemegenerator.eu"
 
 import "../styles/index.css"
 

@@ -15,7 +15,7 @@ import encode from "../utils/encode"
 
 import "../styles/index.css"
 
-const cartoonEndpoint = "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com"
+const cartoonEndpoint = "https://api.compliantmemegenerator.eu"
 
 class CartoonPage extends Component {
   state = {
