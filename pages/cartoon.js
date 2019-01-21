@@ -15,7 +15,7 @@ import encode from "../utils/encode"
 
 import "../styles/index.css"
 
-const cartoonEndpoint = "http://aws-cli-test-dev.eu-west-1.elasticbeanstalk.com"
+const cartoonEndpoint = "https://api.compliantmemegenerator.eu"
 
 class CartoonPage extends Component {
   state = {
@@ -112,7 +112,7 @@ class CartoonPage extends Component {
     const { showMenu, showShareModal } = this.state
     const { fileURL, cartoon, cartoonId, error, view, fromIndex } = this.props
 
-    return fromIndex ? (
+    return fromIndex === "true" ? (
       <Layout>
         <SEO image={cartoon} cartoonId={cartoonId} />
         <Upload
