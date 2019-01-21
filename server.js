@@ -9,14 +9,21 @@ const handle = nextApp.getRequestHandler()
 nextApp.prepare().then(() => {
   const app = express()
 
-  // probably something like the second for redirecting www -> root but doesn't work yet
-
   app.use((req, res, next) => {
     if (req.get("X-Forwarded-Proto") !== "https" && !dev) {
       return res.redirect(["https://", req.get("Host"), req.url].join(""))
     }
     next()
   })
+
+  app.get("*", (req, res) => handle(req, res))
+
+  app.listen(process.env.PORT || 3000, err => {
+    if (err) throw err
+    console.log("💃 Ready on http://localhost:3000 🕺")
+  })
+
+  // probably something like the second for redirecting www -> root but doesn't work yet
 
   //   (req, res, next) => {
   //     if (req.headers.host.slice(0, 4) === "www.") {
@@ -31,11 +38,5 @@ nextApp.prepare().then(() => {
   // )
 
   // app.set("trust proxy", true)
-
-  app.get("*", (req, res) => handle(req, res))
-
-  app.listen(process.env.PORT || 3000, err => {
-    if (err) throw err
-    console.log("💃 Ready on http://localhost:3000 🕺")
-  })
+  
 })
