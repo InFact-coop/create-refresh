@@ -25,10 +25,15 @@ def fetch(fileid):
     compliant_filename = get_filename_from_hash(fileid, "png")
     compliant_path = os.path.join(
         app.config["UPLOAD_FOLDER"], compliant_filename)
-    
+
     original_filename = check_hash_exists(
         fileid + "_orig", app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
-    original_path = os.path.join(app.config["UPLOAD_FOLDER"], original_filename)
+
+    if not original_filename:
+        return jsonify(status=404)
+
+    original_path = os.path.join(
+        app.config["UPLOAD_FOLDER"], original_filename)
 
     if not os.path.exists(compliant_path) or not os.path.exists(original_path):
         return jsonify(status=404)
@@ -37,15 +42,15 @@ def fetch(fileid):
 
 
 @bp.route("/fetch/img/<string:view>/<string:fileid>")
-def compliant_view(view, fileid):
+def img_view(view, fileid):
     """Return an original or compliant image from the uploads folder if exists in querystring"""
 
     if view == "original":
 
         orig_name = fileid + "_orig"
 
-        image_filename = check_hash_exists(orig_name, app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
-
+        image_filename = check_hash_exists(
+            orig_name, app.config["ALLOWED_EXTENSIONS"], app.config["UPLOAD_FOLDER"])
 
         if not image_filename:
             abort(404)
@@ -86,13 +91,19 @@ def upload():
         file.save(original_file_path)
         file.close()
 
-        HandleImage(original_file_path).save(uploaded_file_path)
+        handle_image = HandleImage(original_file_path).save(uploaded_file_path)
 
         cartoon_file = cartoonify(
             uploaded_file_path, app.config["DATASET_FOLDER"], os.path.join(app.config["MODEL_FOLDER"], "frozen_inference_graph.pb"))
 
-        add_watermark(str(cartoon_file), os.path.join(
+        watermark = add_watermark(str(cartoon_file), os.path.join(
             app.root_path, "eu-compliant-watermark.png"), watermarked_file_path)
 
         cleanup_files([original_file_path, cartoon_file])
+
+        # push to garbage collector
+        for variable in [cartoon_file, file_hash, file, handle_image, watermark]:
+            variable = ""
+            del(variable)
+
         return jsonify(status=200, id=file_hash.split("/")[-1])
