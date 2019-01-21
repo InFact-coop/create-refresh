@@ -61,8 +61,8 @@ class Upload extends Component {
       `?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
     )
     const url = cartoonId
-      ? `https://www.compliantmemegenerator.eu/cartoon${encodedQuery}`
-      : "https://www.compliantmemegenerator.eu/"
+      ? `https://compliantmemegenerator.eu/cartoon${encodedQuery}`
+      : "https://compliantmemegenerator.eu/"
 
     const hashtags = "SaveYourInternet"
     const via = "lucydev5"
@@ -76,10 +76,10 @@ class Upload extends Component {
       {
         method: "share",
         href: this.props.cartoonId
-          ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${
+          ? `https://compliantmemegenerator.eu/cartoon?cartoonId=${
               this.props.cartoonId
             }&formCompleted=false&fromIndex=false`
-          : "https://www.compliantmemegenerator.eu/",
+          : "https://compliantmemegenerator.eu/",
         hashtag: "#SaveYourInternet",
         mobile_iframe: true,
       },
