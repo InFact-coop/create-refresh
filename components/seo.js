@@ -20,19 +20,17 @@ function SEO({ title, description, image, cartoonId }) {
         content={image || defaultImage}
       />
       <meta name="og:image:type" property="og:image:type" content="image/png" />
-      <meta property="og:image:height" content="675" />
-      <meta property="og:image:width" content="1200" />
-
+      <meta property="og:image:height" content={cartoonId ? "1080" : "675"} />
+      <meta property="og:image:width" content={cartoonId ? "1080" : "1200"} />
       <meta property="og:locale" name="og:locale" content="en" />
       <meta property="og:type" content="website" />
-
       <meta
         name="og:url"
         property="og:url"
         content={
           cartoonId
-            ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
-            : "https://www.compliantmemegenerator.eu"
+            ? `http://www.compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
+            : "http://www.compliantmemegenerator.eu"
         }
       />
       <meta name="twitter:title" content={title || defaultTitle} />
