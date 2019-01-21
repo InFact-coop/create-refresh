@@ -15,6 +15,7 @@ def add_watermark(input_path, watermark_path, output_path):
         original_image.paste(watermark_image, (8, h - resized_height - 8),
                              mask=watermark_image)
         original_image.save(output_path)
+        original_image.close()
         return "Success!"
     except IOError:
         return "Failure!"
