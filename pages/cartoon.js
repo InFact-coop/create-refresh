@@ -22,7 +22,6 @@ class CartoonPage extends Component {
     fileURL: null,
     cartoon: null,
     view: "cartoon",
-    showMenu: false,
     showShareModal: false,
     formCompleted: false,
   }
@@ -94,10 +93,6 @@ class CartoonPage extends Component {
       })
   }
 
-  toggleMenu = () => {
-    this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
-  }
-
   toggleShareModal = () => {
     this.setState(prevProps => ({ showShareModal: !prevProps.showShareModal }))
   }
@@ -109,7 +104,7 @@ class CartoonPage extends Component {
   }
 
   render() {
-    const { showMenu, showShareModal } = this.state
+    const { showShareModal } = this.state
     const { fileURL, cartoon, cartoonId, error, view, fromIndex } = this.props
 
     return fromIndex === "true" ? (
@@ -120,11 +115,9 @@ class CartoonPage extends Component {
           error={error}
           cartoon={cartoon}
           view={view}
-          showMenu={showMenu}
           showShareModal={showShareModal}
           handleStartOver={this.handleStartOver}
           toggleShareModal={this.toggleShareModal}
-          toggleMenu={this.toggleMenu}
           cartoonId={cartoonId}
         />
         <Info />

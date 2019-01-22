@@ -31,7 +31,6 @@ class IndexPage extends Component {
     cartoon: null,
     cartoonId: null,
     view: "",
-    showMenu: false,
     showShareModal: false,
     formCompleted: false,
   }
@@ -160,10 +159,6 @@ class IndexPage extends Component {
     this.setState({ view: "loading" })
   }
 
-  toggleMenu = () => {
-    this.setState(prevProps => ({ showMenu: !prevProps.showMenu }))
-  }
-
   toggleShareModal = () => {
     this.setState(prevProps => ({ showShareModal: !prevProps.showShareModal }))
   }
@@ -201,14 +196,12 @@ class IndexPage extends Component {
           error={error}
           cartoon={cartoon}
           view={view}
-          showMenu={showMenu}
           showShareModal={showShareModal}
           submitForm={this.submitForm}
           seeMeme={this.seeMeme}
           onImageSelect={this.onImageSelect}
           handleStartOver={this.handleStartOver}
           toggleShareModal={this.toggleShareModal}
-          toggleMenu={this.toggleMenu}
         />
         <Info />
         <Video />
