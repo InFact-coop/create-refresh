@@ -113,7 +113,7 @@ class CartoonPage extends Component {
 
     return fromIndex === "true" ? (
       <Layout>
-        <SEO image={cartoon} cartoonId={cartoonId} />
+        <SEO cartoonId={cartoonId} />
         <Upload
           fileURL={fileURL}
           error={error}
