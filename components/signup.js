@@ -192,7 +192,7 @@ class Signup extends Component {
               >
                 Sign Up
               </FormButton>
-              <TinyLink href="https://createrefresh.eu/privacy/" theme={theme}>
+              <TinyLink target="_blank" rel="noopener noreferrer" href="https://createrefresh.eu/privacy/" theme={theme}>
                 Learn more about how we use, store, and handle your information
                 here.
               </TinyLink>

@@ -1,6 +1,8 @@
 body {
   font-family: "Apercu";
   -webkit-font-smoothing: antialiased;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 .image-comparison {

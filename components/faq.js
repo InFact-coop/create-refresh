@@ -45,7 +45,11 @@ const Faq = () => (
       means most will resort to automatically censoring content with upload
       filters. Safeguards put in place for memes are voluntary in each EU Member
       state, and in many Member states, memes are{" "}
-      <Link href="https://copybuzz.com/copyright/when-lies-are-told-or-how-the-meme-illustration-shows-its-merits/">
+      <Link
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://copybuzz.com/copyright/when-lies-are-told-or-how-the-meme-illustration-shows-its-merits/"
+      >
         already illegal
       </Link>{" "}
       because they are not considered parody. But that has not led to massive
