@@ -72,7 +72,6 @@ class Upload extends Component {
   }
 
   shareOnTwitter = () => {
-    console.log("here")
     const twitterLink = document.createElement("a")
     twitterLink.href = this.getTwitterHref(this.props.cartoonId)
     twitterLink.style = "display:none;"

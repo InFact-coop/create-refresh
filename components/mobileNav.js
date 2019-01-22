@@ -84,6 +84,7 @@ const Hamburger = ({ shareOnFacebook, twitterHref, showMenu, toggleMenu }) => (
       <a
         xlinkHref={twitterHref}
         target="_blank"
+        rel="noopener noreferrer"
         alt="Share on Twitter"
         transform="translate(102 331)"
       >
@@ -101,6 +102,7 @@ const Hamburger = ({ shareOnFacebook, twitterHref, showMenu, toggleMenu }) => (
         href="https://createrefresh.eu/"
         xlinkHref="https://createrefresh.eu/"
         target="_blank"
+        rel="noopener noreferrer"
         alt="Home"
       >
         <g transform="translate(78 45)">
@@ -127,6 +129,7 @@ const Hamburger = ({ shareOnFacebook, twitterHref, showMenu, toggleMenu }) => (
         href="https://createrefresh.eu/privacy"
         xlinkHref="https://createrefresh.eu/privacy"
         target="_blank"
+        rel="noopener noreferrer"
         alt="Privacy"
       >
         <g transform="translate(89 83)">
@@ -147,6 +150,7 @@ const Hamburger = ({ shareOnFacebook, twitterHref, showMenu, toggleMenu }) => (
         href="https://createrefresh.eu/faq"
         xlinkHref="https://createrefresh.eu/faq"
         target="_blank"
+        rel="noopener noreferrer"
         alt="FAQ"
       >
         <g transform="translate(68 121)">

@@ -53,9 +53,14 @@ const Social = styled(GridElement).attrs(({ className }) => ({
   line-height: 1.5;
 `
 
-const Icon = props => (
-  <a className="dib h3 pa1 pr0 ml2-ns" href={props.url}>
-    <img className="h-100" src={props.img} />
+const Icon = ({ url, img, alt }) => (
+  <a
+    className="dib h3 pa1 pr0 ml2-ns"
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img className="h-100" src={img} alt={alt} />
   </a>
 )
 
@@ -63,18 +68,41 @@ const Footer = () => (
   <StyledFooter>
     <Social>
       <div className="flex justify-end-ns justify-between">
-        <Icon url="https://facebook.com/create.refresh" img={facebookIcon} />
-        <Icon url="http://twitter.com/createrefresh" img={twitterIcon} />
-        <Icon url="http://instagram.com/create.refresh" img={instagramIcon} />
+        <Icon
+          url="https://facebook.com/create.refresh"
+          img={facebookIcon}
+          alt="facebook icon"
+        />
+        <Icon
+          url="http://twitter.com/createrefresh"
+          img={twitterIcon}
+          alt="twitter icon"
+        />
+        <Icon
+          url="http://instagram.com/create.refresh"
+          img={instagramIcon}
+          alt="instagram icon"
+        />
       </div>
       <div className="tr-ns tc">
         <p>Visit our social media channels for more info and cool content</p>
       </div>
       <div className="flex justify-end-ns justify-center font-6 underline">
-        <FooterLink className="mr4" href="https://createrefresh.eu/privacy/">
+        <FooterLink
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mr4"
+          href="https://createrefresh.eu/privacy/"
+        >
           Privacy
         </FooterLink>
-        <FooterLink href="https://createrefresh.eu/faq/">FAQ</FooterLink>
+        <FooterLink
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://createrefresh.eu/faq/"
+        >
+          FAQ
+        </FooterLink>
       </div>
       <License className="center">
         <p className="mt1 dn-ns db">
@@ -87,11 +115,15 @@ const Footer = () => (
           <a
             className="color-inherit link underline"
             href="https://www.infactcoop.com/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             InFact Digital Co-op
           </a>{" "}
           using Dan McNish's amazing{" "}
           <a
+            target="_blank"
+            rel="noopener noreferrer"
             className="color-inherit link underline"
             href="https://github.com/danmacnish/cartoonify"
           >

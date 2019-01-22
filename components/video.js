@@ -3,7 +3,8 @@ import styled from "styled-components"
 import video_bg from "../static/images/video_bg.svg"
 
 const Background = styled.div.attrs({
-  className: "flex justify-center bg-light-pink align-center b0 m0 pv3",
+  className:
+    "flex justify-center bg-light-pink align-center b0 m0 pv3 ph2 pa0-ns",
 })`
   background-image: url(${video_bg});
   background-size: 100%;
