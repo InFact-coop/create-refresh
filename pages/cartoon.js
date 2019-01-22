@@ -133,7 +133,7 @@ class CartoonPage extends Component {
         <Footer />
       </Layout>
     ) : (
-      <SEO image={cartoon} cartoonId={cartoonId} />
+      <SEO cartoonId={cartoonId} />
     )
   }
 }
