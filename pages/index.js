@@ -17,7 +17,7 @@ import isValidFileType from "../utils/isValidFileType"
 
 import encode from "../utils/encode"
 
-const cartoonEndpoint = "https://api.compliantmemegenerator.eu"
+const api = "https://api.compliantmemegenerator.eu"
 
 import "../styles/index.css"
 
@@ -71,7 +71,7 @@ class IndexPage extends Component {
   postData = data => {
     // post user information to proxy Mailchimp server
     const URIdata = encode({ ...data })
-    fetch("http://127.0.0.1:5000/subscribe", {
+    fetch(`${api}/subscribe`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: URIdata,
@@ -133,7 +133,7 @@ class IndexPage extends Component {
     const { file, fileName } = this.state
     data.set("file", file, fileName)
     axios
-      .post(`${cartoonEndpoint}/upload`, data)
+      .post(`${api}/upload`, data)
       .then(res => {
         const { id: cartoonId } = res.data
         this.setState({
