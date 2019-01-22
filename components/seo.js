@@ -1,38 +1,35 @@
 import Head from "next/head"
 
-function SEO({ title, description, image, cartoonId }) {
+function SEO({ title, description, cartoonId }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Compliant!"
   const defaultImage = "https://i.ibb.co/VTRBHb7/metadata.png"
+  const cartoonImage = `https://api.compliantmemegenerator.eu/fetch/img/compliant/${cartoonId}`
+  
   return (
     <Head>
       <title>{title || defaultTitle}</title>
       <meta charSet="UTF-8" />
+      <meta
+        property="og:url"
+        content={
+          cartoonId
+            ? `https://compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&fromIndex=false`
+            : "https://compliantmemegenerator.eu"
+        }
+      />
       <meta name="description" content={description || defaultDescription} />
       <meta property="og:title" content={title || defaultTitle} />
       <meta
         property="og:description"
         content={description || defaultDescription}
       />
-      <meta
-        name="og:image"
-        property="og:image"
-        content={image || defaultImage}
-      />
+      <meta property="og:image" content={cartoonImage || defaultImage} />
       <meta name="og:image:type" property="og:image:type" content="image/png" />
       <meta property="og:image:height" content={cartoonId ? "1080" : "675"} />
       <meta property="og:image:width" content={cartoonId ? "1080" : "1200"} />
-      <meta property="og:locale" name="og:locale" content="en" />
+      <meta property="og:locale" content="en" />
       <meta property="og:type" content="website" />
-      <meta
-        name="og:url"
-        property="og:url"
-        content={
-          cartoonId
-            ? `https://www.compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
-            : "https://www.compliantmemegenerator.eu"
-        }
-      />
       <meta name="twitter:title" content={title || defaultTitle} />
       <meta
         name="twitter:description"
