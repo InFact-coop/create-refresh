@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import info_bg from "../static/images/info_bg.svg"
+import video_bg from "../static/images/video_bg.svg"
 
 const Container = styled.div.attrs({
   className:
@@ -10,16 +11,18 @@ const Container = styled.div.attrs({
   background-size: 100%;
   @media (max-width: 40em) {
     background-color: var(--light-pink);
+    background-image: url(${video_bg});
   }
 `
 
 const Paragraph = styled.div.attrs({
-  className: "pa3 apercu font-5-ns f5 tl-ns tc mb3 mb0-ns",
+  className: "pa3 apercu font-5-ns f5 tl-ns tc mb3-ns mb0-ns",
 })`
   max-width: 500px;
 
   @media (max-width: 40em) {
     line-height: 29px;
+    background-color: var(--light-pink);
   }
 `
 

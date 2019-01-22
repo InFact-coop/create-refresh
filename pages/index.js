@@ -17,8 +17,7 @@ import isValidFileType from "../utils/isValidFileType"
 
 import encode from "../utils/encode"
 
-const cartoonEndpoint =
-  "https://api.compliantmemegenerator.eu"
+const cartoonEndpoint = "https://api.compliantmemegenerator.eu"
 
 import "../styles/index.css"
 
@@ -177,15 +176,7 @@ class IndexPage extends Component {
   }
 
   render() {
-    const {
-      file,
-      fileURL,
-      error,
-      cartoon,
-      view,
-      showMenu,
-      showShareModal,
-    } = this.state
+    const { file, fileURL, error, cartoon, view, showShareModal } = this.state
 
     return (
       <Layout>
