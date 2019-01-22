@@ -57,7 +57,6 @@ class CartoonPage extends Component {
 
   componentDidMount() {
     if (this.props.fromIndex === "false") Router.push("/")
-
     if (this.props.error) {
       Router.push({
         pathname: "/",
@@ -133,7 +132,9 @@ class CartoonPage extends Component {
         <Faq />
         <Footer />
       </Layout>
-    ) : null
+    ) : (
+      <SEO image={cartoon} cartoonId={cartoonId} />
+    )
   }
 }
 
