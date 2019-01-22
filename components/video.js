@@ -7,6 +7,8 @@ const Background = styled.div.attrs({
 })`
   background-image: url(${video_bg});
   background-size: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 `
 
 const IFrame = styled.iframe`
