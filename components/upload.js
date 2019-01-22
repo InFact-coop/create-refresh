@@ -55,8 +55,9 @@ class Upload extends Component {
   }
 
   getTwitterHref = cartoonId => {
-    const text =
+    const text = encodeURIComponent(
       "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
+    )
 
     const encodedQuery = encodeURIComponent(
       `?cartoonId=${cartoonId}&fromIndex=false`
