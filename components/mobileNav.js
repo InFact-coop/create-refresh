@@ -1,5 +1,12 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
+
+import logoMobile from "../static/images/logo-mobile.svg"
+import menuLines from "../static/images/menu-lines.svg"
+
+const Icon = styled.img.attrs({
+  className: "pa2",
+})``
 
 const Container = styled.div.attrs(({ showMenu }) => ({
   className: `fixed top-0 left-0 vh-100 w-100 z-1 bg-white ${
@@ -9,21 +16,16 @@ const Container = styled.div.attrs(({ showMenu }) => ({
 }))``
 
 const Close = styled.img.attrs({
-  className: "h2 w2 absolute bg-black",
+  className: "h2 w2 absolute",
 })`
   top: 6vh;
   left: 5vw;
 `
 
-const Hamburger = ({
-  showMenu,
-  toggleMenu,
-  shareOnFacebook,
-  getTwitterHref,
-}) => (
+const Hamburger = ({ shareOnFacebook, twitterHref, showMenu, toggleMenu }) => (
   <Container showMenu={showMenu}>
     <Close src="../static/images/close_menu.svg" onClick={toggleMenu} />
-    {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 667">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 667">
       <g transform="translate(-4 -238)">
         <polygon
           fill="#FF62C6"
@@ -80,7 +82,8 @@ const Hamburger = ({
       </g>
 
       <a
-        xlinkHref={getTwitterHref()}
+        xlinkHref={twitterHref}
+        target="_blank"
         alt="Share on Twitter"
         transform="translate(102 331)"
       >
@@ -97,6 +100,7 @@ const Hamburger = ({
       <a
         href="https://createrefresh.eu/"
         xlinkHref="https://createrefresh.eu/"
+        target="_blank"
         alt="Home"
       >
         <g transform="translate(78 45)">
@@ -119,7 +123,12 @@ const Hamburger = ({
           </text>
         </g>
       </a>
-      <a href="https://createrefresh.eu/privacy" alt="Privacy">
+      <a
+        href="https://createrefresh.eu/privacy"
+        xlinkHref="https://createrefresh.eu/privacy"
+        target="_blank"
+        alt="Privacy"
+      >
         <g transform="translate(89 83)">
           <rect width="108.543" height="32.393" y="3" fill="#FF62C6" />
           <text
@@ -134,7 +143,12 @@ const Hamburger = ({
           </text>
         </g>
       </a>
-      <a href="https://createrefresh.eu/faq" alt="FAQ">
+      <a
+        href="https://createrefresh.eu/faq"
+        xlinkHref="https://createrefresh.eu/faq"
+        target="_blank"
+        alt="FAQ"
+      >
         <g transform="translate(68 121)">
           <rect width="63.246" height="32.393" x="21" y="2" fill="#FF62C6" />
           <text
@@ -149,8 +163,43 @@ const Hamburger = ({
           </text>
         </g>
       </a>
-    </svg> */}
+    </svg>
   </Container>
 )
 
-export default Hamburger
+class MobileNav extends Component {
+  state = {
+    showMenu: false,
+  }
+
+  toggleMenu = () => {
+    this.setState({ showMenu: !this.state.showMenu })
+  }
+
+  render() {
+    const {
+      state: { showMenu },
+      props: { shareOnFacebook, getTwitterHref, cartoonId },
+      toggleMenu,
+    } = this
+
+    return (
+      <div className="dn-ns db w-100 mb1">
+        <Hamburger
+          showMenu={showMenu}
+          toggleMenu={toggleMenu}
+          shareOnFacebook={shareOnFacebook}
+          twitterHref={getTwitterHref(cartoonId)}
+        />
+        <div className="flex justify-between w-100 pr2">
+          <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
+          <a href="/">
+            <img className="w-75 mv1" src={logoMobile} alt="main logo" />
+          </a>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default MobileNav

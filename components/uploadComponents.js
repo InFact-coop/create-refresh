@@ -6,9 +6,6 @@ import facebook from "../static/images/fb_outline.svg"
 import twitter from "../static/images/twitter_outline.svg"
 import facebookPink from "../static/images/fb-outline-pink.svg"
 import twitterPink from "../static/images/twitter-outline-pink.svg"
-import logoMobile from "../static/images/logo-mobile.svg"
-import menuLines from "../static/images/menu-lines.svg"
-import Hamburger from "./hamburger"
 import loading from "../static/images/loading.svg"
 import ShareModal from "./shareImage"
 import gifLogo from "../static/images/headerGif.gif"
@@ -111,10 +108,6 @@ const Socials = styled.div.attrs({
   className: "pt2 pr3 no-wrap",
 })``
 
-const Icon = styled.img.attrs({
-  className: "pa2",
-})``
-
 const SocialIcon = styled.img.attrs({
   className: "ph2",
 })``
@@ -157,28 +150,6 @@ const DesktopNav = ({ view, cartoonId, getTwitterHref, shareOnFacebook }) => (
         </a>
       </Socials>
     </NavContainer>
-  </div>
-)
-
-const MobileNav = ({
-  showMenu,
-  toggleMenu,
-  shareOnFacebook,
-  getTwitterHref,
-}) => (
-  <div className="dn-ns db w-100 mb1">
-    <Hamburger
-      showMenu={showMenu}
-      toggleMenu={toggleMenu}
-      shareOnFacebook={shareOnFacebook}
-      getTwitterHref={getTwitterHref}
-    />
-    <div className="flex justify-between w-100 pr2">
-      <Icon src={menuLines} alt="menu" onClick={toggleMenu} />
-      <a href="/">
-        <img className="w-75 mv1" src={logoMobile} alt="main logo" />
-      </a>
-    </div>
   </div>
 )
 
@@ -233,7 +204,6 @@ export {
   Background,
   LinkToForm,
   DesktopNav,
-  MobileNav,
   UploadButton,
   ShareButtons,
   FileInput,

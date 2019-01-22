@@ -5,7 +5,6 @@ import {
   Background,
   LinkToForm,
   DesktopNav,
-  MobileNav,
   UploadButton,
   ShareButtons,
   FileInput,
@@ -13,6 +12,8 @@ import {
   Label,
   LoadingSpinner,
 } from "./uploadComponents"
+
+import MobileNav from "./mobileNav"
 import SignUp from "./signup"
 
 const ImagesSidebyside = styled.div.attrs({
@@ -100,12 +101,10 @@ class Upload extends Component {
       error,
       cartoon,
       view,
-      showMenu,
       showShareModal,
       submitForm,
       seeMeme,
       onImageSelect,
-      toggleMenu,
       handleStartOver,
       toggleShareModal,
       cartoonId,
@@ -176,8 +175,6 @@ class Upload extends Component {
           cartoonId={cartoonId}
           getTwitterHref={this.getTwitterHref}
           shareOnFacebook={this.shareOnFacebook}
-          toggleMenu={toggleMenu}
-          showMenu={showMenu}
         />
         <DesktopNav
           view={view}
