@@ -29,7 +29,7 @@ function SEO({ title, description, image, cartoonId }) {
         property="og:url"
         content={
           cartoonId
-            ? `https://compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
+            ? `https://compliantmemegenerator.eu/cartoon?cartoonId=${cartoonId}&fromIndex=false`
             : "https://compliantmemegenerator.eu"
         }
       />

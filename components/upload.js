@@ -58,7 +58,7 @@ class Upload extends Component {
       "Make any meme last beyond Article 13 with the EU Compliant Meme Generator 🤖"
 
     const encodedQuery = encodeURIComponent(
-      `?cartoonId=${cartoonId}&formCompleted=false&fromIndex=false`
+      `?cartoonId=${cartoonId}&fromIndex=false`
     )
     const url = cartoonId
       ? `https://compliantmemegenerator.eu/cartoon${encodedQuery}`
@@ -78,7 +78,7 @@ class Upload extends Component {
         href: this.props.cartoonId
           ? `https://compliantmemegenerator.eu/cartoon?cartoonId=${
               this.props.cartoonId
-            }&formCompleted=false&fromIndex=false`
+            }&fromIndex=false`
           : "https://compliantmemegenerator.eu/",
         hashtag: "#SaveYourInternet",
         mobile_iframe: true,
