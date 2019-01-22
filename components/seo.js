@@ -8,24 +8,7 @@ function SEO({ title, description, image, cartoonId }) {
     <Head>
       <title>{title || defaultTitle}</title>
       <meta charSet="UTF-8" />
-      <meta name="description" content={description || defaultDescription} />
-      <meta property="og:title" content={title || defaultTitle} />
       <meta
-        property="og:description"
-        content={description || defaultDescription}
-      />
-      <meta
-        name="og:image"
-        property="og:image"
-        content={image || defaultImage}
-      />
-      <meta name="og:image:type" property="og:image:type" content="image/png" />
-      <meta property="og:image:height" content={cartoonId ? "1080" : "675"} />
-      <meta property="og:image:width" content={cartoonId ? "1080" : "1200"} />
-      <meta property="og:locale" name="og:locale" content="en" />
-      <meta property="og:type" content="website" />
-      <meta
-        name="og:url"
         property="og:url"
         content={
           cartoonId
@@ -33,6 +16,18 @@ function SEO({ title, description, image, cartoonId }) {
             : "https://compliantmemegenerator.eu"
         }
       />
+      <meta name="description" content={description || defaultDescription} />
+      <meta property="og:title" content={title || defaultTitle} />
+      <meta
+        property="og:description"
+        content={description || defaultDescription}
+      />
+      <meta property="og:image" content={image || defaultImage} />
+      <meta name="og:image:type" property="og:image:type" content="image/png" />
+      <meta property="og:image:height" content={cartoonId ? "1080" : "675"} />
+      <meta property="og:image:width" content={cartoonId ? "1080" : "1200"} />
+      <meta property="og:locale" content="en" />
+      <meta property="og:type" content="website" />
       <meta name="twitter:title" content={title || defaultTitle} />
       <meta
         name="twitter:description"
