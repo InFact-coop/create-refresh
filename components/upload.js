@@ -71,6 +71,15 @@ class Upload extends Component {
     return href
   }
 
+  shareOnTwitter = () => {
+    console.log("here")
+    const twitterLink = document.createElement("a")
+    twitterLink.href = this.getTwitterHref(this.props.cartoonId)
+    twitterLink.style = "display:none;"
+    document.body.appendChild(twitterLink)
+    twitterLink.click()
+  }
+
   shareOnFacebook = () => {
     //eslint-disable-next-line
     FB.ui(
@@ -208,7 +217,7 @@ class Upload extends Component {
                 handleStartOver={handleStartOver}
                 showShareModal={showShareModal}
                 toggleShare={toggleShareModal}
-                getTwitterHref={this.getTwitterHref}
+                shareOnTwitter={this.shareOnTwitter}
                 shareOnFacebook={this.shareOnFacebook}
               />
             ) : (
