@@ -15,7 +15,7 @@ import encode from "../utils/encode"
 
 import "../styles/index.css"
 
-const cartoonEndpoint = "https://api.compliantmemegenerator.eu"
+const api = "https://api.compliantmemegenerator.eu"
 
 class CartoonPage extends Component {
   state = {
@@ -30,7 +30,7 @@ class CartoonPage extends Component {
     const { cartoonId, fromIndex } = query
 
     return await axios
-      .get(`${cartoonEndpoint}/fetch/${cartoonId}`)
+      .get(`${api}/fetch/${cartoonId}`)
       .then(res => ({
         cartoonId,
         cartoon: `data:image/png;base64,${res.data.compliant}`,
@@ -79,7 +79,7 @@ class CartoonPage extends Component {
   postData = data => {
     // post user information to proxy Mailchimp server
     const URIdata = encode({ ...data })
-    fetch("http://127.0.0.1:5000/subscribe", {
+    fetch(`${api}/subscribe`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: URIdata,
