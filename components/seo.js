@@ -5,7 +5,7 @@ function SEO({ title, description, cartoonId }) {
   const defaultTitle = "Make ANY Meme EU Compliant!"
   const defaultImage = "https://i.ibb.co/VTRBHb7/metadata.png"
   const cartoonImage = `https://api.compliantmemegenerator.eu/fetch/img/compliant/${cartoonId}`
-  
+
   return (
     <Head>
       <title>{title || defaultTitle}</title>
@@ -36,7 +36,7 @@ function SEO({ title, description, cartoonId }) {
         content={description || defaultDescription}
       />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="fb:app_id" content="1627837104015374" />
+      <meta property="fb:app_id" content="372460910220545" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script
         type="text/javascript"
@@ -60,7 +60,7 @@ function SEO({ title, description, cartoonId }) {
         dangerouslySetInnerHTML={{
           __html: `window.fbAsyncInit = function() {
           FB.init({
-            appId            : 1627837104015374,
+            appId            : 372460910220545,
             autoLogAppEvents : true,
             xfbml            : true,
             version          : 'v3.2'

@@ -66,7 +66,7 @@ class Upload extends Component {
       : "https://compliantmemegenerator.eu/"
 
     const hashtags = "SaveYourInternet"
-    const via = "lucydev5"
+    const via = "CreateRefresh"
     const href = `https://twitter.com/intent/tweet?&text=${text}&hashtags=${hashtags}&via=${via}&url=${url}`
     return href
   }
