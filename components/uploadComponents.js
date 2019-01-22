@@ -176,8 +176,7 @@ const ShareButtons = props => (
       Share
       {props.showShareModal && (
         <ShareModal
-          cartoonId={props.cartoonId}
-          getTwitterHref={props.getTwitterHref}
+          shareOnTwitter={props.shareOnTwitter}
           shareOnFacebook={props.shareOnFacebook}
         />
       )}
