@@ -24,7 +24,10 @@ function SEO({ title, description, cartoonId }) {
         property="og:description"
         content={description || defaultDescription}
       />
-      <meta property="og:image" content={cartoonImage || defaultImage} />
+      <meta
+        property="og:image"
+        content={cartoonId ? cartoonImage : defaultImage}
+      />
       <meta name="og:image:type" property="og:image:type" content="image/png" />
       <meta property="og:image:height" content={cartoonId ? "1080" : "675"} />
       <meta property="og:image:width" content={cartoonId ? "1080" : "1200"} />
