@@ -1,5 +1,6 @@
 import os
-from PIL import Image
+from PIL import Image, ExifTags
+from PIL.ExifTags import TAGS, GPSTAGS
 
 
 class HandleImage(object):
@@ -8,6 +9,7 @@ class HandleImage(object):
     def __init__(self, path, resize_size=1080):
         self.path = path
         self.original = Image.open(path)
+        self.exif = self.seeExif()
         self.original_x = self.original.size[0]
         self.original_y = self.original.size[1]
         self.smallest_axis = self.calculate_smallest_axis(
@@ -19,6 +21,13 @@ class HandleImage(object):
         self.resized_y = self.resized.size[1]
         self.crop_pixels = self.calculate_crop()
         self.crop_image = self.crop()
+
+    def seeExif(self):
+        """Return exif data of the image"""
+        image = self.original
+        hasExif = hasattr(image, '_getexif') and image._getexif() != None
+        info = image.info if not hasExif else image._getexif()
+        return info.get(274)
 
     def calculate_smallest_axis(self, x, y):
         """Calculate the smallest axis for further resizing and return string 'X' or 'Y'"""
@@ -77,6 +86,24 @@ class HandleImage(object):
 
     def save(self, path):
         """Save the cropped image as a JPG to the supplied path"""
-        self.crop_image.convert("RGB").save(path, format="JPEG", quality=60, optimize=True)
-        for image in [self.original, self.crop_image, self.resized]:
+        self.crop_image.convert("RGB").save(
+            path, format="JPEG", quality=60, optimize=True)
+
+        rotation = {
+            1: 0,
+            2: 0,
+            3: 180,
+            4: 0,
+            5: 0,
+            6: 270,
+            7: 0,
+            8: 90,
+            None: 0
+        }
+
+        image_now = Image.open(path)
+        image_rot = image_now.rotate(rotation.get(self.exif))
+        image_rot.save(path)
+
+        for image in [self.original, self.crop_image, self.resized, image_rot]:
             image.close()
