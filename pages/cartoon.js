@@ -65,6 +65,14 @@ class CartoonPage extends Component {
         },
       })
     }
+
+    if (this.props.fromIndex === "true" && window.fbq) {
+      const newScript = document.createElement("script")
+      newScript.id = "fb-complete-script"
+      newScript.type = "text/javascript"
+      newScript.innerHTML = "fbq('track', 'Complete');"
+      document.body.appendChild(newScript)
+    }
   }
 
   submitForm = data => {
