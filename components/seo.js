@@ -3,7 +3,7 @@ import Head from "next/head"
 function SEO({ title, description, cartoonId }) {
   const defaultDescription = "Try the EU Compliant Meme Generator for yourself"
   const defaultTitle = "Make ANY Meme EU Compliant!"
-  const defaultImage = "https://i.ibb.co/VTRBHb7/metadata.png"
+  const defaultImage = "https://i.ibb.co/mNMWtZD/Meme-Generator-AD-01.jpg"
   const cartoonImage = `https://api.compliantmemegenerator.eu/fetch/img/compliant/${cartoonId}`
 
   return (
