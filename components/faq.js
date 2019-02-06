@@ -41,7 +41,7 @@ const Faq = () => (
     <Paragraph>
       You may be dubious, but the current proposals in Article 13 of the EU’s
       proposed Copyright Directive are worrying. If Article 13 passes, Internet
-      platforms rather than Internet users will liable for copyright, which
+      platforms rather than Internet users will be liable for copyright, which
       means most will resort to automatically censoring content with upload
       filters. Safeguards put in place for memes are voluntary in each EU Member
       state, and in many Member states, memes are{" "}
