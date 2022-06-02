@@ -11,7 +11,7 @@ Flask-Cors==3.0.7
 funcsigs==1.0.2
 futures==3.2.0
 gizeh==0.1.11
-html5lib==0.9999999
+html5lib==0.99999999
 idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10
