@@ -19,7 +19,7 @@ jsonlines==1.2.0
 Markdown==3.0.1
 MarkupSafe==1.1.0
 mock==2.0.0
-numpy==1.16.0
+numpy==1.22.0
 pathlib==1.0.1
 pbr==5.1.1
 Pillow==5.4.1
